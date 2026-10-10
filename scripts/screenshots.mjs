@@ -9,7 +9,6 @@ const baseUrl = process.env.BASE_URL ?? "http://localhost:3100/monedo";
 const outDir = fileURLToPath(new URL("../docs/screenshots/", import.meta.url));
 const pages = [
   ["home", "/"],
-  ["design", "/design/"],
   ["course", "/cursos/fundamentos-del-dinero/"],
   ["lesson", "/cursos/fundamentos-del-dinero/el-dinero-es-tiempo/"],
 ];

@@ -5,7 +5,7 @@ import { Container } from "./container";
 const links = [
   { href: "/cursos", label: "Cursos" },
   { href: "/herramientas", label: "Herramientas" },
-  { href: "/legal", label: "Aviso legal y privacidad" },
+  { href: "/legal", label: "Privacidad y uso educativo" },
 ];
 
 export function SiteFooter() {

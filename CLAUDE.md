@@ -3,9 +3,9 @@
 # Monedo — convenciones del proyecto
 
 Plataforma web de cursos cortos de educación financiera para jóvenes de 14 a 18 años en España.
-Repositorio `calculofifo/monedo`. Se publica como sitio estático en GitHub Pages en
-`https://calculofifo.github.io/monedo/` (mismo origen que la calculadora FIFO de
-`calculofifo.github.io`: ver «Almacenamiento»).
+Repositorio `aaroncalvet6-oss/monedo`. Se publica como sitio estático en GitHub Pages en
+`https://aaroncalvet6-oss.github.io/monedo/` (el origen `<cuenta>.github.io` lo comparten todos
+los proyectos de Pages de la cuenta: ver «Almacenamiento»).
 
 ## Idioma
 
@@ -43,7 +43,7 @@ En el contenedor cloud: `PLAYWRIGHT_CHROMIUM_PATH=/opt/pw-browsers/chromium npm 
 src/
   app/                    rutas; solo composición, sin lógica de negocio
     (site)/               páginas con cabecera, pie y navegación inferior
-    (site)/design/        página interna del sistema de diseño (noindex)
+    (site)/design/        sistema de diseño, solo en `npm run dev` (page.dev.tsx; no se publica)
     globals.css           tokens de diseño (fuente de verdad del CSS)
   components/ui/          primitivas (button, card, badge, input, slider, tabs, progress-ring…)
   components/layout/      cabecera, navegación inferior, pie, contenedor, selector de tema
@@ -64,10 +64,14 @@ Reglas de arquitectura:
 - **Contenido** = datos. Añadir un curso es añadir archivos en `src/content/`; si no valida con Zod,
   el build falla.
 - **Lógica financiera** solo en `src/lib/finance/`, funciones puras con tests de casos límite.
+- **Web pública solo para el alumno**: nada de textos sobre cómo está hecha la web (tecnologías,
+  sistema de diseño, notas para desarrolladores, «en construcción»). Lo vigila `e2e/shell.spec.ts`.
+  Las páginas internas se nombran `page.dev.tsx`: `next.config.ts` solo las reconoce en `next dev`,
+  así que no entran en el build, la navegación ni un futuro sitemap.
 - **Privacidad**: sin analítica, sin cookies de terceros, sin recursos externos (fuentes incluidas).
 - **Almacenamiento**: todas las claves de `localStorage` llevan el prefijo `monedo:` y se definen
-  solo en `src/lib/storage-keys.ts` (lo vigila un test). El origen `calculofifo.github.io` se comparte
-  con la calculadora FIFO: nunca uses `localStorage.clear()`, borra solo las claves `monedo:`.
+  solo en `src/lib/storage-keys.ts` (lo vigila un test). El origen `<cuenta>.github.io` se comparte
+  con otros proyectos de Pages: nunca uses `localStorage.clear()`, borra solo las claves `monedo:`.
 
 ## Despliegue (GitHub Pages)
 
@@ -105,7 +109,8 @@ Reglas de arquitectura:
 
 ## Sistema de diseño
 
-Referencia viva: `/design`. Listón: Linear, Vercel, Stripe, Brilliant.
+Referencia viva: `/design` (solo en desarrollo: `npm run dev` → `/monedo/design`). Listón: Linear,
+Vercel, Stripe, Brilliant.
 
 - **Solo tokens semánticos.** La paleta por defecto de Tailwind está desactivada (`--color-*: initial`).
   Usa `bg-surface`, `text-fg-muted`, `border-border`, `bg-brand`, `text-brand-text`, etc.
