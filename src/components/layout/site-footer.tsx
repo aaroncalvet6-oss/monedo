@@ -13,7 +13,7 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-border">
       <Container width="wide" className="flex flex-col gap-8 py-10 md:flex-row md:justify-between">
         <div className="flex max-w-md flex-col gap-3">
-          <Logo />
+          <Logo className="self-start" />
           <p className="text-base leading-7 text-fg-muted">
             Monedo es una plataforma educativa. Su contenido sirve para aprender y no constituye
             asesoramiento financiero: no recomendamos productos, entidades ni inversiones concretas.

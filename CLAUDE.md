@@ -47,7 +47,7 @@ src/
     globals.css           tokens de diseño (fuente de verdad del CSS)
   components/ui/          primitivas (button, card, badge, input, slider, tabs, progress-ring…)
   components/layout/      cabecera, navegación inferior, pie, contenedor, selector de tema
-  components/graphics/    logotipo y SVG geométricos de marca
+  components/graphics/    logotipo, SVG geométricos de marca y Monedo (el personaje)
   features/{courses,lessons,progress,tools,certificates}/   código por funcionalidad
   content/                cursos y lecciones como datos TS validados con Zod
   lib/finance/            funciones financieras puras + tests
@@ -145,8 +145,31 @@ Vercel, Stripe, Brilliant.
 - **Movimiento**: `--duration-fast/base/slow` (120/200/320 ms) y `--ease-out`. Motion va envuelto en
   `MotionConfig reducedMotion="user"` y hay un fallback CSS para `prefers-reduced-motion`.
 - **Mobile-first**: navegación inferior fija en móvil, cabecera en `md+`. Sin scroll horizontal a 390 px.
-- **Prohibido**: degradados morados o azules, emojis, mascotas, ilustraciones de stock, todo
-  centrado, sombras en todas las tarjetas, el aspecto por defecto de shadcn.
+- **Prohibido**: degradados morados o azules, emojis, otras mascotas o personajes (Monedo es el
+  único), ilustraciones de stock, todo centrado, sombras en todas las tarjetas, el aspecto por
+  defecto de shadcn.
+
+## Monedo, el personaje
+
+Monedo es **el único personaje de la marca** y el guía de las lecciones. En la interfaz se presenta
+como «Monedo, tu guía». Nunca uses la palabra «IA» para referirte a él.
+
+- **Diseño**: moneda original con cara simple (ojos y boca), en los colores de marca. Sin cifras,
+  símbolos de divisa, retratos ni relieves de monedas reales; no debe recordar a ninguna mascota
+  existente. SVG en `components/graphics/monedo-character.tsx`, solo con tokens (`fill-brand`,
+  `fill-brand-hover`, `stroke-brand-fg`…), así que funciona en claro y oscuro sin cambios.
+- **Expresiones** (`monedo-expressions.ts`): `normal`, `explaining` (explicando), `thinking`
+  (pensando), `celebrating` (celebrando) y `oops` («uy», respuesta incorrecta).
+- **Movimiento**: parpadeo irregular cada 2,5–5,5 s y rebote suave con la boca en movimiento
+  mientras `talking`. Todo se desactiva con «reducir movimiento» (`useReducedMotion` +
+  `MotionConfig`). Nada que distraiga de la lectura.
+- **Accesibilidad**: decorativo por defecto (`aria-hidden`), porque el texto de la burbuja lleva el
+  significado; pasa `label` solo si aparece solo.
+- **Voz**: cercano y con humor ligero, nunca infantil. Habla de tú, frases cortas, sin emojis ni
+  exclamaciones en cadena. Reacciona sin juzgar («Uy, esa no era. Le pasa a cualquiera»). Mismas
+  reglas de contenido que el resto: nunca recomienda productos ni decisiones personales.
+- **Referencia**: `/design/monedo` (solo en desarrollo). Capturas en `docs/screenshots/monedo/`
+  (`npm run dev` y luego `node scripts/screenshots-monedo.mjs`).
 
 Componentes: el registro de shadcn no es accesible desde el contenedor cloud, así que los componentes
 se escriben a mano con el mismo patrón (código propio + `radix-ui` + `cva` + `cn`). `components.json`
