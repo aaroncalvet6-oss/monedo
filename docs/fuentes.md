@@ -42,20 +42,21 @@ números `#n` son los que cita [`temario.md`](./temario.md).
 
 ## Sin verificar (no se usan en las lecciones)
 
-| #   | Lección  | Dato                                                                                                      | Dónde buscar (sin comprobar)                                              | Anual |
-| --- | -------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----- |
-| 3   | 2.1      | Tipos de contrato vigentes: indefinido, fijo-discontinuo, temporal y formativos                           | BOE · RDL 32/2021 y Estatuto de los Trabajadores, arts. 11, 15 y 16; SEPE | no    |
-| 4   | 2.1      | Que el fijo-discontinuo es el contrato para trabajos de temporada que se repiten                          | BOE · Estatuto de los Trabajadores, art. 16                               | no    |
-| 5   | 2.1      | Periodo de prueba: qué es, duración máxima y derecho a cobrar lo trabajado                                | BOE · Estatuto de los Trabajadores, art. 14                               | no    |
-| 6   | 2.1      | Cuándo el contrato debe ser por escrito y derecho a copia                                                 | BOE · Estatuto de los Trabajadores, art. 8                                | no    |
-| 7   | 2.1      | Cómo comprobar el alta en la Seguridad Social (informe de vida laboral)                                   | seg-social.es · sede electrónica, informe de vida laboral                 | no    |
-| 8   | 2.1      | Papel del convenio colectivo (mínimos de sueldo y condiciones del sector)                                 | BOE · Estatuto de los Trabajadores, título III                            | no    |
-| 9   | 2.2      | Pagas extraordinarias: número mínimo, cuándo se cobran y si se pueden prorratear                          | BOE · Estatuto de los Trabajadores, art. 31                               | no    |
-| 10  | 2.2, 2.3 | Porcentajes de cotización del trabajador (la lección usa un 6 % de ejemplo, marcado como tal)             | seg-social.es · bases y tipos de cotización del año                       | sí    |
-| 12  | 2.3      | Obligación de entregar la nómina y su modelo oficial                                                      | BOE · Estatuto de los Trabajadores, art. 29; Orden ESS/2098/2014          | no    |
-| 14  | 2.4      | IRPF por tramos (estatal y autonómico) y que varía por comunidad autónoma                                 | BOE · Ley 35/2006 del IRPF, arts. 63 y 74; agenciatributaria.gob.es       | sí    |
-| 15  | 2.4      | Prestaciones que generan las cotizaciones (jubilación, desempleo, incapacidad temporal)                   | seg-social.es · prestaciones; sepe.es (desempleo)                         | no    |
-| 21  | 1.6      | Edad para contratar un pago a plazos o un crédito al consumo (mayoría de edad y capacidad para contratar) | BOE · Código Civil, arts. 322 y 1263; Ley 16/2011 de crédito al consumo   | no    |
+| #   | Lección  | Dato                                                                                                                                         | Dónde buscar (sin comprobar)                                              | Anual |
+| --- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----- |
+| 3   | 2.1      | Tipos de contrato vigentes: indefinido, fijo-discontinuo, temporal y formativos                                                              | BOE · RDL 32/2021 y Estatuto de los Trabajadores, arts. 11, 15 y 16; SEPE | no    |
+| 4   | 2.1      | Que el fijo-discontinuo es el contrato para trabajos de temporada que se repiten                                                             | BOE · Estatuto de los Trabajadores, art. 16                               | no    |
+| 5   | 2.1      | Periodo de prueba: qué es, duración máxima y derecho a cobrar lo trabajado                                                                   | BOE · Estatuto de los Trabajadores, art. 14                               | no    |
+| 6   | 2.1      | Cuándo el contrato debe ser por escrito y derecho a copia                                                                                    | BOE · Estatuto de los Trabajadores, art. 8                                | no    |
+| 7   | 2.1      | Cómo comprobar el alta en la Seguridad Social (informe de vida laboral)                                                                      | seg-social.es · sede electrónica, informe de vida laboral                 | no    |
+| 8   | 2.1      | Papel del convenio colectivo (mínimos de sueldo y condiciones del sector)                                                                    | BOE · Estatuto de los Trabajadores, título III                            | no    |
+| 9   | 2.2      | Pagas extraordinarias: número mínimo, cuándo se cobran y si se pueden prorratear                                                             | BOE · Estatuto de los Trabajadores, art. 31                               | no    |
+| 10  | 2.2, 2.3 | Porcentajes de cotización del trabajador (la lección usa un 6 % de ejemplo, marcado como tal)                                                | seg-social.es · bases y tipos de cotización del año                       | sí    |
+| 12  | 2.3      | Obligación de entregar la nómina y su modelo oficial                                                                                         | BOE · Estatuto de los Trabajadores, art. 29; Orden ESS/2098/2014          | no    |
+| 14  | 2.4      | IRPF por tramos (estatal y autonómico) y que varía por comunidad autónoma                                                                    | BOE · Ley 35/2006 del IRPF, arts. 63 y 74; agenciatributaria.gob.es       | sí    |
+| 15  | 2.4      | Prestaciones que generan las cotizaciones (jubilación, desempleo, incapacidad temporal)                                                      | seg-social.es · prestaciones; sepe.es (desempleo)                         | no    |
+| 21  | 1.6      | Edad para contratar un pago a plazos o un crédito al consumo (mayoría de edad y capacidad para contratar)                                    | BOE · Código Civil, arts. 322 y 1263; Ley 16/2011 de crédito al consumo   | no    |
+| 23  | 2.1      | Horario nocturno a efectos laborales: de 22:00 a 6:00 (Estatuto de los Trabajadores, art. 36). La lección no da el horario hasta verificarlo | BOE · Estatuto de los Trabajadores, art. 36                               | no    |
 
 La fila 22 sale de la antigua fila 1 (la edad mínima, art. 6, y el consentimiento de los padres,
 art. 7, se verifican por separado).

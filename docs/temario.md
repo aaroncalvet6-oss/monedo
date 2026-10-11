@@ -432,8 +432,8 @@ El 6 % de cotizaciones es de ejemplo y lo dice en pantalla (el porcentaje real c
 
 ### 2.1 Tipos de contrato · 7 min
 
-**Objetivo.** Al terminar sabrás qué es un contrato de trabajo, qué tipos hay y qué revisar antes
-de firmar.
+**Objetivo.** Al terminar sabrás qué es un contrato de trabajo, qué tipos hay, qué revisar antes
+de firmar y qué no te pueden pedir si tienes menos de 18 años.
 
 **Términos nuevos**
 
@@ -447,23 +447,32 @@ de firmar.
 - _Convenio colectivo_: un acuerdo entre empresas y trabajadores de un sector (hostelería,
   comercio…) que fija mínimos de sueldo, horarios y vacaciones.
 - _Indefinido, temporal, fijo-discontinuo, formativo_: los tipos de contrato (ver ideas clave).
+- _Horas extra_: las que trabajas por encima de tu jornada.
+- _Trabajo nocturno_: el que se hace por la noche. Qué horas cuentan como noche lo fija la ley
+  (de 22:00 a 6:00 según el art. 36 del Estatuto de los Trabajadores, `TODO(verify) #23`: hasta
+  verificarlo, la lección no da el horario).
 
 **Ideas clave**
 
 1. Trabajar con contrato y alta en la Seguridad Social te protege. «Sin papeles» significa sin
-   protección si pasa algo y sin que ese trabajo cuente para tu futuro.
+   protección si pasa algo. Antes de firmar, lee jornada, sueldo, duración, periodo de prueba y
+   convenio, y quédate siempre una copia.
 2. Tipos principales: _indefinido_ (sin fecha de fin), _fijo-discontinuo_ (trabajos de temporada
    que se repiten cada año), _temporal_ (para una necesidad concreta y con fin) y _formativo_
    (para aprender un oficio o hacer prácticas). `TODO(verify) #3`
-3. Antes de firmar, lee y comprueba: jornada, sueldo, duración, periodo de prueba y convenio. Nunca
-   firmes sin leer y quédate siempre una copia.
+3. Si tienes menos de 18 años, la ley te protege más: **no puedes trabajar de noche ni hacer horas
+   extra**, aunque la empresa te lo pida o tú quieras ganar más `✓ fuente #2`.
 
 **Ejemplo principal.** Sara, 17 años, consigue trabajo de camarera en un chiringuito de Cádiz para
 julio y agosto. Como es menor de edad, necesita el consentimiento de sus padres para firmar
 `✓ fuente #22`. Antes de firmar repasa su lista: contrato temporal del 1 de julio al 31 de agosto,
 30 horas a la semana, 1.200 € brutos al mes, periodo de prueba de unos días y convenio de hostelería
-de su provincia. Ve que no pone el horario y lo pregunta antes de firmar. Como tiene 17 años, no
-puede hacer horas extra, ni turnos de noche, ni trabajos peligrosos `✓ fuente #2`.
+de su provincia. Ve que no pone el horario y lo pregunta antes de firmar.
+
+A mitad de julio, un sábado de mucho trabajo, el encargado le pide que se quede a cerrar hasta la
+1:00 «y te pago las horas extra aparte». Sara le recuerda que tiene 17 años: no puede trabajar de
+noche ni hacer horas extra, ni tampoco trabajos peligrosos `✓ fuente #2`. Le ofrecen el turno de
+cierre a un compañero mayor de edad y ella sigue en el turno de día.
 
 **Preguntas**
 
@@ -474,12 +483,14 @@ puede hacer horas extra, ni turnos de noche, ni trabajos peligrosos `✓ fuente 
    oficialmente**
    C) Que cobrará menos que con contrato
    D) Que tendrá que hacer la declaración de la renta
-2. ¿Qué es el periodo de prueba?
-   A) Los primeros días, en los que trabajas sin cobrar
-   **B) Un tiempo al principio en el que la empresa o tú podéis terminar el contrato con más
-   facilidad, cobrando lo trabajado**
-   C) Unos días de formación gratis antes del contrato
-   D) El tiempo en el que la empresa puede cambiarte el sueldo cuando quiera
+2. Tienes 17 años y en el chiringuito te piden quedarte hasta la 1:00 a cerrar, «y te lo pago como
+   horas extra». ¿Qué dice la ley?
+   A) Puedes, siempre que te lo paguen aparte
+   **B) No puedes: con menos de 18 años no se puede trabajar de noche ni hacer horas extra**
+   C) Puedes, si tus padres firman una autorización
+   D) Solo puedes hacerlo los fines de semana
+   _Por qué: la prohibición es para proteger a los menores; no cambia aunque te paguen más ni
+   aunque tú quieras. `✓ fuente #2`_
 3. Trabajas cada verano en la misma piscina municipal, en la misma temporada. ¿Qué tipo de
    contrato encaja mejor?
    A) Indefinido a jornada completa todo el año

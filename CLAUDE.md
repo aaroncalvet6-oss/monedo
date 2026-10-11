@@ -240,8 +240,8 @@ está listo por si la CLI se puede usar en local.
 
 ## TODO(verify) — datos pendientes de verificar con fuente oficial
 
-_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 22 datos, 10 verificados (5 en web
-oficial y 5 en fuente secundaria, pendientes de sustituir por la oficial) y 12 sin verificar. En el
+_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 23 datos, 10 verificados (5 en web
+oficial y 5 en fuente secundaria, pendientes de sustituir por la oficial) y 13 sin verificar. En el
 temario cada dato lleva `✓ fuente #n` o `TODO(verify) #n`. Lo que está sin verificar no entra en
 las lecciones._
 
