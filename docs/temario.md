@@ -17,9 +17,11 @@ preguntas con la respuesta correcta y reto práctico.
 - **Ninguna cifra que cambie cada año en las lecciones** (límites para declarar, tramos del IRPF,
   porcentajes de cotización, fechas de la campaña): se explica el concepto y se enlaza a la fuente
   oficial. Cada dato y su enlace están en [`fuentes.md`](./fuentes.md).
-- **Ninguna cifra legal o fiscal inventada.** Los ejemplos de nómina usan porcentajes
-  **ilustrativos y redondos** (6 % de cotizaciones, 2 % de IRPF) y lo dicen en pantalla. Cada
-  dato legal está marcado `TODO(verify)` y listado al final con su fuente oficial.
+- **Ninguna cifra legal o fiscal inventada.** En los ejemplos de nómina, el 6 % de cotizaciones es
+  una cifra **de ejemplo** y lo dice en pantalla; el 2 % de IRPF **no es inventado**: es la
+  retención mínima en contratos de menos de un año (fuente #11). Cada dato legal lleva `✓ fuente #n`
+  si está verificado o `TODO(verify) #n` si no; el número es su fila en
+  [`fuentes.md`](./fuentes.md). Lo que está en `TODO(verify)` no se usa en las lecciones.
 - Todas las cuentas de los ejemplos están comprobadas.
 - **Un solo porcentaje de ahorro de ejemplo en todo Monedo: el 20 %** (lecciones, preguntas,
   evaluaciones y herramientas). Coincide con el 20 % de ahorro de la regla 50/30/20.
@@ -372,7 +374,7 @@ la urgencia y la escasez.
   y, si se retrasa en una cuota, le cobran un recargo.
 
 A Leo todavía no se lo pueden ofrecer: para contratar un pago a plazos normalmente hay que ser
-mayor de edad `TODO(verify)`. Marta le avisa: «Cuando cumplas 18, te lo van a ofrecer en todas
+mayor de edad `TODO(verify) #21`. Marta le avisa: «Cuando cumplas 18, te lo van a ofrecer en todas
 partes: en tiendas, en webs y al pagar en apps». En casa, Leo abre su juego favorito: el pack de
 1.000 gemas cuesta 9,99 € y la skin que quiere cuesta 1.200 gemas. Tiene que comprar dos packs
 (19,98 €) y le sobran 800 gemas que no le sirven para nada… todavía.
@@ -439,16 +441,16 @@ de firmar.
    protección si pasa algo y sin que ese trabajo cuente para tu futuro.
 2. Tipos principales: _indefinido_ (sin fecha de fin), _fijo-discontinuo_ (trabajos de temporada
    que se repiten cada año), _temporal_ (para una necesidad concreta y con fin) y _formativo_
-   (para aprender un oficio o hacer prácticas). `TODO(verify)`
+   (para aprender un oficio o hacer prácticas). `TODO(verify) #3`
 3. Antes de firmar, lee y comprueba: jornada, sueldo, duración, periodo de prueba y convenio. Nunca
    firmes sin leer y quédate siempre una copia.
 
 **Ejemplo principal.** Sara, 17 años, consigue trabajo de camarera en un chiringuito de Cádiz para
 julio y agosto. Como es menor de edad, necesita la autorización de sus padres para firmar
-`TODO(verify)`. Antes de firmar repasa su lista: contrato temporal del 1 de julio al 31 de agosto,
+`TODO(verify) #22`. Antes de firmar repasa su lista: contrato temporal del 1 de julio al 31 de agosto,
 30 horas a la semana, 900 € brutos al mes, periodo de prueba de unos días y convenio de hostelería
 de su provincia. Ve que no pone el horario y lo pregunta antes de firmar. Como tiene 17 años, no
-puede hacer horas extra ni turnos de noche `TODO(verify)`.
+puede hacer horas extra, ni turnos de noche, ni trabajos peligrosos `✓ fuente #2`.
 
 **Preguntas**
 
@@ -468,7 +470,7 @@ puede hacer horas extra ni turnos de noche `TODO(verify)`.
 3. Trabajas cada verano en la misma piscina municipal, en la misma temporada. ¿Qué tipo de
    contrato encaja mejor?
    A) Indefinido a jornada completa todo el año
-   **B) Fijo-discontinuo** `TODO(verify)`
+   **B) Fijo-discontinuo** `TODO(verify) #4`
    C) Temporal por sustitución
    D) Formativo
 4. Te dan el contrato y te dicen: «Firma aquí, ya lo leerás en casa». ¿Qué haces?
@@ -498,7 +500,7 @@ del bruto al neto y cómo comparar ofertas de trabajo.
 - _Retención de IRPF_: una parte de tu sueldo que la empresa adelanta cada mes a Hacienda a cuenta
   de tus impuestos. (Lección 2.4.)
 - _Pagas extra_: parte de tu sueldo anual que se cobra en meses concretos (normalmente en verano y
-  en Navidad) o repartida en todas las nóminas `TODO(verify)`.
+  en Navidad) o repartida en todas las nóminas `TODO(verify) #9`.
 
 **Ideas clave**
 
@@ -507,12 +509,13 @@ del bruto al neto y cómo comparar ofertas de trabajo.
    se reparte.
 3. Para comparar ofertas, compáralas igual: todo en bruto anual o todo en neto mensual.
 
-**Ejemplo principal.** El contrato de Sara dice 900 € brutos al mes. Con descuentos **de
-ejemplo** (6 % de cotizaciones y 2 % de IRPF): 54 € + 18 € = 72 €. Le llegan **828 €**. Otro
+**Ejemplo principal.** El contrato de Sara dice 900 € brutos al mes, solo para el verano. Con un
+6 % de cotizaciones (**cifra de ejemplo**: la real cambia cada año) y un 2 % de IRPF (la retención
+mínima en contratos de menos de un año `✓ fuente #11`): 54 € + 18 € = 72 €. Le llegan **828 €**. Otro
 ejemplo: 14.000 € brutos al año son 1.000 € al mes en 14 pagas o 1.166,67 € al mes en 12 pagas.
 
-**Dato clave:** 828 € · lo que le llega a Sara de un sueldo de 900 € brutos (descuentos de
-ejemplo).
+**Dato clave:** 828 € · lo que le llega a Sara de un sueldo de 900 € brutos (cotización de
+ejemplo y retención mínima del 2 %).
 
 **Preguntas**
 
@@ -527,7 +530,7 @@ ejemplo).
    B) La B, porque cada mes cobras más (1.250 € frente a 1.100 €)
    C) Pagan lo mismo
    D) No se puede saber sin ver las nóminas
-3. Con los porcentajes de ejemplo de la lección (6 % y 2 %), ¿cuánto te llega de un sueldo de
+3. Con los porcentajes de la lección (6 % de cotizaciones de ejemplo y 2 % de IRPF), ¿cuánto te llega de un sueldo de
    900 € brutos?
    **A) 828 €** · B) 846 € · C) 882 € · D) 900 €
    _Por qué: 900 − 54 − 18 = 828. La B solo resta la cotización y la C solo el IRPF._
@@ -551,7 +554,7 @@ cuadra.
 **Términos nuevos**
 
 - _Nómina_: el documento que te da la empresa cada mes con lo que has ganado, lo que te descuentan
-  y lo que cobras `TODO(verify)`.
+  y lo que cobras `TODO(verify) #12`.
 - _Devengos_: todo lo que has ganado ese mes (salario base, pluses, la parte de las pagas extra…).
 - _Salario base_: la parte fija de tu sueldo.
 - _Plus o complemento_: dinero extra por algo concreto (transporte, trabajar de noche, idiomas…).
@@ -567,8 +570,9 @@ cuadra.
    percibir.
 2. La cuenta que siempre tienes que comprobar: devengos − deducciones = líquido a percibir = lo que
    llega a tu cuenta.
-3. La empresa paga a la Seguridad Social por ti más de lo que te descuentan a ti `TODO(verify)`:
-   tu trabajo cuesta a la empresa más que tu sueldo bruto.
+3. La empresa paga a la Seguridad Social por ti más de lo que te descuentan a ti `✓ fuente #13`:
+   tu trabajo cuesta a la empresa más que tu sueldo bruto. (Los porcentajes cambian cada año: la
+   lección no los da y enlaza a la fuente.)
 
 **Ejemplo principal.** La nómina de julio de Sara, explicada línea por línea:
 
@@ -578,13 +582,13 @@ cuadra.
 | Plus de transporte                        | 50,00      |
 | **Total devengado**                       | **900,00** |
 | Cotizaciones del trabajador (ejemplo 6 %) | −54,00     |
-| Retención de IRPF (ejemplo 2 %)           | −18,00     |
+| Retención de IRPF (mínimo 2 %)            | −18,00     |
 | **Total a deducir**                       | **−72,00** |
 | **Líquido a percibir**                    | **828,00** |
 
 Debajo aparece la aportación de la empresa: lo que la empresa paga por Sara y que no sale de su
 sueldo. La nómina del ejemplo es inventada y simplificada: una real tiene más líneas
-`TODO(verify)`.
+`TODO(verify) #12`.
 
 **Preguntas**
 
@@ -640,10 +644,10 @@ qué sirven y por qué, en el IRPF, ganar más nunca hace que te quedes con meno
    el IRPF, ganar más nunca te deja con menos dinero. Otras cosas con límites de ingresos, como
    algunas becas o ayudas, sí pueden tener saltos: compruébalo en cada caso.
 3. Las cotizaciones no son dinero perdido: generan derechos para ti, como la jubilación futura, el
-   paro o las bajas `TODO(verify)`. Y los impuestos pagan servicios que usas cada día.
+   paro o las bajas `TODO(verify) #15`. Y los impuestos pagan servicios que usas cada día.
 
 **Ejemplo principal.** Los tramos de este ejemplo son **inventados** para entender la idea (los
-reales son otros y cambian según la comunidad autónoma `TODO(verify)`): imagina que hasta 10.000 €
+reales son otros y cambian según la comunidad autónoma `TODO(verify) #14`): imagina que hasta 10.000 €
 al año pagas un 0 % y por lo que pase de 10.000 € pagas un 20 %. Si Sara ganara 13.000 € en un
 año, solo pagaría el 20 % de 3.000 €: **600 €**, no el 20 % de 13.000 € (2.600 €). Su compañera,
 que gana 9.000 €, paga 0 €. Si a Sara le suben el sueldo y pasa de tramo, por el IRPF gana más
@@ -702,29 +706,38 @@ qué puede interesarte aunque no estés obligado y cómo se presenta.
   la confirmas o la corriges.
 - _Renta Web_: la herramienta de la web de la Agencia Tributaria para hacer la declaración.
 - _Cl@ve, número de referencia, certificado digital_: formas de identificarte en internet ante
-  Hacienda `TODO(verify)`.
+  Hacienda `✓ fuente #20`.
+- _Mínimo por descendientes_: una cantidad que tus padres pueden restar en su declaración por
+  tenerte a su cargo. Lo pierden si tus ingresos pasan de ciertos límites o si presentas tu propia
+  declaración con ingresos por encima de un límite `✓ fuente #19`.
 
 **Ideas clave**
 
-1. La declaración se hace una vez al año, en primavera, sobre lo que ganaste el año anterior
-   `TODO(verify)`.
+1. La declaración se hace una vez al año, en primavera, sobre lo que ganaste el año anterior. Las
+   fechas exactas cambian cada año: la lección enlaza al calendario oficial `✓ fuente #16`.
 2. No todo el mundo está obligado a presentarla: depende de cuánto hayas ganado y de cuántos
-   pagadores hayas tenido `TODO(verify)`. Aunque no estés obligado, puede interesarte presentarla
-   para que te devuelvan lo que te retuvieron.
-3. Se hace en internet, en la web de la Agencia Tributaria: identificarte, revisar el borrador y
-   confirmarlo. Si ganas dinero siendo menor, coméntalo en casa: puede afectar a la declaración de
-   tu familia `TODO(verify)`.
+   pagadores hayas tenido `✓ fuente #17`. Aunque no estés obligado, presentarla puede servir para
+   recuperar lo que te retuvieron.
+3. **Antes de presentar tu declaración, háblalo en casa: en algunos casos tu familia puede perder
+   más de lo que tú recuperas.** Si presentas tu propia declaración con ingresos por encima de un
+   límite, tus padres pierden el mínimo por descendientes `✓ fuente #19`. La lección no da la cifra
+   del límite: enlaza a la fuente.
 
 **Ejemplo principal.** En el verano de 2026, Sara trabaja de monitora en un campamento durante
-julio y agosto: 1.800 € brutos en total. En cada nómina le retienen IRPF: 36 € entre las dos
-(2 % de ejemplo). Es su único trabajo del año y, con unos ingresos tan bajos, su impuesto real del
-año sale 0 € `TODO(verify)`. No estaba obligada a declarar `TODO(verify)`, pero en la primavera de
-2027 entra con sus padres en Renta Web, revisa el borrador y lo presenta. Como Hacienda se quedó
-36 € por adelantado, se los devuelve. Si no hubiera presentado la declaración, esos 36 € no habrían
-vuelto.
+julio y agosto: 1.800 € brutos en total. En cada nómina le retienen IRPF: 36 € entre las dos. Ese
+2 % no es inventado: es la retención mínima en contratos de menos de un año `✓ fuente #11`. Con un
+solo pagador y estos ingresos no está obligada a declarar `✓ fuente #17`, y su impuesto real del
+año sale 0 € `TODO(verify) #18`. Si presenta la declaración en Renta Web, Hacienda le devuelve los
+36 € que se quedó por adelantado.
 
-**Dato clave:** 36 € · lo que recupera Sara de su trabajo de verano por presentar la declaración
-(retención de ejemplo).
+**Pero antes, lo habla en casa.** Si Sara presenta su propia declaración con ingresos por encima de
+un límite, sus padres pierden el mínimo por descendientes por ella `✓ fuente #19`, y eso puede
+costarles más que los 36 € que recupera Sara. En primavera de 2027 lo miran juntos en la web de la
+Agencia Tributaria y deciden con los números delante: en algunos casos compensa presentarla y en
+otros no.
+
+**Dato clave:** 36 € · lo que puede recuperar Sara de su trabajo de verano si presenta la
+declaración (antes, que lo hable en casa).
 
 **Preguntas**
 
@@ -741,7 +754,8 @@ vuelto.
    D) Una multa por no declarar a tiempo
 3. Si no estás obligado a hacer la declaración…
    A) Está prohibido presentarla
-   **B) Puedes presentarla igualmente, y puede interesarte si te han retenido dinero**
+   **B) Puedes presentarla igualmente para recuperar lo que te retuvieron, pero antes háblalo en
+   casa: tu familia podría perder más de lo que tú recuperas**
    C) Te multan si la presentas
    D) Tus padres tienen que presentarla por ti en todos los casos
 4. Trabajaste el verano de 2026. ¿Cuándo declaras ese dinero?
@@ -752,7 +766,7 @@ vuelto.
 
 **Reto práctico.** Entra en la web de la Agencia Tributaria sin iniciar sesión. Busca la sección de
 la Renta, apunta las fechas de la campaña de este año y las formas de identificarte. Si alguien en
-casa hace la declaración, pregúntale si usa el borrador.
+casa hace la declaración, pregúntale si usa el borrador y si te tiene en cuenta como descendiente.
 
 ---
 
@@ -772,35 +786,12 @@ casa hace la declaración, pregúntale si usa el borrador.
 
 ---
 
-## Lista de `TODO(verify)` · datos pendientes de fuente oficial
+## Datos legales y fiscales: fuentes
 
-Ninguno de estos datos aparecerá como cifra o afirmación cerrada en la app hasta que se compruebe
-en la fuente oficial. Mientras tanto, el texto usa ejemplos marcados como tales.
+La lista completa de datos, con su estado (verificado o no), el enlace exacto y la fecha de
+consulta, está en [`fuentes.md`](./fuentes.md). Los números `#n` de este temario son sus filas.
+Ningún dato en `TODO(verify)` aparecerá en la app hasta tener fuente.
 
-| #   | Lección  | Dato que hay que verificar                                                                                                      | Fuente oficial                                                                                                  |
-| --- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| 1   | 2.1      | Edad mínima para trabajar (16 años) y autorización de padres o tutores entre 16 y 18 años                                       | BOE · Estatuto de los Trabajadores (RDL 2/2015), arts. 6 y 7                                                    |
-| 2   | 2.1      | Prohibición de trabajo nocturno y de horas extra para menores de 18 años                                                        | BOE · Estatuto de los Trabajadores, art. 6                                                                      |
-| 3   | 2.1      | Tipos de contrato vigentes: indefinido, fijo-discontinuo, temporal (circunstancias de la producción y sustitución), formativos  | BOE · RDL 32/2021 (reforma laboral) y Estatuto de los Trabajadores, arts. 11, 15 y 16; SEPE (guía de contratos) |
-| 4   | 2.1      | Que el fijo-discontinuo es el contrato para trabajos de temporada que se repiten                                                | BOE · Estatuto de los Trabajadores, art. 16                                                                     |
-| 5   | 2.1      | Periodo de prueba: qué es, duración máxima y derecho a cobrar lo trabajado                                                      | BOE · Estatuto de los Trabajadores, art. 14                                                                     |
-| 6   | 2.1      | Cuándo el contrato debe ser por escrito y derecho a copia                                                                       | BOE · Estatuto de los Trabajadores, art. 8                                                                      |
-| 7   | 2.1      | Cómo comprobar el alta en la Seguridad Social (informe de vida laboral)                                                         | Seguridad Social · sede electrónica (Import@ss)                                                                 |
-| 8   | 2.1      | Papel del convenio colectivo (mínimos de sueldo y condiciones del sector)                                                       | BOE · Estatuto de los Trabajadores, título III; REGCON (registro de convenios)                                  |
-| 9   | 2.2      | Pagas extraordinarias: número mínimo, cuándo se cobran y posibilidad de prorratearlas                                           | BOE · Estatuto de los Trabajadores, art. 31                                                                     |
-| 10  | 2.2, 2.3 | Porcentajes reales de cotización del trabajador del año en curso (contingencias comunes, desempleo, formación profesional, MEI) | Seguridad Social · Orden anual de cotización publicada en el BOE                                                |
-| 11  | 2.2, 2.3 | Retención de IRPF en contratos cortos (si existe un mínimo para contratos de menos de un año)                                   | AEAT · Reglamento del IRPF (RD 439/2007), art. 86                                                               |
-| 12  | 2.3      | Obligación de entregar la nómina y su modelo oficial (partes y líneas)                                                          | BOE · Estatuto de los Trabajadores, art. 29; Orden ESS/2098/2014 (modelo de recibo de salarios)                 |
-| 13  | 2.3      | Que la aportación de la empresa a la Seguridad Social es mayor que la del trabajador                                            | Seguridad Social · Orden anual de cotización                                                                    |
-| 14  | 2.4      | Escala del IRPF por tramos (estatal y autonómica) y que varía por comunidad autónoma                                            | AEAT · Ley 35/2006 del IRPF, arts. 63 y 74; manual práctico de Renta del año                                    |
-| 15  | 2.4      | Prestaciones que generan las cotizaciones (jubilación, desempleo, incapacidad temporal)                                         | Seguridad Social · prestaciones; SEPE (desempleo)                                                               |
-| 16  | 2.5      | Fechas de la campaña de la Renta del año                                                                                        | AEAT · calendario de la campaña de Renta                                                                        |
-| 17  | 2.5      | Límites de ingresos y de pagadores para estar obligado a declarar                                                               | AEAT · Ley 35/2006 del IRPF, art. 96; manual práctico de Renta                                                  |
-| 18  | 2.5      | Que con ingresos bajos el impuesto final puede ser 0 € y se devuelve toda la retención (mínimo personal)                        | AEAT · Ley 35/2006 del IRPF, arts. 56 y 57; simulador de Renta                                                  |
-| 19  | 2.5      | Cómo afectan los ingresos de un hijo a la declaración de sus padres (mínimo por descendientes y su límite de rentas)            | AEAT · Ley 35/2006 del IRPF, art. 58                                                                            |
-| 20  | 2.5      | Formas de identificarse en Renta Web (Cl@ve, número de referencia, certificado digital)                                         | AEAT · sede electrónica, «Renta: identificación»                                                                |
-| 21  | 1.6      | Edad para contratar un pago a plazos o un crédito al consumo (mayoría de edad y capacidad para contratar)                       | BOE · Código Civil, arts. 322 y 1263; Ley 16/2011 de contratos de crédito al consumo                            |
-
-En el curso 1 solo hay un `TODO(verify)` (el 21, la edad para pagar a plazos). La inflación del 3 % es una
+En el curso 1 solo hay un `TODO(verify)` (#21, la edad para pagar a plazos). La inflación del 3 % es una
 cifra de ejemplo y lo dice en pantalla. Si en algún momento se cita un IPC real, la fuente será el
 INE.

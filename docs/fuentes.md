@@ -1,48 +1,61 @@
-# Fuentes oficiales · datos pendientes de verificar
+# Fuentes oficiales · datos legales y fiscales
 
-Cada dato legal o fiscal de los cursos se comprueba en la web oficial **antes** de escribir la
-lección que lo usa. Aquí queda, por cada dato, el enlace exacto a la página consultada y la fecha
-de consulta.
-
-> **Estado a 11 de octubre de 2026: ningún dato está verificado.** Desde el entorno en el que se
-> preparó este documento no se pudo acceder a agenciatributaria.gob.es, seg-social.es ni boe.es (la
-> red del entorno bloquea esos dominios). La columna «Dónde buscar» indica la norma o sección que
-> hay que consultar; **no es un enlace comprobado**. Hasta rellenar «Enlace exacto» y «Fecha de
-> consulta», ninguna lección del curso 2 puede usar el dato.
+Cada dato legal o fiscal de los cursos se comprueba **antes** de escribir la lección que lo usa.
+Aquí queda, por cada dato, el enlace exacto a la página consultada y la fecha de consulta. Los
+números `#n` son los que cita [`temario.md`](./temario.md).
 
 **Reglas**
 
-- Solo cuentan como fuente las webs oficiales: agenciatributaria.gob.es, seg-social.es, boe.es
-  (y sepe.es o ine.es cuando se indique).
+- Fuentes válidas: agenciatributaria.gob.es, seg-social.es y boe.es (y sepe.es o ine.es cuando se
+  indique). Una fuente secundaria (despacho, blog, software de nóminas) sirve de forma provisional,
+  marcada como tal, hasta sustituirla por la oficial.
 - **Cifras que cambian cada año** (columna «Anual»: sí): no se ponen en las lecciones. La lección
-  explica el concepto y enlaza a la página oficial que publica la cifra vigente.
-- Al verificar: pega la URL exacta de la página (no la portada), la fecha de consulta y, si la
-  fuente dice algo distinto al temario, corrige el temario antes de escribir la lección.
+  explica el concepto y enlaza a la página oficial. La cifra queda anotada aquí solo como
+  referencia interna.
+- Un dato **Sin verificar** no se usa en ninguna lección.
 
-| #   | Lección  | Dato                                                                                                       | Dónde buscar (sin comprobar)                                                | Anual | Enlace exacto | Fecha de consulta | Estado        |
-| --- | -------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ----- | ------------- | ----------------- | ------------- |
-| 1   | 2.1      | Edad mínima para trabajar (16 años) y autorización de padres o tutores entre 16 y 18 años                  | BOE · Estatuto de los Trabajadores (RDL 2/2015), arts. 6 y 7                | no    | —             | —                 | Sin verificar |
-| 2   | 2.1      | Prohibición de trabajo nocturno y de horas extra para menores de 18 años                                   | BOE · Estatuto de los Trabajadores, art. 6                                  | no    | —             | —                 | Sin verificar |
-| 3   | 2.1      | Tipos de contrato vigentes: indefinido, fijo-discontinuo, temporal y formativos                            | BOE · RDL 32/2021 y Estatuto de los Trabajadores, arts. 11, 15 y 16; SEPE   | no    | —             | —                 | Sin verificar |
-| 4   | 2.1      | Que el fijo-discontinuo es el contrato para trabajos de temporada que se repiten                           | BOE · Estatuto de los Trabajadores, art. 16                                 | no    | —             | —                 | Sin verificar |
-| 5   | 2.1      | Periodo de prueba: qué es, duración máxima y derecho a cobrar lo trabajado                                 | BOE · Estatuto de los Trabajadores, art. 14                                 | no    | —             | —                 | Sin verificar |
-| 6   | 2.1      | Cuándo el contrato debe ser por escrito y derecho a copia                                                  | BOE · Estatuto de los Trabajadores, art. 8                                  | no    | —             | —                 | Sin verificar |
-| 7   | 2.1      | Cómo comprobar el alta en la Seguridad Social (informe de vida laboral)                                    | seg-social.es · sede electrónica, informe de vida laboral                   | no    | —             | —                 | Sin verificar |
-| 8   | 2.1      | Papel del convenio colectivo (mínimos de sueldo y condiciones del sector)                                  | BOE · Estatuto de los Trabajadores, título III                              | no    | —             | —                 | Sin verificar |
-| 9   | 2.2      | Pagas extraordinarias: número mínimo, cuándo se cobran y si se pueden prorratear                           | BOE · Estatuto de los Trabajadores, art. 31                                 | no    | —             | —                 | Sin verificar |
-| 10  | 2.2, 2.3 | Porcentajes de cotización del trabajador                                                                   | seg-social.es · bases y tipos de cotización del año; orden anual en el BOE  | sí    | —             | —                 | Sin verificar |
-| 11  | 2.2, 2.3 | Retención de IRPF en contratos cortos (mínimo para contratos de menos de un año)                           | BOE · Reglamento del IRPF (RD 439/2007), art. 86; agenciatributaria.gob.es  | sí    | —             | —                 | Sin verificar |
-| 12  | 2.3      | Obligación de entregar la nómina y su modelo oficial                                                       | BOE · Estatuto de los Trabajadores, art. 29; Orden ESS/2098/2014            | no    | —             | —                 | Sin verificar |
-| 13  | 2.3      | Que la aportación de la empresa a la Seguridad Social es mayor que la del trabajador                       | seg-social.es · bases y tipos de cotización del año                         | sí    | —             | —                 | Sin verificar |
-| 14  | 2.4      | IRPF por tramos (estatal y autonómico) y que varía por comunidad autónoma                                  | BOE · Ley 35/2006 del IRPF, arts. 63 y 74; agenciatributaria.gob.es (Renta) | sí    | —             | —                 | Sin verificar |
-| 15  | 2.4      | Prestaciones que generan las cotizaciones (jubilación, desempleo, incapacidad temporal)                    | seg-social.es · prestaciones; sepe.es (desempleo)                           | no    | —             | —                 | Sin verificar |
-| 16  | 2.5      | Fechas de la campaña de la Renta                                                                           | agenciatributaria.gob.es · calendario de la campaña de Renta                | sí    | —             | —                 | Sin verificar |
-| 17  | 2.5      | Límites de ingresos y de pagadores para estar obligado a declarar                                          | BOE · Ley 35/2006 del IRPF, art. 96; agenciatributaria.gob.es (Renta)       | sí    | —             | —                 | Sin verificar |
-| 18  | 2.5      | Que con ingresos bajos el impuesto final puede ser 0 € y se devuelve toda la retención (mínimo personal)   | BOE · Ley 35/2006 del IRPF, arts. 56 y 57; agenciatributaria.gob.es (Renta) | sí    | —             | —                 | Sin verificar |
-| 19  | 2.5      | Cómo afectan los ingresos de un hijo a la declaración de sus padres (mínimo por descendientes y su límite) | BOE · Ley 35/2006 del IRPF, art. 58                                         | sí    | —             | —                 | Sin verificar |
-| 20  | 2.5      | Formas de identificarse en Renta Web (Cl@ve, número de referencia, certificado digital)                    | agenciatributaria.gob.es · Renta, identificación                            | no    | —             | —                 | Sin verificar |
-| 21  | 1.6      | Edad para contratar un pago a plazos o un crédito al consumo (mayoría de edad y capacidad para contratar)  | BOE · Código Civil, arts. 322 y 1263; Ley 16/2011 de crédito al consumo     | no    | —             | —                 | Sin verificar |
+**Estados**
 
-«Anual: sí» marca los datos cuya cifra cambia con el tiempo (porcentajes, límites, fechas). Para
-esos, lo que se verifica es el **concepto** y la **página oficial** a la que enlazará la lección;
-la cifra en sí no aparece en Monedo.
+- **Verificado (oficial)**: comprobado en una web oficial.
+- **Verificado (secundaria)**: comprobado en una fuente no oficial. Antes de publicar la lección,
+  hay que sustituirla por la oficial indicada en «Pendiente».
+- **Sin verificar**: no se usa.
+
+> Verificación hecha por el equipo de Monedo el 11/10/2026. Desde el entorno de desarrollo no se
+> pudo abrir ninguno de los enlaces (la red bloquea esos dominios), así que no se han revisado
+> desde allí.
+
+## Verificados
+
+| #   | Lección       | Dato                                                                                                                                                                                                            | Anual | Fuente                                                                                                                                                                                                               | Fecha de consulta | Estado                  | Pendiente                                                                   |
+| --- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ----------------------- | --------------------------------------------------------------------------- |
+| 1   | 2.1           | Edad mínima para trabajar: 16 años (Estatuto de los Trabajadores, art. 6)                                                                                                                                       | no    | https://loentiendo.com/articulo-6-del-estatuto-de-los-trabajadores/                                                                                                                                                  | 11/10/2026        | Verificado (secundaria) | Enlazar el texto consolidado del Estatuto de los Trabajadores en boe.es     |
+| 2   | 2.1           | Los menores de 18 años no pueden hacer trabajo nocturno, horas extra ni trabajos peligrosos (Estatuto de los Trabajadores, art. 6)                                                                              | no    | https://loentiendo.com/articulo-6-del-estatuto-de-los-trabajadores/                                                                                                                                                  | 11/10/2026        | Verificado (secundaria) | Enlazar el texto consolidado del Estatuto de los Trabajadores en boe.es     |
+| 11  | 2.2, 2.3, 2.5 | Retención mínima de IRPF del 2 % en contratos de menos de un año (art. 86.2 del Reglamento del IRPF), incluso por debajo del límite que normalmente exime de retención                                          | no    | https://ga-p.com/publicaciones/irpf-retencion-aplicable-cuando-los-contratos-laborales-de-duracion-inferior-al-ano-resultan-prorrogados-o-suspendidos-por-un-erte/                                                   | 11/10/2026        | Verificado (secundaria) | Enlazar el Reglamento del IRPF (RD 439/2007, art. 86.2) en boe.es o la AEAT |
+| 13  | 2.3           | La empresa cotiza a la Seguridad Social más que el trabajador. Referencia interna 2026, régimen general: 30,65 % la empresa frente a 6,50 % el trabajador                                                       | sí    | https://www.sage.com/es-es/blog/las-cotizaciones-a-la-seguridad-social-conceptos-bases-y-porcentajes/                                                                                                                | 11/10/2026        | Verificado (secundaria) | Sustituir por la página de bases y tipos de cotización de seg-social.es     |
+| 16  | 2.5           | Campaña de la Renta: cuándo se presenta (la lección no da fechas; enlaza al calendario)                                                                                                                         | sí    | https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_Inicio_Campana_renta_2025.pdf                                                                                                | 11/10/2026        | Verificado (oficial)    | Cada año, enlazar la nota o el calendario de la campaña nueva               |
+| 17  | 2.5           | Obligación de declarar según ingresos y número de pagadores (la lección no da los límites; enlaza a la fuente)                                                                                                  | sí    | https://sede.agenciatributaria.gob.es/Sede/Ayuda/25Presentacion/100/2.html                                                                                                                                           | 11/10/2026        | Verificado (oficial)    | —                                                                           |
+| 19  | 2.5           | Mínimo por descendientes: los padres lo pierden si el hijo tiene ingresos por encima de ciertos límites o presenta su propia declaración con ingresos por encima de un límite (referencia interna: hoy 1.800 €) | sí    | https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c14-adecuacion-impuesto-circunstancias-personales/minimo-descendientes/concepto-requisitos-descendientes.html | 11/10/2026        | Verificado (oficial)    | Cada año, enlazar el manual práctico de Renta del año nuevo                 |
+| 20  | 2.5           | Formas de identificarse en Renta Web (Cl@ve, número de referencia, certificado digital)                                                                                                                         | no    | https://sede.agenciatributaria.gob.es/static_files/Sede/Actualidad/Notas_prensa/2026/NP_Inicio_Campana_renta_2025.pdf                                                                                                | 11/10/2026        | Verificado (oficial)    | —                                                                           |
+
+## Sin verificar (no se usan en las lecciones)
+
+| #   | Lección  | Dato                                                                                                      | Dónde buscar (sin comprobar)                                              | Anual |
+| --- | -------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----- |
+| 3   | 2.1      | Tipos de contrato vigentes: indefinido, fijo-discontinuo, temporal y formativos                           | BOE · RDL 32/2021 y Estatuto de los Trabajadores, arts. 11, 15 y 16; SEPE | no    |
+| 4   | 2.1      | Que el fijo-discontinuo es el contrato para trabajos de temporada que se repiten                          | BOE · Estatuto de los Trabajadores, art. 16                               | no    |
+| 5   | 2.1      | Periodo de prueba: qué es, duración máxima y derecho a cobrar lo trabajado                                | BOE · Estatuto de los Trabajadores, art. 14                               | no    |
+| 6   | 2.1      | Cuándo el contrato debe ser por escrito y derecho a copia                                                 | BOE · Estatuto de los Trabajadores, art. 8                                | no    |
+| 7   | 2.1      | Cómo comprobar el alta en la Seguridad Social (informe de vida laboral)                                   | seg-social.es · sede electrónica, informe de vida laboral                 | no    |
+| 8   | 2.1      | Papel del convenio colectivo (mínimos de sueldo y condiciones del sector)                                 | BOE · Estatuto de los Trabajadores, título III                            | no    |
+| 9   | 2.2      | Pagas extraordinarias: número mínimo, cuándo se cobran y si se pueden prorratear                          | BOE · Estatuto de los Trabajadores, art. 31                               | no    |
+| 10  | 2.2, 2.3 | Porcentajes de cotización del trabajador (la lección usa un 6 % de ejemplo, marcado como tal)             | seg-social.es · bases y tipos de cotización del año                       | sí    |
+| 12  | 2.3      | Obligación de entregar la nómina y su modelo oficial                                                      | BOE · Estatuto de los Trabajadores, art. 29; Orden ESS/2098/2014          | no    |
+| 14  | 2.4      | IRPF por tramos (estatal y autonómico) y que varía por comunidad autónoma                                 | BOE · Ley 35/2006 del IRPF, arts. 63 y 74; agenciatributaria.gob.es       | sí    |
+| 15  | 2.4      | Prestaciones que generan las cotizaciones (jubilación, desempleo, incapacidad temporal)                   | seg-social.es · prestaciones; sepe.es (desempleo)                         | no    |
+| 18  | 2.5      | Que con ingresos bajos el impuesto final puede ser 0 € y se devuelve toda la retención (mínimo personal)  | BOE · Ley 35/2006 del IRPF, arts. 56 y 57; agenciatributaria.gob.es       | sí    |
+| 21  | 1.6      | Edad para contratar un pago a plazos o un crédito al consumo (mayoría de edad y capacidad para contratar) | BOE · Código Civil, arts. 322 y 1263; Ley 16/2011 de crédito al consumo   | no    |
+| 22  | 2.1      | Autorización de padres o tutores para firmar un contrato entre los 16 y los 18 años                       | BOE · Estatuto de los Trabajadores, art. 7                                | no    |
+
+La fila 22 sale de la antigua fila 1: la verificación del 11/10/2026 cubre la edad mínima
+(art. 6), pero no la autorización de los padres (art. 7).

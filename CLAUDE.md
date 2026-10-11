@@ -232,17 +232,18 @@ está listo por si la CLI se puede usar en local.
   cotización, fechas de campaña): explica el concepto y enlaza a la fuente oficial.
 - **Fuentes**: cada dato legal o fiscal se verifica en agenciatributaria.gob.es, seg-social.es o
   boe.es y se apunta en [`docs/fuentes.md`](./docs/fuentes.md) con enlace exacto y fecha de
-  consulta. Sin esa fila completa, el dato no entra en una lección.
+  consulta. Sin esa fila completa, el dato no entra en una lección. Una fuente secundaria vale solo
+  de forma provisional y se sustituye por la oficial antes de publicar la lección.
 - **No inventar cifras legales o fiscales.** Todo dato sobre IRPF, Seguridad Social, salario mínimo,
-  umbrales para declarar, etc. lleva `// TODO(verify): fuente oficial` con la fuente a consultar
-  (AEAT, Seguridad Social, BOE) y se añade a la lista de abajo.
+  umbrales para declarar, etc. lleva `// TODO(verify) #n` (su fila en `docs/fuentes.md`) hasta que
+  se verifica; entonces `// fuente #n` con el enlace oficial.
 
 ## TODO(verify) — datos pendientes de verificar con fuente oficial
 
-_Lista completa (21 datos: 20 del curso 2 y 1 del curso 1) en [`docs/temario.md`](./docs/temario.md#lista-de-todoverify--datos-pendientes-de-fuente-oficial). Se copiará aquí, con el archivo de cada uno, al escribir las lecciones en la fase 3._
-
-| Archivo | Dato | Fuente a consultar |
-| ------- | ---- | ------------------ |
+_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 22 datos, 8 verificados (4 en web
+oficial y 4 en fuente secundaria, pendientes de sustituir por la oficial) y 14 sin verificar. En el
+temario cada dato lleva `✓ fuente #n` o `TODO(verify) #n`. Lo que está sin verificar no entra en
+las lecciones._
 
 ## Fases
 
