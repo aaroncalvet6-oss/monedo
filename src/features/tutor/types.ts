@@ -1,10 +1,9 @@
-import type { MonedoExpression } from "@/components/graphics/monedo-expressions";
 import type { Block } from "@/content/schema";
 import type { Step } from "@/features/lessons/lib/steps";
 
 type BlockOf<T extends Block["type"]> = Extract<Block, { type: T }>;
 
-/** Rich content Monedo shows inside the conversation (not a speech bubble). */
+/** Structured content shown inside a section: a ledger, a key figure, a widget… */
 export type TutorCard =
   | { kind: "objective"; items: readonly string[]; minutes: number }
   | { kind: "example"; block: BlockOf<"example"> }
@@ -13,41 +12,40 @@ export type TutorCard =
   | { kind: "key-ideas"; block: BlockOf<"key-ideas"> }
   | { kind: "challenge"; block: BlockOf<"challenge"> };
 
-export type TutorMessage =
-  | { id: string; kind: "bubble"; text: string; label?: string | undefined }
-  | { id: string; kind: "card"; card: TutorCard };
-
-/** What the learner can do after Monedo speaks. */
-export type TutorPrompt =
-  | { kind: "continue"; label: string }
-  | { kind: "choice"; options: readonly { id: string; label: string }[] };
-
-/** One turn of Monedo: messages shown together with one expression. */
-export type TutorTurn = {
-  expression: MonedoExpression;
-  messages: readonly TutorMessage[];
+/** One section of a lesson, ready to render. */
+export type TutorSection = {
+  /** Small label above the title: «Idea», «Ejemplo», «Pregunta 2 de 4»… */
+  label: string;
+  title: string;
+  /** Short paragraphs before the card. */
+  paragraphs: readonly string[];
+  card?: TutorCard | undefined;
+  /** Short paragraphs after the card. */
+  after: readonly string[];
+  /** Questions and decisions: the options to choose from. */
+  choice?:
+    | { kind: "question" | "decision"; options: readonly { id: string; label: string }[] }
+    | undefined;
 };
 
-export type TutorOpening = TutorTurn & { prompt: TutorPrompt };
-
-export type TutorReaction = TutorTurn & {
-  /** Quiz questions only: whether the answer was right. */
-  correct?: boolean | undefined;
-  /** The learner's reply that moves on after the reaction. */
-  next: { kind: "continue"; label: string };
+/** What the learner sees after answering a question or making a decision. */
+export type TutorFeedback = {
+  tone: "correct" | "incorrect" | "info";
+  title: string;
+  paragraphs: readonly string[];
 };
 
 /**
- * Who speaks as Monedo in a lesson. The reader only talks to this interface.
+ * Where the words of a lesson come from. The reader only talks to this interface.
  *
  * v1 is `ScriptedTutor`: every word comes from reviewed content in `src/content`.
  * A future model-backed tutor can implement the same methods (they are async for that
- * reason) without changes to the reader. See «Tutor con modelo (futuro)» in CLAUDE.md for what that
- * version needs before it can ship.
+ * reason) without changes to the reader. See «Tutor con modelo (futuro)» in CLAUDE.md for
+ * what that version needs before it can ship.
  */
 export interface TutorProvider {
-  /** Monedo opens a step: explains, shows a card or asks, and offers the learner a reply. */
-  open(step: Step): Promise<TutorOpening>;
-  /** Monedo reacts to the learner's choice on a question or decision step. */
-  react(step: Step, optionId: string): Promise<TutorReaction>;
+  /** The section for a step: title, short text, card and, if any, the options. */
+  open(step: Step): Promise<TutorSection>;
+  /** Feedback on the learner's answer to a question or choice in a decision. */
+  react(step: Step, optionId: string): Promise<TutorFeedback>;
 }

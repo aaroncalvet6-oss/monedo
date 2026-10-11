@@ -1,8 +1,10 @@
 "use client";
 
+import { UserRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/graphics/logo";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Container } from "./container";
 import { isActivePath, mainNav } from "./nav-items";
@@ -44,6 +46,20 @@ export function SiteHeader() {
         </nav>
         <div className="ml-auto flex items-center gap-1">
           <ThemeToggle />
+          <Button
+            asChild
+            variant="ghost"
+            size="icon-sm"
+            className={cn(isActivePath(pathname, "/perfil") && "text-brand-text")}
+          >
+            <Link
+              href="/perfil"
+              aria-label="Perfil"
+              aria-current={isActivePath(pathname, "/perfil") ? "page" : undefined}
+            >
+              <UserRound />
+            </Link>
+          </Button>
         </div>
       </Container>
     </header>

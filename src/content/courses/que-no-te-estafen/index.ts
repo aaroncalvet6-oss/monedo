@@ -2,13 +2,13 @@ import type { CourseInput } from "@/content/schema";
 
 export const queNoTeEstafen = {
   slug: "que-no-te-estafen",
+  area: "protegete",
   order: 5,
   title: "Que no te estafen",
   tagline: "Reconoce los engaños más comunes antes de caer en ellos.",
   description:
     "Phishing, estafas con pagos por el móvil, falsos gurús de las redes y promesas de dinero fácil con criptomonedas: cómo funcionan y qué señales los delatan.",
   level: "Básico",
-  status: "coming-soon",
   outcomes: [
     "Detectar mensajes de phishing",
     "Reconocer las estafas más habituales con pagos por el móvil",

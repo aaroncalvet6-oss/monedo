@@ -1,6 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { elDineroEsTiempo } from "./courses/fundamentos-del-dinero/el-dinero-es-tiempo";
-import { getAdjacentLessons, getCourse, getCourses, getLesson, getLessonParams } from "./index";
+import {
+  getAdjacentLessons,
+  getCourse,
+  getCourses,
+  getLesson,
+  getLessonParams,
+  getPublishedCourses,
+  getUpcomingCourses,
+  isPublished,
+} from "./index";
 import { lessonSchema } from "./schema";
 
 describe("content registry", () => {
@@ -17,7 +26,20 @@ describe("content registry", () => {
   it("has the agreed syllabus sizes", () => {
     expect(getCourse("fundamentos-del-dinero")?.lessons).toHaveLength(6);
     expect(getCourse("tu-primer-sueldo")?.lessons).toHaveLength(5);
-    expect(getCourses().filter((c) => c.status === "coming-soon")).toHaveLength(3);
+  });
+
+  it("publishes a course only when every lesson is written", () => {
+    for (const course of getCourses()) {
+      const written = course.lessons.every((l) => getLesson(course.slug, l.slug));
+      expect(isPublished(course), course.slug).toBe(written);
+    }
+    expect(getPublishedCourses().map((c) => c.slug)).toEqual(["fundamentos-del-dinero"]);
+    expect(getUpcomingCourses().map((c) => c.slug)).not.toContain("fundamentos-del-dinero");
+  });
+
+  it("generates pages only for lessons of published courses", () => {
+    const published = new Set(getPublishedCourses().map((c) => c.slug));
+    for (const { curso } of getLessonParams()) expect(published.has(curso)).toBe(true);
   });
 
   it("exposes lesson 1.1 for static generation", () => {

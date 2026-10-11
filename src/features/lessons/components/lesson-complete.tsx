@@ -6,8 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ProgressRing } from "@/components/ui/progress-ring";
 import type { ReaderNextLesson } from "./reader-types";
-
-export const LESSON_COMPLETE_TITLE_ID = "lesson-complete-title";
+import { STEP_TITLE_ID } from "./section-view";
 
 export function LessonComplete({
   courseSlug,
@@ -43,7 +42,7 @@ export function LessonComplete({
           Lección completada
         </p>
         <h2
-          id={LESSON_COMPLETE_TITLE_ID}
+          id={STEP_TITLE_ID}
           tabIndex={-1}
           className="text-[1.625rem] leading-tight font-semibold tracking-tight outline-none sm:text-3xl"
         >
@@ -72,7 +71,7 @@ export function LessonComplete({
           : "Repasa las explicaciones de las preguntas que fallaste: es la forma más rápida de fijarlo."}
       </p>
       <div className="flex flex-col gap-3 sm:flex-row">
-        {next?.available ? (
+        {next ? (
           <Button asChild size="lg">
             <Link href={`/cursos/${courseSlug}/${next.slug}`}>
               Siguiente: {next.title}
@@ -92,11 +91,6 @@ export function LessonComplete({
           Repasar la lección
         </Button>
       </div>
-      {next && !next.available ? (
-        <p className="text-base text-fg-subtle">
-          La siguiente lección, «{next.title}», estará disponible muy pronto.
-        </p>
-      ) : null}
     </div>
   );
 }

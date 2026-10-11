@@ -2,6 +2,11 @@ import { ahorroEInversion } from "./courses/ahorro-e-inversion";
 import { bancosYPagos } from "./courses/bancos-y-pagos";
 import { fundamentosDelDinero } from "./courses/fundamentos-del-dinero";
 import { elDineroEsTiempo } from "./courses/fundamentos-del-dinero/el-dinero-es-tiempo";
+import { inflacion } from "./courses/fundamentos-del-dinero/inflacion";
+import { necesidadOCapricho } from "./courses/fundamentos-del-dinero/necesidad-o-capricho";
+import { pagatePrimero } from "./courses/fundamentos-del-dinero/pagate-primero";
+import { trampasDeConsumo } from "./courses/fundamentos-del-dinero/trampas-de-consumo";
+import { tuPrimerPresupuesto } from "./courses/fundamentos-del-dinero/tu-primer-presupuesto";
 import { queNoTeEstafen } from "./courses/que-no-te-estafen";
 import { tuPrimerSueldo } from "./courses/tu-primer-sueldo";
 import { courseSchema, lessonSchema, type Course, type Lesson, type LessonEntry } from "./schema";
@@ -23,7 +28,14 @@ const courses: readonly Course[] = [
   .sort((a, b) => a.order - b.order);
 
 const lessonContent: Record<string, readonly Lesson[]> = {
-  "fundamentos-del-dinero": [elDineroEsTiempo].map((lesson) => lessonSchema.parse(lesson)),
+  "fundamentos-del-dinero": [
+    elDineroEsTiempo,
+    inflacion,
+    necesidadOCapricho,
+    pagatePrimero,
+    tuPrimerPresupuesto,
+    trampasDeConsumo,
+  ].map((lesson) => lessonSchema.parse(lesson)),
 };
 
 function assertRegistryConsistency(): void {
@@ -49,6 +61,23 @@ export function getCourses(): readonly Course[] {
   return courses;
 }
 
+/**
+ * A course is published only when every lesson in its syllabus is written (and, by
+ * process, its legal data verified in docs/fuentes.md). Nothing half-done is shown.
+ */
+export function isPublished(course: Course): boolean {
+  return course.lessons.every((lesson) => hasContent(course.slug, lesson.slug));
+}
+
+export function getPublishedCourses(): readonly Course[] {
+  return courses.filter(isPublished);
+}
+
+/** Courses in preparation: listed only by title in «Próximos cursos». */
+export function getUpcomingCourses(): readonly Course[] {
+  return courses.filter((course) => !isPublished(course));
+}
+
 export function getCourse(slug: string): Course | undefined {
   return courses.find((course) => course.slug === slug);
 }
@@ -61,10 +90,10 @@ export function hasContent(courseSlug: string, lessonSlug: string): boolean {
   return getLesson(courseSlug, lessonSlug) !== undefined;
 }
 
-/** All lessons with written content, for static generation. */
+/** Lessons of published courses, for static generation. */
 export function getLessonParams(): { curso: string; leccion: string }[] {
-  return Object.entries(lessonContent).flatMap(([curso, lessons]) =>
-    lessons.map((lesson) => ({ curso, leccion: lesson.slug })),
+  return getPublishedCourses().flatMap((course) =>
+    course.lessons.map((lesson) => ({ curso: course.slug, leccion: lesson.slug })),
   );
 }
 

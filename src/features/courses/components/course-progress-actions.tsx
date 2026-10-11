@@ -13,15 +13,14 @@ export function CourseProgressActions({
   lessons,
 }: {
   courseSlug: string;
-  lessons: { slug: string; title: string; available: boolean }[];
+  lessons: readonly { slug: string; title: string }[];
 }) {
   const stored = useProgress((s) => s.snapshot.lessons);
   const ready = useProgress((s) => s.status === "ready");
-  const available = lessons.filter((l) => l.available);
   const done = lessons.filter((l) => stored[lessonKey(courseSlug, l.slug)]?.completedAt).length;
-  const started = available.some((l) => stored[lessonKey(courseSlug, l.slug)]);
+  const started = lessons.some((l) => stored[lessonKey(courseSlug, l.slug)]);
   const nextLesson =
-    available.find((l) => !stored[lessonKey(courseSlug, l.slug)]?.completedAt) ?? available[0];
+    lessons.find((l) => !stored[lessonKey(courseSlug, l.slug)]?.completedAt) ?? lessons[0];
 
   return (
     <div className="flex flex-col gap-4">

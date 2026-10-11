@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAdjacentLessons, getCourse, getLesson, getLessonParams, hasContent } from "@/content";
+import { getAdjacentLessons, getCourse, getLesson, getLessonParams, isPublished } from "@/content";
 import { LessonReader } from "@/features/lessons/components/lesson-reader";
 import type { ReaderCourse } from "@/features/lessons/components/reader-types";
 
@@ -27,7 +27,7 @@ export default async function LessonPage({ params }: PageProps<"/cursos/[curso]/
   const { curso, leccion } = await params;
   const course = getCourse(curso);
   const lesson = getLesson(curso, leccion);
-  if (!course || !lesson) notFound();
+  if (!course || !lesson || !isPublished(course)) notFound();
 
   const readerCourse: ReaderCourse = {
     slug: course.slug,
@@ -36,7 +36,6 @@ export default async function LessonPage({ params }: PageProps<"/cursos/[curso]/
       slug: l.slug,
       title: l.title,
       minutes: l.minutes,
-      available: hasContent(course.slug, l.slug),
     })),
   };
   const { next } = getAdjacentLessons(course.slug, lesson.slug);
@@ -45,11 +44,7 @@ export default async function LessonPage({ params }: PageProps<"/cursos/[curso]/
     <LessonReader
       course={readerCourse}
       lesson={lesson}
-      next={
-        next
-          ? { slug: next.slug, title: next.title, available: hasContent(course.slug, next.slug) }
-          : null
-      }
+      next={next ? { slug: next.slug, title: next.title } : null}
     />
   );
 }

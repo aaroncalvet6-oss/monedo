@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Lock } from "lucide-react";
+import { Check } from "lucide-react";
 import Link from "next/link";
 import { useProgress } from "@/features/progress/progress-provider";
 import { lessonKey } from "@/lib/progress/lesson-progress";
@@ -58,11 +58,6 @@ export function Syllabus({
               {marker}
               <span className="min-w-0 flex-1">
                 <span className="block truncate">{lesson.title}</span>
-                {!lesson.available ? (
-                  <span className="flex items-center gap-1 text-xs text-fg-subtle">
-                    <Lock aria-hidden className="size-3" /> Próximamente
-                  </span>
-                ) : null}
               </span>
               {done ? <span className="sr-only">(completada)</span> : null}
             </>
@@ -106,7 +101,7 @@ export function Syllabus({
                     })}
                   </ol>
                 </>
-              ) : lesson.available ? (
+              ) : (
                 <Link
                   href={`/cursos/${course.slug}/${lesson.slug}`}
                   className={cn(
@@ -116,8 +111,6 @@ export function Syllabus({
                 >
                   {label}
                 </Link>
-              ) : (
-                <span className={cn(rowClass, "text-fg-subtle")}>{label}</span>
               )}
             </li>
           );

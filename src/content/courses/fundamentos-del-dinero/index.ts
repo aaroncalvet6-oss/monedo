@@ -2,13 +2,13 @@ import type { CourseInput } from "@/content/schema";
 
 export const fundamentosDelDinero = {
   slug: "fundamentos-del-dinero",
+  area: "tu-dinero-hoy",
   order: 1,
   title: "Fundamentos del dinero",
   tagline: "Lo que cuesta de verdad lo que compras y cómo empezar a ahorrar.",
   description:
     "Aprende a medir los precios en horas de trabajo, por qué el dinero quieto pierde valor, cómo ahorrar sin depender de la fuerza de voluntad y cómo hacer tu primer presupuesto con una paga real.",
   level: "Básico",
-  status: "available",
   outcomes: [
     "Calcular cuántas horas de trabajo cuesta una compra",
     "Entender qué es la inflación y cómo te afecta",
@@ -50,7 +50,7 @@ export const fundamentosDelDinero = {
     {
       slug: "trampas-de-consumo",
       title: "Trampas de consumo",
-      summary: "Pagos a plazos, monedas virtuales en juegos y compras impulsivas.",
+      summary: "Pagos a plazos, monedas virtuales y técnicas que te meten prisa.",
       minutes: 7,
     },
   ],

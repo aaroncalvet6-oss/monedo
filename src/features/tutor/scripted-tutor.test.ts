@@ -2,96 +2,82 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { getLesson } from "@/content";
-import { MAX_BUBBLE_LENGTH } from "@/content/schema";
+import { MAX_PARAGRAPH_LENGTH } from "@/content/schema";
 import { buildSteps } from "@/features/lessons/lib/steps";
 import { ScriptedTutor } from "./scripted-tutor";
-import type { TutorTurn } from "./types";
 
 const lesson = getLesson("fundamentos-del-dinero", "el-dinero-es-tiempo")!;
 const steps = buildSteps(lesson);
 const tutor = new ScriptedTutor(lesson);
 
 describe("ScriptedTutor on lesson 1.1", () => {
-  it("opens every step with something to say and a way to go on", async () => {
+  it("gives every step a label, a title and something to read or do", async () => {
     for (const step of steps) {
-      const opening = await tutor.open(step);
-      expect(opening.messages.length, step.id).toBeGreaterThan(0);
-      if (step.kind === "question" || (step.kind === "block" && step.block.type === "decision")) {
-        expect(opening.prompt.kind).toBe("choice");
-      } else {
-        expect(opening.prompt.kind).toBe("continue");
-      }
+      const section = await tutor.open(step);
+      expect(section.label, step.id).not.toBe("");
+      expect(section.title, step.id).not.toBe("");
+      expect(
+        section.paragraphs.length + (section.card ? 1 : 0) + (section.choice ? 1 : 0),
+        step.id,
+      ).toBeGreaterThan(0);
+      const takesAnswer =
+        step.kind === "question" || (step.kind === "block" && step.block.type === "decision");
+      expect(Boolean(section.choice), step.id).toBe(takesAnswer);
     }
   });
 
-  it("greets as Monedo, your guide, and ends with the finish reply", async () => {
-    const first = await tutor.open(steps[0]!);
-    expect(first.messages[0]).toMatchObject({
-      kind: "bubble",
-      text: expect.stringContaining("Monedo"),
-    });
-    const last = await tutor.open(steps.at(-1)!);
-    expect(last.prompt).toEqual({ kind: "continue", label: "Terminar lección" });
-  });
-
-  it("celebrates a right answer and says «uy» with the right one on a wrong answer", async () => {
+  it("marks a right answer as correct and gives the right one after a mistake", async () => {
     const question = steps.find((s) => s.kind === "question")!;
     if (question.kind !== "question") throw new Error("no question");
     const right = await tutor.react(question, question.question.correctOptionId);
-    expect(right).toMatchObject({ expression: "celebrating", correct: true });
-
+    expect(right).toMatchObject({ tone: "correct", title: "Correcto" });
     const wrongId = question.question.options.find(
       (o) => o.id !== question.question.correctOptionId,
     )!.id;
     const wrong = await tutor.react(question, wrongId);
-    expect(wrong).toMatchObject({ expression: "oops", correct: false });
-    const texts = wrong.messages.map((m) => (m.kind === "bubble" ? m.text : ""));
-    expect(texts[0]).toMatch(/^Uy/);
-    expect(texts.join(" ")).toContain("«7 horas»");
-    expect(texts.join(" ")).toContain(question.question.explanation);
+    expect(wrong.tone).toBe("incorrect");
+    expect(wrong.title).toContain("«7 horas»");
+    expect(wrong.paragraphs).toContain(question.question.explanation);
   });
 
   it("explains the consequence of a decision without judging it", async () => {
     const decision = steps.find((s) => s.kind === "block" && s.block.type === "decision")!;
-    const reaction = await tutor.react(decision, "no-comprar");
-    expect(reaction.expression).toBe("explaining");
-    expect(reaction.messages).toHaveLength(2);
+    const feedback = await tutor.react(decision, "no-comprar");
+    expect(feedback.tone).toBe("info");
+    expect(feedback.paragraphs).toHaveLength(2);
   });
 
-  it("is deterministic: the same step always says the same thing", async () => {
+  it("is deterministic and keeps paragraphs short", async () => {
     for (const step of steps) {
-      expect(await tutor.open(step)).toEqual(await new ScriptedTutor(lesson).open(step));
-    }
-  });
-
-  it("keeps every bubble short", async () => {
-    for (const step of steps) {
-      const turns: TutorTurn[] = [await tutor.open(step)];
-      if (step.kind === "question") {
-        for (const o of step.question.options) turns.push(await tutor.react(step, o.id));
-      }
-      for (const turn of turns) {
-        for (const m of turn.messages) {
-          if (m.kind === "bubble")
-            expect(m.text.length, m.id).toBeLessThanOrEqual(MAX_BUBBLE_LENGTH + 40);
-        }
+      const section = await tutor.open(step);
+      expect(section).toEqual(await new ScriptedTutor(lesson).open(step));
+      for (const p of [...section.paragraphs, ...section.after]) {
+        expect(p.length, step.id).toBeLessThanOrEqual(MAX_PARAGRAPH_LENGTH);
       }
     }
   });
 });
 
-describe("naming", () => {
+describe("no character, no «IA»", () => {
   function files(dir: string): string[] {
     return readdirSync(dir).flatMap((name) => {
       const path = join(dir, name);
       return statSync(path).isDirectory() ? files(path) : /\.tsx?$/.test(name) ? [path] : [];
     });
   }
+  const sources = files(join(process.cwd(), "src")).filter((f) => !/\.test\.tsx?$/.test(f));
 
-  it('never calls Monedo an "IA" in content or interface', () => {
-    const offenders = files(join(process.cwd(), "src"))
-      .filter((f) => !f.endsWith(".test.ts"))
-      .filter((f) => /["'`«][^"'`»\n]*\bIA\b/.test(readFileSync(f, "utf8")));
+  it('never says "IA" in content or interface', () => {
+    const offenders = sources.filter((f) => /["'`«][^"'`»\n]*\bIA\b/.test(readFileSync(f, "utf8")));
+    expect(offenders).toEqual([]);
+  });
+
+  it("has no mascot or character left in the code", () => {
+    const offenders = sources.filter((f) =>
+      /MonedoCharacter|monedo-expressions|«Monedo, tu guía»|Monedo, tu guía/.test(
+        readFileSync(f, "utf8"),
+      ),
+    );
     expect(offenders).toEqual([]);
   });
 });

@@ -40,13 +40,13 @@ test.describe("touch targets", () => {
 
   for (const path of [
     "/",
-    "/aprender",
     "/herramientas",
     "/perfil",
     "/legal",
     "/cursos",
     "/cursos/fundamentos-del-dinero",
     "/cursos/fundamentos-del-dinero/el-dinero-es-tiempo",
+    "/cursos/fundamentos-del-dinero/tu-primer-presupuesto",
   ]) {
     test(`every control on ${path} is at least 44×44`, async ({ page }) => {
       await page.goto(route(path));
@@ -65,7 +65,7 @@ test.describe("focus ring", () => {
     test(`uses the brand colour in ${scheme} mode`, async ({ page }) => {
       await page.emulateMedia({ colorScheme: scheme });
       await page.goto(route("/"));
-      const button = page.getByRole("link", { name: "Ver todos los cursos" });
+      const button = page.getByRole("link", { name: "Ver cursos", exact: true });
       await button.focus();
       await page.keyboard.press("Shift+Tab");
       await page.keyboard.press("Tab");

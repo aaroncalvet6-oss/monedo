@@ -1,167 +1,108 @@
-import type { MonedoExpression } from "@/components/graphics/monedo-expressions";
 import type { Lesson, TutorStep } from "@/content/schema";
-import type { Step } from "@/features/lessons/lib/steps";
-import type {
-  TutorCard,
-  TutorMessage,
-  TutorOpening,
-  TutorPrompt,
-  TutorProvider,
-  TutorReaction,
-} from "./types";
-
-const CONTINUE = "Continuar";
+import { stepLabel, type Step } from "@/features/lessons/lib/steps";
+import type { TutorCard, TutorFeedback, TutorProvider, TutorSection } from "./types";
 
 /**
- * Monedo speaking from the lesson's written script (`lesson.tutor`), falling back to the
- * blocks' own text. Deterministic and offline: the same step always says the same thing.
+ * Lesson text from the written content: each block's own text, plus the optional short
+ * lines in `lesson.tutor`. Deterministic and offline: the same step always reads the same.
  */
 export class ScriptedTutor implements TutorProvider {
   constructor(private readonly lesson: Lesson) {}
 
-  async open(step: Step): Promise<TutorOpening> {
-    return this.openSync(step);
+  async open(step: Step): Promise<TutorSection> {
+    return this.section(step);
   }
 
-  async react(step: Step, optionId: string): Promise<TutorReaction> {
-    return this.reactSync(step, optionId);
+  async react(step: Step, optionId: string): Promise<TutorFeedback> {
+    return this.feedback(step, optionId);
   }
 
   /** Synchronous core of `open` (handy in tests). */
-  openSync(step: Step): TutorOpening {
+  section(step: Step): TutorSection {
     const script = this.script(step.id);
-    const bubbles = (texts: readonly string[], label?: string): TutorMessage[] =>
-      texts.map((text, i) => ({
-        id: `${step.id}:say:${i}`,
-        kind: "bubble",
-        text,
-        label: i === 0 ? label : undefined,
-      }));
-    const card = (value: TutorCard): TutorMessage => ({
-      id: `${step.id}:card`,
-      kind: "card",
-      card: value,
-    });
-    const after = bubbles(script.after ?? []).map((m) => ({
-      ...m,
-      id: m.id.replace(":say:", ":after:"),
-    }));
-    const proceed: TutorPrompt = { kind: "continue", label: script.reply ?? CONTINUE };
+    const label = stepLabel(step);
+    const after = script.after ?? [];
 
     if (step.kind === "question") {
       const { question } = step;
       return {
-        expression: script.expression ?? "thinking",
-        messages: bubbles(
-          script.say ?? [question.prompt],
-          `Pregunta ${step.number} de ${step.total}`,
-        ),
-        prompt: {
-          kind: "choice",
+        label,
+        title: question.prompt,
+        paragraphs: script.say ?? [],
+        after,
+        choice: {
+          kind: "question",
           options: question.options.map((o) => ({ id: o.id, label: o.text })),
         },
       };
     }
 
     const { block } = step;
-    const turn = (fallbackExpression: MonedoExpression, messages: TutorMessage[]) => ({
-      expression: script.expression ?? fallbackExpression,
-      messages,
-      prompt: proceed,
+    const withCard = (title: string, card: TutorCard, fallback: readonly string[] = []) => ({
+      label,
+      title,
+      paragraphs: script.say ?? fallback,
+      card,
+      after,
     });
     switch (block.type) {
       case "objective":
-        return turn("normal", [
-          ...bubbles(script.say ?? []),
-          card({ kind: "objective", items: block.items, minutes: this.lesson.minutes }),
-          ...after,
-        ]);
+        return withCard("Al terminar sabrás…", {
+          kind: "objective",
+          items: block.items,
+          minutes: this.lesson.minutes,
+        });
       case "text":
-        return turn("explaining", [...bubbles(script.say ?? block.paragraphs), ...after]);
+        return { label, title: block.title, paragraphs: script.say ?? block.paragraphs, after };
       case "example":
-        return turn("explaining", [
-          ...bubbles(script.say ?? block.paragraphs),
-          card({ kind: "example", block }),
-          ...after,
-        ]);
+        // The character goes in the label so the reader meets them before the story.
+        return {
+          ...withCard(block.title, { kind: "example", block }, block.paragraphs),
+          label: `${label} · ${block.character}`,
+        };
       case "key-figure":
-        return turn("explaining", [
-          ...bubbles(script.say ?? []),
-          card({ kind: "key-figure", block }),
-          ...after,
-        ]);
+        return withCard("Dato clave", { kind: "key-figure", block });
       case "interactive":
-        return turn("normal", [
-          ...bubbles(script.say ?? [block.instructions]),
-          card({ kind: "interactive", block }),
-          ...after,
-        ]);
+        return withCard(block.title, { kind: "interactive", block }, [block.instructions]);
       case "key-ideas":
-        return turn("normal", [
-          ...bubbles(script.say ?? []),
-          card({ kind: "key-ideas", block }),
-          ...after,
-        ]);
+        return withCard("Lo que te llevas", { kind: "key-ideas", block });
       case "challenge":
-        return turn("normal", [
-          ...bubbles(script.say ?? []),
-          card({ kind: "challenge", block }),
-          ...after,
-        ]);
+        return withCard(block.title, { kind: "challenge", block }, [block.description]);
       case "decision":
         return {
-          expression: script.expression ?? "thinking",
-          messages: bubbles(script.say ?? [block.situation]),
-          prompt: {
-            kind: "choice",
+          label,
+          title: block.title,
+          paragraphs: script.say ?? [block.situation],
+          after,
+          choice: {
+            kind: "decision",
             options: block.options.map((o) => ({ id: o.id, label: o.label })),
           },
         };
     }
   }
 
-  reactSync(step: Step, optionId: string): TutorReaction {
-    const script = this.script(step.id);
-    const message = (suffix: string, text: string): TutorMessage => ({
-      id: `${step.id}:react:${suffix}`,
-      kind: "bubble",
-      text,
-    });
-    const nextLabel =
-      script.reply ??
-      (step.kind === "question" && step.number < step.total ? "Siguiente pregunta" : CONTINUE);
-    const next = { kind: "continue", label: nextLabel } as const;
-
+  /** Synchronous core of `react`. */
+  feedback(step: Step, optionId: string): TutorFeedback {
     if (step.kind === "question") {
       const { question } = step;
-      const correct = optionId === question.correctOptionId;
+      if (optionId === question.correctOptionId) {
+        return { tone: "correct", title: "Correcto", paragraphs: [question.explanation] };
+      }
       const answer = question.options.find((o) => o.id === question.correctOptionId)?.text ?? "";
       return {
-        expression: correct ? "celebrating" : "oops",
-        correct,
-        messages: correct
-          ? [
-              message("verdict", script.correct ?? "Correcto."),
-              message("why", question.explanation),
-            ]
-          : [
-              message("verdict", script.wrong ?? "Esa no era."),
-              message("answer", `La respuesta correcta es «${answer}».`),
-              message("why", question.explanation),
-            ],
-        next,
+        tone: "incorrect",
+        title: `No es correcto. La respuesta es «${answer}».`,
+        paragraphs: [question.explanation],
       };
     }
     if (step.block.type === "decision") {
       const option = step.block.options.find((o) => o.id === optionId);
       if (!option) throw new Error(`Unknown option "${optionId}" in "${step.id}"`);
       return {
-        expression: "explaining",
-        messages: [
-          message("consequence", option.consequence),
-          message("takeaway", step.block.takeaway),
-        ],
-        next,
+        tone: "info",
+        title: "Qué pasa",
+        paragraphs: [option.consequence, step.block.takeaway],
       };
     }
     throw new Error(`Step "${step.id}" takes no answer`);

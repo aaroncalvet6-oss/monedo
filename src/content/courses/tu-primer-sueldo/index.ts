@@ -2,13 +2,13 @@ import type { CourseInput } from "@/content/schema";
 
 export const tuPrimerSueldo = {
   slug: "tu-primer-sueldo",
+  area: "trabajo-e-ingresos",
   order: 2,
   title: "Tu primer sueldo",
   tagline: "Qué firmas, qué cobras y a dónde va lo que no te llega.",
   description:
     "Antes de tu primer trabajo: tipos de contrato, la diferencia entre bruto y neto, cómo leer una nómina línea por línea, para qué sirven el IRPF y la Seguridad Social y cómo funciona la declaración de la renta.",
   level: "Básico",
-  status: "available",
   outcomes: [
     "Reconocer los tipos de contrato más habituales y qué revisar antes de firmar",
     "Calcular la diferencia entre sueldo bruto y neto",

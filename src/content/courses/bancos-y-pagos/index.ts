@@ -2,13 +2,13 @@ import type { CourseInput } from "@/content/schema";
 
 export const bancosYPagos = {
   slug: "bancos-y-pagos",
+  area: "tu-dinero-hoy",
   order: 3,
   title: "Bancos y pagos",
   tagline: "Cuentas, tarjetas y pagos con el móvil sin sorpresas.",
   description:
     "Cómo funciona una cuenta bancaria, la diferencia entre tarjeta de débito y de crédito, los pagos entre particulares con el móvil y cómo detectar comisiones.",
   level: "Básico",
-  status: "coming-soon",
   outcomes: [
     "Entender qué es una cuenta y qué te pueden cobrar por ella",
     "Distinguir una tarjeta de débito de una de crédito",

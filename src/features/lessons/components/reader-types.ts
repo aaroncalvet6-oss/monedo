@@ -2,7 +2,7 @@
 export type ReaderCourse = {
   slug: string;
   title: string;
-  lessons: { slug: string; title: string; minutes: number; available: boolean }[];
+  lessons: { slug: string; title: string; minutes: number }[];
 };
 
-export type ReaderNextLesson = { slug: string; title: string; available: boolean } | null;
+export type ReaderNextLesson = { slug: string; title: string } | null;

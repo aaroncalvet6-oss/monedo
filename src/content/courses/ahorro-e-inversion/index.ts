@@ -2,13 +2,13 @@ import type { CourseInput } from "@/content/schema";
 
 export const ahorroEInversion = {
   slug: "ahorro-e-inversion",
+  area: "hacer-crecer-tu-dinero",
   order: 4,
   title: "Ahorro e inversión: lo básico",
   tagline: "Conceptos para entender cómo crece (y cómo puede bajar) el dinero.",
   description:
     "Interés compuesto, riesgo, diversificación y qué es un fondo indexado. Todo explicativo: Monedo no recomienda productos ni decisiones de inversión, y ninguna rentabilidad está garantizada.",
   level: "Intermedio",
-  status: "coming-soon",
   outcomes: [
     "Entender el interés compuesto y por qué importa el tiempo",
     "Saber que más rentabilidad esperada implica más riesgo",

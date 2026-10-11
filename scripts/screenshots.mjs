@@ -30,6 +30,11 @@ for (const [name, path] of pages) {
       page.on("console", (m) => m.type() === "error" && errors.push(`${path}: ${m.text()}`));
       page.on("pageerror", (e) => errors.push(`${path}: ${e.message}`));
       await page.goto(baseUrl + path, { waitUntil: "networkidle" });
+      // Full-page shots: park the fixed mobile tab bar at the end of the page instead of
+      // leaving it floating halfway down the image.
+      await page.addStyleTag({
+        content: "body{position:relative} nav.fixed{position:absolute!important}",
+      });
       await page.waitForTimeout(2500); // let entrance animations and Monedo's first bubbles settle
       const file = `${name}-${device}-${colorScheme}.png`;
       await page.screenshot({ path: outDir + file, fullPage: true });

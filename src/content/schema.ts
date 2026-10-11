@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { MONEDO_EXPRESSIONS } from "@/components/graphics/monedo-expressions";
 
 /** Kebab-case identifiers used in URLs and progress keys. */
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use kebab-case");
@@ -133,29 +132,26 @@ export const blockSchema = z.discriminatedUnion("type", [
 ]);
 
 // ---------------------------------------------------------------------------
-// Tutor script: what Monedo says in the conversational reader
+// Tutor script: optional short lines per section
 // ---------------------------------------------------------------------------
 
-/** Longest text Monedo may say in one bubble. Short bubbles read like a chat, not a page. */
-export const MAX_BUBBLE_LENGTH = 220;
-const bubble = text.max(MAX_BUBBLE_LENGTH, `Bubbles are at most ${MAX_BUBBLE_LENGTH} characters`);
+/** Longest paragraph in a lesson section. Short paragraphs read fast on a phone. */
+export const MAX_PARAGRAPH_LENGTH = 220;
+const shortParagraph = text.max(
+  MAX_PARAGRAPH_LENGTH,
+  `Paragraphs are at most ${MAX_PARAGRAPH_LENGTH} characters`,
+);
 
 /**
- * Optional per-step script, keyed by block id or quiz question id. Anything left out falls
- * back to the block's own text (paragraphs, situation, question prompt…), which must then
- * also fit in a bubble.
+ * Optional per-section lines, keyed by block id or quiz question id. Anything left out
+ * falls back to the block's own text (paragraphs, situation, question prompt…), which
+ * must then also be short.
  */
 export const tutorStepSchema = z.object({
-  expression: z.enum(MONEDO_EXPRESSIONS).optional(),
-  /** Monedo's bubbles. Text blocks: instead of the paragraphs. Others: before the card. */
-  say: z.array(bubble).min(1).max(4).optional(),
-  /** Bubbles after the card (example, key figure, widget, ideas, challenge). */
-  after: z.array(bubble).min(1).max(3).optional(),
-  /** The learner's tap-to-continue reply, e.g. «¿Y cómo se calcula?». */
-  reply: z.string().trim().min(1).max(40).optional(),
-  /** Quiz questions: Monedo's first reaction; the explanation follows. */
-  correct: bubble.optional(),
-  wrong: bubble.optional(),
+  /** Short paragraphs. Text blocks: instead of the paragraphs. Others: before the card. */
+  say: z.array(shortParagraph).min(1).max(4).optional(),
+  /** Short paragraphs after the card (example, key figure, widget, ideas, challenge). */
+  after: z.array(shortParagraph).min(1).max(3).optional(),
 });
 
 // ---------------------------------------------------------------------------
@@ -224,7 +220,7 @@ export const lessonSchema = z
       ctx.addIssue({ code: "custom", message: "Only one quiz block per lesson", path: ["blocks"] });
     }
 
-    // Tutor script: keys must be real steps, and every fallback text must fit in a bubble.
+    // Tutor script: keys must be real steps, and every fallback text must be short.
     for (const key of Object.keys(lesson.tutor)) {
       if (!seen.has(key)) {
         ctx.addIssue({
@@ -235,10 +231,10 @@ export const lessonSchema = z
       }
     }
     const long = (value: string, path: (string | number)[]) => {
-      if (value.length > MAX_BUBBLE_LENGTH) {
+      if (value.length > MAX_PARAGRAPH_LENGTH) {
         ctx.addIssue({
           code: "custom",
-          message: `Too long for a bubble (${value.length} > ${MAX_BUBBLE_LENGTH}); shorten it or script it in "tutor"`,
+          message: `Too long for a lesson paragraph (${value.length} > ${MAX_PARAGRAPH_LENGTH}); shorten it or script it in "tutor"`,
           path,
         });
       }
@@ -275,15 +271,24 @@ export const lessonEntrySchema = z.object({
   minutes: z.number().int().min(3).max(10),
 });
 
+/** Learning areas, in the order the home page and catalogue show them. */
+export const AREAS = [
+  { id: "tu-dinero-hoy", title: "Tu dinero hoy" },
+  { id: "trabajo-e-ingresos", title: "Trabajo e ingresos" },
+  { id: "hacer-crecer-tu-dinero", title: "Hacer crecer tu dinero" },
+  { id: "protegete", title: "Protégete y entiende el mundo" },
+] as const;
+export type AreaId = (typeof AREAS)[number]["id"];
+
 export const courseSchema = z
   .object({
     slug,
+    area: z.enum(AREAS.map((a) => a.id) as [AreaId, ...AreaId[]]),
     order: z.number().int().positive(),
     title: text,
     tagline: text,
     description: text,
     level: z.enum(["Básico", "Intermedio"]),
-    status: z.enum(["available", "coming-soon"]),
     outcomes: z.array(text).min(3).max(6),
     lessons: z.array(lessonEntrySchema).min(1),
   })

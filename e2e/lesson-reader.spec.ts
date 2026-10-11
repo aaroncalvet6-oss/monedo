@@ -1,76 +1,50 @@
 import { route } from "./paths";
 import { expect, test, type Page } from "@playwright/test";
 import { getLesson } from "../src/content";
+import { keepUnits as nb } from "../src/lib/format";
 
 const COURSE = route("/cursos/fundamentos-del-dinero");
 const LESSON = route("/cursos/fundamentos-del-dinero/el-dinero-es-tiempo");
 const lesson = getLesson("fundamentos-del-dinero", "el-dinero-es-tiempo")!;
 const questions = lesson.blocks.flatMap((b) => (b.type === "quiz" ? b.questions : []));
 
-const log = (page: Page) => page.getByRole("log", { name: "Conversación" });
-const ready = (page: Page) => page.locator('[data-testid="tutor-continue"]:enabled');
-const choices = (page: Page) => page.getByRole("group", { name: /^Elige/ });
-const lastExpression = (page: Page) => log(page).locator("svg[data-expression]").last();
+const primary = (page: Page) =>
+  page.getByRole("button", { name: /^(Continuar|Comprobar|Terminar lección)$/ });
+const title = (page: Page) => page.locator("#lesson-step-title");
 
-/** Nothing may cover the action bar, and the newest message must sit above it. */
-async function expectLayoutOnMobile(page: Page) {
-  const viewport = page.viewportSize()!;
-  const width = await page.evaluate(() => [document.documentElement.scrollWidth, innerWidth]);
-  expect(width[0], "no horizontal scroll").toBeLessThanOrEqual(width[1]!);
-  const bar = page.locator("div.sticky.bottom-0");
-  const box = (await bar.boundingBox())!;
-  expect(box.y + box.height, "action bar inside the viewport").toBeLessThanOrEqual(
-    viewport.height + 1,
-  );
-  const onTop = await page.evaluate(
-    ([x, y]) => Boolean(document.elementFromPoint(x!, y!)?.closest("div.sticky.bottom-0")),
-    [box.x + 8, box.y + box.height / 2],
-  );
-  expect(onTop, "nothing covers the action bar").toBe(true);
-  await expect
-    .poll(
-      async () => {
-        const last = await log(page).locator(":scope > div").last().boundingBox();
-        return last ? Math.round(last.y + last.height) : 0;
-      },
-      { message: "newest message is not hidden behind the action bar" },
-    )
-    .toBeLessThanOrEqual(Math.round(box.y) + 1);
-}
-
-/** Talks through the whole lesson, answering every question correctly. */
+/** Walks the whole lesson answering every question correctly. */
 async function completeLesson(page: Page, isMobile: boolean) {
-  for (let guard = 0; guard < 60; guard += 1) {
+  for (let guard = 0; guard < 40; guard += 1) {
     if (await page.getByText("Has terminado «El dinero es tiempo»").isVisible()) return;
-    await expect(ready(page).or(choices(page))).toBeVisible();
-    if (isMobile) await expectLayoutOnMobile(page);
 
-    if (await choices(page).isVisible()) {
-      const group = choices(page);
-      const question = await findQuestion(page);
-      if (question) {
-        const correct = question.options.find((o) => o.id === question.correctOptionId)!;
-        await group.getByRole("button", { name: correct.text, exact: true }).click();
-        await expect(lastExpression(page)).toHaveAttribute("data-expression", "celebrating");
-      } else {
-        await group.getByRole("button", { name: "Lo pienso y decido no comprarlo" }).click();
-        await expect(log(page).getByText("Lo pienso y decido no comprarlo")).toBeVisible();
-      }
-      continue;
+    if (isMobile) {
+      const width = await page.evaluate(() => [document.documentElement.scrollWidth, innerWidth]);
+      expect(width[0], "no horizontal scroll").toBeLessThanOrEqual(width[1]!);
+      const bar = await primary(page).boundingBox();
+      const viewport = page.viewportSize()!;
+      expect(bar!.y + bar!.height, "action bar inside the viewport").toBeLessThanOrEqual(
+        viewport.height,
+      );
+      expect(bar!.height).toBeGreaterThanOrEqual(44);
     }
-    await ready(page).click();
+
+    const heading = (await title(page).textContent()) ?? "";
+    const question = questions.find((q) => nb(q.prompt) === heading);
+    if (question) {
+      const correct = question.options.find((o) => o.id === question.correctOptionId)!;
+      await expect(page.getByRole("button", { name: "Comprobar" })).toBeDisabled();
+      await page.getByRole("radio", { name: nb(correct.text), exact: true }).click();
+      await page.getByRole("button", { name: "Comprobar" }).click();
+      await expect(page.getByText("Correcto", { exact: true })).toBeVisible();
+    } else if (heading === "¿Lo compras ya?") {
+      await expect(page.getByRole("button", { name: "Continuar" })).toBeDisabled();
+      await page.getByRole("radio", { name: "Lo pienso y decido no comprarlo" }).click();
+      await expect(page.getByText("Qué pasa")).toBeVisible();
+    }
+    await primary(page).click();
+    await expect(title(page)).not.toHaveText(heading);
   }
   throw new Error("Lesson did not finish");
-}
-
-async function findQuestion(page: Page) {
-  for (const question of questions) {
-    const first = question.options[0]!.text;
-    if (await choices(page).getByRole("button", { name: first, exact: true }).count()) {
-      return question;
-    }
-  }
-  return undefined;
 }
 
 test.beforeEach(async ({ page }) => {
@@ -83,75 +57,96 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-test("lesson 1.1 is a conversation with Monedo, start to finish", async ({ page, isMobile }) => {
-  test.setTimeout(120_000);
+test("start course 1, complete lesson 1.1 and see the progress", async ({ page, isMobile }) => {
+  test.setTimeout(90_000);
   await page.goto(COURSE);
   await page.getByRole("link", { name: "Empezar el curso" }).click();
   await expect(page).toHaveURL(LESSON);
-  await expect(page.getByText("Monedo, tu guía", { exact: true })).toBeVisible();
-  await expect(log(page).getByText("Hola, soy Monedo, tu guía en este curso.")).toBeVisible();
-  await expect(page.getByText(/\bIA\b/)).toHaveCount(0);
+  await expect(title(page)).toHaveText("Al terminar sabrás…");
+  // A training format, not a character: no mascot, no speech bubbles.
+  await expect(page.getByText("Monedo, tu guía")).toHaveCount(0);
+  await expect(page.locator("svg[data-expression]")).toHaveCount(0);
 
   await completeLesson(page, isMobile);
   await expect(page.getByText("Lección completada").first()).toBeVisible();
   await expect(page.getByText("4/4")).toBeVisible();
 
-  await page.getByRole("link", { name: "Volver al curso" }).click();
-  await expect(page).toHaveURL(COURSE);
+  await expect(page.getByRole("link", { name: "Siguiente: Inflación" })).toBeVisible();
+  await page.goto(COURSE);
   await expect(page.getByText("1/6 lecciones")).toBeVisible();
+  // Home now offers to continue with the next lesson.
+  await page.goto(route("/"));
+  await expect(page.getByText("Continúa donde lo dejaste")).toBeVisible();
+  await expect(page.getByText("Inflación", { exact: true })).toBeVisible();
 });
 
-test("Monedo says «uy» and gives the right answer after a mistake", async ({ page }) => {
-  test.setTimeout(90_000);
+test("resumes at the last step after a reload", async ({ page }) => {
   await page.goto(LESSON);
-  const firstQuestion = choices(page).getByRole("button", { name: "5 horas", exact: true });
-  for (let guard = 0; guard < 30; guard += 1) {
-    await expect(ready(page).or(choices(page))).toBeVisible();
-    if (await firstQuestion.isVisible()) break;
-    if (await choices(page).isVisible()) await choices(page).getByRole("button").first().click();
-    else await ready(page).click();
+  await expect(title(page)).toHaveText("Al terminar sabrás…");
+  for (const next of [
+    "El precio real no está en la etiqueta",
+    "Primero, tu precio por hora",
+    "Las zapatillas de Lucía",
+  ]) {
+    await primary(page).click();
+    await expect(title(page)).toHaveText(next);
   }
-  await choices(page).getByRole("button", { name: "5 horas", exact: true }).click();
-  await expect(lastExpression(page)).toHaveAttribute("data-expression", "oops");
-  await expect(log(page).getByText("Uy, esa no era. Le pasa a cualquiera.")).toBeVisible();
-  await expect(log(page).getByText("La respuesta correcta es «7 horas».")).toBeVisible();
-  await expect(ready(page)).toHaveText(/Siguiente pregunta/);
-});
-
-test("resumes the conversation after a reload", async ({ page }) => {
-  await page.goto(LESSON);
-  for (const reply of ["Vamos allá", "¿Y cómo se calcula?", "Vale. ¿Un ejemplo?"]) {
-    await expect(ready(page)).toHaveText(reply);
-    await ready(page).click();
-    await expect(log(page).getByText(reply, { exact: true })).toBeVisible();
-  }
-  await expect(log(page).getByText(/Te presento a Lucía/)).toBeVisible();
   await page.reload();
+  await expect(title(page)).toHaveText("Las zapatillas de Lucía");
   await expect(page.getByText("Retomamos donde lo dejaste.")).toBeVisible();
-  // Earlier messages are still there, and Monedo picks up at Lucía's example.
-  await expect(log(page).getByText("Hola, soy Monedo, tu guía en este curso.")).toBeAttached();
-  await expect(log(page).getByText(/Te presento a Lucía/)).toBeVisible();
-  await expect(ready(page)).toHaveText("Uf. Dos sábados.");
 
-  await page.getByRole("button", { name: "Ver desde el principio" }).click();
-  await expect(log(page).getByText("Hola, soy Monedo, tu guía en este curso.")).toBeInViewport();
+  await page.getByRole("button", { name: "Empezar desde el principio" }).click();
+  await expect(title(page)).toHaveText("Al terminar sabrás…");
 });
 
-test("keyboard: → continues and focus follows the conversation", async ({ page, isMobile }) => {
+test("keyboard navigation with arrows, gated on questions", async ({ page, isMobile }) => {
   test.skip(isMobile, "keyboard navigation is a desktop concern");
   await page.goto(LESSON);
-  await expect(ready(page)).toHaveText("Vamos allá");
+  await expect(title(page)).toHaveText("Al terminar sabrás…");
   await page.keyboard.press("ArrowRight");
-  await expect(log(page).getByText("Vamos allá", { exact: true })).toBeVisible();
-  await expect(ready(page)).toHaveText("¿Y cómo se calcula?");
-  await expect(ready(page)).toBeFocused();
+  await expect(title(page)).toHaveText("El precio real no está en la etiqueta");
+  // Focus moves to the new step title for screen readers.
+  await expect(title(page)).toBeFocused();
+  await page.keyboard.press("ArrowLeft");
+  await expect(title(page)).toHaveText("Al terminar sabrás…");
+
+  // Jump to the first question from the syllabus is not allowed before reaching it.
+  const firstQuestion = page.getByRole("button", { name: "Pregunta 1", exact: true });
+  await expect(firstQuestion).toBeDisabled();
 });
 
-test("with reduced motion, Monedo stays still and messages appear at once", async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: "reduce" });
+test("a wrong answer shows the right one and the explanation", async ({ page }) => {
   await page.goto(LESSON);
-  await expect(ready(page)).toBeVisible({ timeout: 2_000 });
-  await expect(log(page).getByText(/Hoy vas a mirar los precios/)).toBeVisible();
+  await expect(title(page)).toHaveText("Al terminar sabrás…");
+  for (let guard = 0; guard < 20; guard += 1) {
+    const heading = (await title(page).textContent()) ?? "";
+    if (heading.startsWith(nb("Cobras 9 €"))) break;
+    if (heading === "¿Lo compras ya?") {
+      await page.getByRole("radio", { name: "Lo pienso y decido no comprarlo" }).click();
+    }
+    await primary(page).click();
+    await expect(title(page)).not.toHaveText(heading);
+  }
+  await page.getByRole("radio", { name: nb("5 horas"), exact: true }).click();
+  await page.getByRole("button", { name: "Comprobar" }).click();
+  await expect(page.getByText(nb("No es correcto. La respuesta es «7 horas»."))).toBeVisible();
+  await expect(
+    page.getByText(nb("63 € entre 9 € por hora son 7 horas"), { exact: false }),
+  ).toBeVisible();
+});
+
+test("every lesson of course 1 opens", async ({ page }) => {
+  for (const slug of [
+    "el-dinero-es-tiempo",
+    "inflacion",
+    "necesidad-o-capricho",
+    "pagate-primero",
+    "tu-primer-presupuesto",
+    "trampas-de-consumo",
+  ]) {
+    await page.goto(route(`/cursos/fundamentos-del-dinero/${slug}`));
+    await expect(title(page)).toHaveText("Al terminar sabrás…");
+  }
 });
 
 test("unknown lessons are 404", async ({ page }) => {

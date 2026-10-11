@@ -49,3 +49,8 @@ export function formatDate(date: Date): string {
     timeZone: "Europe/Madrid",
   }).format(date);
 }
+
+/** Keeps figures with their unit on one line in narrow columns: «90 €», «8 €/h», «11 h», «20 %». */
+export function keepUnits(text: string): string {
+  return text.replace(/(\d) (?=(€|h\b|%|horas|meses|años|gemas|min\b))/g, "$1 ");
+}
