@@ -14,6 +14,9 @@ preguntas con la respuesta correcta y reto práctico.
   recuerdas una frase. Las respuestas incorrectas son errores que alguien podría cometer de verdad.
 - Educación, no asesoramiento: ningún producto, banco ni entidad concreta. Bizum aparece porque es
   como los adolescentes llaman a los pagos entre amigos con el móvil.
+- **Ninguna cifra que cambie cada año en las lecciones** (límites para declarar, tramos del IRPF,
+  porcentajes de cotización, fechas de la campaña): se explica el concepto y se enlaza a la fuente
+  oficial. Cada dato y su enlace están en [`fuentes.md`](./fuentes.md).
 - **Ninguna cifra legal o fiscal inventada.** Los ejemplos de nómina usan porcentajes
   **ilustrativos y redondos** (6 % de cotizaciones, 2 % de IRPF) y lo dicen en pantalla. Cada
   dato legal está marcado `TODO(verify)` y listado al final con su fuente oficial.
@@ -614,7 +617,7 @@ devengos − deducciones = líquido a percibir.
 ### 2.4 IRPF y Seguridad Social · 7 min
 
 **Objetivo.** Al terminar sabrás qué son el IRPF y las cotizaciones a la Seguridad Social, para
-qué sirven y por qué ganar más nunca hace que te quedes con menos dinero.
+qué sirven y por qué, en el IRPF, ganar más nunca hace que te quedes con menos dinero.
 
 **Términos nuevos**
 
@@ -633,8 +636,9 @@ qué sirven y por qué ganar más nunca hace que te quedes con menos dinero.
 
 1. La retención de IRPF de cada nómina es un adelanto. Una vez al año, en la declaración, se
    calcula el impuesto real y te devuelven o pagas la diferencia (lección 2.5).
-2. El IRPF va por tramos: el porcentaje más alto solo se aplica al dinero que pasa del límite.
-   Ganar más nunca te deja con menos dinero.
+2. El IRPF va por tramos: el porcentaje más alto solo se aplica al dinero que pasa del límite. Por
+   el IRPF, ganar más nunca te deja con menos dinero. Otras cosas con límites de ingresos, como
+   algunas becas o ayudas, sí pueden tener saltos: compruébalo en cada caso.
 3. Las cotizaciones no son dinero perdido: generan derechos para ti, como la jubilación futura, el
    paro o las bajas `TODO(verify)`. Y los impuestos pagan servicios que usas cada día.
 
@@ -642,8 +646,8 @@ qué sirven y por qué ganar más nunca hace que te quedes con menos dinero.
 reales son otros y cambian según la comunidad autónoma `TODO(verify)`): imagina que hasta 10.000 €
 al año pagas un 0 % y por lo que pase de 10.000 € pagas un 20 %. Si Sara ganara 13.000 € en un
 año, solo pagaría el 20 % de 3.000 €: **600 €**, no el 20 % de 13.000 € (2.600 €). Su compañera,
-que gana 9.000 €, paga 0 €. Si a Sara le suben el sueldo y pasa de tramo, gana más dinero, no
-menos. Además, los 54 € de cotización de Sara en julio cuentan como días trabajados para su
+que gana 9.000 €, paga 0 €. Si a Sara le suben el sueldo y pasa de tramo, por el IRPF gana más
+dinero, no menos. Además, los 54 € de cotización de Sara en julio cuentan como días trabajados para su
 futuro.
 
 **Dato clave:** 600 € · lo que pagaría Sara con los tramos del ejemplo, y no 2.600 €.
@@ -653,10 +657,12 @@ futuro.
 1. Un amigo te dice: «No quiero que me suban el sueldo, que paso de tramo y voy a cobrar menos».
    ¿Tiene razón?
    A) Sí: al pasar de tramo se aplica el porcentaje más alto a todo el sueldo
-   **B) No: el porcentaje más alto solo se aplica a la parte que pasa del límite, así que siempre
-   ganas más**
+   **B) No: en el IRPF, el porcentaje más alto solo se aplica a la parte que pasa del límite, así
+   que por el IRPF siempre ganas más**
    C) Sí, por eso a mucha gente no le compensa que le suban el sueldo
    D) Depende del banco en el que cobres
+   _Por qué: así funcionan los tramos del IRPF. Ojo: otras cosas con límites de ingresos, como
+   algunas becas o ayudas, sí pueden tener saltos._
 2. Con los tramos inventados de la lección (0 % hasta 10.000 €, 20 % por lo que pase de ahí),
    ¿cuánto paga alguien que gana 13.000 € al año?
    A) 2.600 € · **B) 600 €** · C) 0 € · D) 1.300 €
@@ -709,13 +715,16 @@ qué puede interesarte aunque no estés obligado y cómo se presenta.
    confirmarlo. Si ganas dinero siendo menor, coméntalo en casa: puede afectar a la declaración de
    tu familia `TODO(verify)`.
 
-**Ejemplo principal.** En 2026, Sara trabajó julio y agosto: 1.800 € brutos en total, con 36 € de
-retención de IRPF (2 % de ejemplo). En la primavera de 2027 entra con sus padres en la web de la
-Agencia Tributaria y revisa el borrador. Con unos ingresos tan bajos, su impuesto real del año es
-0 € `TODO(verify)`. Como Hacienda se quedó 36 € por adelantado, se los devuelve. Si no hubiera
-presentado la declaración, no los habría recuperado.
+**Ejemplo principal.** En el verano de 2026, Sara trabaja de monitora en un campamento durante
+julio y agosto: 1.800 € brutos en total. En cada nómina le retienen IRPF: 36 € entre las dos
+(2 % de ejemplo). Es su único trabajo del año y, con unos ingresos tan bajos, su impuesto real del
+año sale 0 € `TODO(verify)`. No estaba obligada a declarar `TODO(verify)`, pero en la primavera de
+2027 entra con sus padres en Renta Web, revisa el borrador y lo presenta. Como Hacienda se quedó
+36 € por adelantado, se los devuelve. Si no hubiera presentado la declaración, esos 36 € no habrían
+vuelto.
 
-**Dato clave:** 36 € · lo que recupera Sara por presentar la declaración (retención de ejemplo).
+**Dato clave:** 36 € · lo que recupera Sara de su trabajo de verano por presentar la declaración
+(retención de ejemplo).
 
 **Preguntas**
 

@@ -228,6 +228,11 @@ está listo por si la CLI se puede usar en local.
 - **Educación, no asesoramiento**: nunca recomendar productos, entidades, activos concretos ni
   decisiones personales de inversión. Ninguna marca de banco, bróker ni producto financiero.
 - Toda mención a rentabilidad aclara que **no está garantizada y que las inversiones pueden bajar**.
+- **Nada de cifras que cambian cada año** (límites para declarar, tramos del IRPF, porcentajes de
+  cotización, fechas de campaña): explica el concepto y enlaza a la fuente oficial.
+- **Fuentes**: cada dato legal o fiscal se verifica en agenciatributaria.gob.es, seg-social.es o
+  boe.es y se apunta en [`docs/fuentes.md`](./docs/fuentes.md) con enlace exacto y fecha de
+  consulta. Sin esa fila completa, el dato no entra en una lección.
 - **No inventar cifras legales o fiscales.** Todo dato sobre IRPF, Seguridad Social, salario mínimo,
   umbrales para declarar, etc. lleva `// TODO(verify): fuente oficial` con la fuente a consultar
   (AEAT, Seguridad Social, BOE) y se añade a la lista de abajo.
