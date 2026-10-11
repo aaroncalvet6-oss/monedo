@@ -240,8 +240,8 @@ está listo por si la CLI se puede usar en local.
 
 ## TODO(verify) — datos pendientes de verificar con fuente oficial
 
-_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 22 datos, 8 verificados (4 en web
-oficial y 4 en fuente secundaria, pendientes de sustituir por la oficial) y 14 sin verificar. En el
+_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 22 datos, 10 verificados (5 en web
+oficial y 5 en fuente secundaria, pendientes de sustituir por la oficial) y 12 sin verificar. En el
 temario cada dato lleva `✓ fuente #n` o `TODO(verify) #n`. Lo que está sin verificar no entra en
 las lecciones._
 
@@ -251,7 +251,8 @@ las lecciones._
 2. ✅ Motor de cursos: esquema Zod, `ProgressRepository`, lector con todos los bloques, lección 1.1.
    ✅ Monedo y lector en formato conversación (`TutorProvider` + `ScriptedTutor`), lección 1.1
    adaptada. Pendiente: probar la 1.1 con alumnos antes de escribir el resto.
-3. Contenido: resto de cursos 1 y 2, evaluaciones y certificados.
+3. Contenido: resto de cursos 1 y 2, evaluaciones y certificados. Temarios de los cursos 1 y 2
+   cerrados (`docs/temario.md`); lecciones pendientes.
 4. Panel, catálogo, fichas de curso, perfil y herramientas.
 5. Landing, legal, SEO, tests e2e, Lighthouse y README de despliegue.
 

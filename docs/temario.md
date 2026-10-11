@@ -413,9 +413,22 @@ pocas») y vuelve a mirarla una semana después: ¿seguía ahí?
 
 ## Curso 2 · Tu primer sueldo
 
-Personaje del curso: **Sara, 17 años, de Cádiz**, que va a trabajar el verano en un chiringuito.
-Todos los porcentajes de descuentos de este curso son **de ejemplo** y lo dicen en pantalla: los
-reales cambian según el contrato, la persona y el año.
+> **Estado: temario cerrado (11/10/2026).** Las lecciones aún no están escritas. Los datos marcados
+> `TODO(verify)` siguen fuera de las lecciones hasta tener fuente (ver [`fuentes.md`](./fuentes.md)).
+
+Personaje del curso: **Sara, 17 años, de Cádiz**, que trabaja julio y agosto de camarera en un
+chiringuito: **1.200 € brutos al mes**, 2.400 € en total. Sus cifras son las mismas en todo el
+curso:
+
+| Concepto                                             | Al mes  | Julio y agosto |
+| ---------------------------------------------------- | ------- | -------------- |
+| Sueldo bruto                                         | 1.200 € | 2.400 €        |
+| Cotizaciones (6 %, **cifra de ejemplo**)             | 72 €    | 144 €          |
+| Retención de IRPF (2 %, mínimo legal `✓ fuente #11`) | 24 €    | 48 €           |
+| Sueldo neto                                          | 1.104 € | 2.208 €        |
+
+El 6 % de cotizaciones es de ejemplo y lo dice en pantalla (el porcentaje real cambia cada año). El
+2 % de IRPF no es inventado: es la retención mínima en contratos de menos de un año.
 
 ### 2.1 Tipos de contrato · 7 min
 
@@ -446,9 +459,9 @@ de firmar.
    firmes sin leer y quédate siempre una copia.
 
 **Ejemplo principal.** Sara, 17 años, consigue trabajo de camarera en un chiringuito de Cádiz para
-julio y agosto. Como es menor de edad, necesita la autorización de sus padres para firmar
-`TODO(verify) #22`. Antes de firmar repasa su lista: contrato temporal del 1 de julio al 31 de agosto,
-30 horas a la semana, 900 € brutos al mes, periodo de prueba de unos días y convenio de hostelería
+julio y agosto. Como es menor de edad, necesita el consentimiento de sus padres para firmar
+`✓ fuente #22`. Antes de firmar repasa su lista: contrato temporal del 1 de julio al 31 de agosto,
+30 horas a la semana, 1.200 € brutos al mes, periodo de prueba de unos días y convenio de hostelería
 de su provincia. Ve que no pone el horario y lo pregunta antes de firmar. Como tiene 17 años, no
 puede hacer horas extra, ni turnos de noche, ni trabajos peligrosos `✓ fuente #2`.
 
@@ -509,12 +522,12 @@ del bruto al neto y cómo comparar ofertas de trabajo.
    se reparte.
 3. Para comparar ofertas, compáralas igual: todo en bruto anual o todo en neto mensual.
 
-**Ejemplo principal.** El contrato de Sara dice 900 € brutos al mes, solo para el verano. Con un
+**Ejemplo principal.** El contrato de Sara dice 1.200 € brutos al mes, solo para el verano. Con un
 6 % de cotizaciones (**cifra de ejemplo**: la real cambia cada año) y un 2 % de IRPF (la retención
-mínima en contratos de menos de un año `✓ fuente #11`): 54 € + 18 € = 72 €. Le llegan **828 €**. Otro
+mínima en contratos de menos de un año `✓ fuente #11`): 72 € + 24 € = 96 €. Le llegan **1.104 €**. Otro
 ejemplo: 14.000 € brutos al año son 1.000 € al mes en 14 pagas o 1.166,67 € al mes en 12 pagas.
 
-**Dato clave:** 828 € · lo que le llega a Sara de un sueldo de 900 € brutos (cotización de
+**Dato clave:** 1.104 € · lo que le llega a Sara de un sueldo de 1.200 € brutos (cotización de
 ejemplo y retención mínima del 2 %).
 
 **Preguntas**
@@ -531,9 +544,9 @@ ejemplo y retención mínima del 2 %).
    C) Pagan lo mismo
    D) No se puede saber sin ver las nóminas
 3. Con los porcentajes de la lección (6 % de cotizaciones de ejemplo y 2 % de IRPF), ¿cuánto te llega de un sueldo de
-   900 € brutos?
-   **A) 828 €** · B) 846 € · C) 882 € · D) 900 €
-   _Por qué: 900 − 54 − 18 = 828. La B solo resta la cotización y la C solo el IRPF._
+   1.200 € brutos?
+   **A) 1.104 €** · B) 1.128 € · C) 1.176 € · D) 1.200 €
+   _Por qué: 1.200 − 72 − 24 = 1.104. La B solo resta la cotización y la C solo el IRPF._
 4. ¿Qué es una paga extra?
    A) Un premio que la empresa da si quiere
    **B) Parte de tu sueldo anual que se cobra en meses concretos o repartida en las nóminas**
@@ -576,15 +589,15 @@ cuadra.
 
 **Ejemplo principal.** La nómina de julio de Sara, explicada línea por línea:
 
-| Línea                                     | Euros      |
-| ----------------------------------------- | ---------- |
-| Salario base                              | 850,00     |
-| Plus de transporte                        | 50,00      |
-| **Total devengado**                       | **900,00** |
-| Cotizaciones del trabajador (ejemplo 6 %) | −54,00     |
-| Retención de IRPF (mínimo 2 %)            | −18,00     |
-| **Total a deducir**                       | **−72,00** |
-| **Líquido a percibir**                    | **828,00** |
+| Línea                                     | Euros        |
+| ----------------------------------------- | ------------ |
+| Salario base                              | 1.150,00     |
+| Plus de transporte                        | 50,00        |
+| **Total devengado**                       | **1.200,00** |
+| Cotizaciones del trabajador (ejemplo 6 %) | −72,00       |
+| Retención de IRPF (mínimo 2 %)            | −24,00       |
+| **Total a deducir**                       | **−96,00**   |
+| **Líquido a percibir**                    | **1.104,00** |
 
 Debajo aparece la aportación de la empresa: lo que la empresa paga por Sara y que no sale de su
 sueldo. La nómina del ejemplo es inventada y simplificada: una real tiene más líneas
@@ -651,7 +664,7 @@ reales son otros y cambian según la comunidad autónoma `TODO(verify) #14`): im
 al año pagas un 0 % y por lo que pase de 10.000 € pagas un 20 %. Si Sara ganara 13.000 € en un
 año, solo pagaría el 20 % de 3.000 €: **600 €**, no el 20 % de 13.000 € (2.600 €). Su compañera,
 que gana 9.000 €, paga 0 €. Si a Sara le suben el sueldo y pasa de tramo, por el IRPF gana más
-dinero, no menos. Además, los 54 € de cotización de Sara en julio cuentan como días trabajados para su
+dinero, no menos. Además, los 72 € de cotización de Sara en julio cuentan como días trabajados para su
 futuro.
 
 **Dato clave:** 600 € · lo que pagaría Sara con los tramos del ejemplo, y no 2.600 €.
@@ -723,29 +736,32 @@ qué puede interesarte aunque no estés obligado y cómo se presenta.
    límite, tus padres pierden el mínimo por descendientes `✓ fuente #19`. La lección no da la cifra
    del límite: enlaza a la fuente.
 
-**Ejemplo principal.** En el verano de 2026, Sara trabaja de monitora en un campamento durante
-julio y agosto: 1.800 € brutos en total. En cada nómina le retienen IRPF: 36 € entre las dos. Ese
+**Ejemplo principal.** En el verano de 2026, Sara trabaja de camarera en el chiringuito durante
+julio y agosto: 1.200 € brutos al mes, 2.400 € en total. En cada nómina le retienen 24 € de IRPF:
+48 € entre las dos. Ese
 2 % no es inventado: es la retención mínima en contratos de menos de un año `✓ fuente #11`. Con un
 solo pagador y estos ingresos no está obligada a declarar `✓ fuente #17`, y su impuesto real del
-año sale 0 € `TODO(verify) #18`. Si presenta la declaración en Renta Web, Hacienda le devuelve los
-36 € que se quedó por adelantado.
+año sale 0 € `✓ fuente #18` (la lección explica la idea, sin cifras: con ingresos de trabajo
+bajos, las reducciones y el mínimo personal dejan el impuesto en 0). Si presenta la declaración en Renta Web, Hacienda le devuelve los
+48 € que se quedó por adelantado.
 
 **Pero antes, lo habla en casa.** Si Sara presenta su propia declaración con ingresos por encima de
 un límite, sus padres pierden el mínimo por descendientes por ella `✓ fuente #19`, y eso puede
-costarles más que los 36 € que recupera Sara. En primavera de 2027 lo miran juntos en la web de la
+costarles más que los 48 € que recupera Sara. Sus ingresos pasan claramente de ese límite, así que
+el aviso le afecta de verdad. En primavera de 2027 lo miran juntos en la web de la
 Agencia Tributaria y deciden con los números delante: en algunos casos compensa presentarla y en
 otros no.
 
-**Dato clave:** 36 € · lo que puede recuperar Sara de su trabajo de verano si presenta la
+**Dato clave:** 48 € · lo que puede recuperar Sara de su trabajo de verano si presenta la
 declaración (antes, que lo hable en casa).
 
 **Preguntas**
 
-1. A Sara le retuvieron 36 € y su impuesto real del año es 0 €. Si presenta la declaración…
-   A) Tiene que pagar 36 € más
-   **B) Le devuelven los 36 €**
+1. A Sara le retuvieron 48 € y su impuesto real del año es 0 €. Si presenta la declaración…
+   A) Tiene que pagar 48 € más
+   **B) Le devuelven los 48 €**
    C) No pasa nada, porque ya está todo pagado
-   D) Le devuelven los 1.800 €
+   D) Le devuelven los 2.400 €
 2. ¿Qué es el borrador de la declaración?
    A) Una hoja en blanco que tienes que rellenar tú desde cero
    **B) La declaración que prepara Hacienda con los datos que ya tiene, para que la revises y la
