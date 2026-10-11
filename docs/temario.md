@@ -18,6 +18,10 @@ preguntas con la respuesta correcta y reto práctico.
   **ilustrativos y redondos** (6 % de cotizaciones, 2 % de IRPF) y lo dicen en pantalla. Cada
   dato legal está marcado `TODO(verify)` y listado al final con su fuente oficial.
 - Todas las cuentas de los ejemplos están comprobadas.
+- **Un solo porcentaje de ahorro de ejemplo en todo Monedo: el 20 %** (lecciones, preguntas,
+  evaluaciones y herramientas). Coincide con el 20 % de ahorro de la regla 50/30/20.
+- Enseñamos las palabras reales (coste de oportunidad, urgencia, escasez…), siempre explicadas con
+  sencillez en «Términos nuevos».
 
 Cada lección dura de 5 a 8 minutos y tiene 4 preguntas, con 4 opciones solo cuando las 4 son
 creíbles (si no, 3). Al final de cada curso hay una evaluación (ver «Evaluaciones finales»).
@@ -39,7 +43,7 @@ precios en horas y no solo en euros, y detectar los gastos pequeños que se come
 
 **Ideas clave**
 
-1. Precio en horas = precio en euros ÷ lo que cobras por hora.
+1. Precio en horas = precio en euros ÷ lo que cobras por hora (neto).
 2. Pensar en horas te ayuda a decidir si algo vale lo que cuesta _para ti_.
 3. Los gastos pequeños que se repiten pueden costar más horas que una compra grande.
 
@@ -151,8 +155,8 @@ impulso con la regla de las 48 horas y pensar en lo que dejas de comprar cada ve
    más caras. La diferencia de precio es el capricho.
 2. La regla de las 48 horas: si algo no es necesario, espera dos días antes de comprarlo. Si las
    ganas siguen, adelante; muchas veces desaparecen.
-3. Todo lo que compras es algo que no compras. Pregúntate: «¿Qué otra cosa podría hacer con este
-   dinero?»
+3. Todo lo que compras es algo que no compras: eso se llama **coste de oportunidad**. Antes de
+   pagar, pregúntate: «¿Qué otra cosa podría hacer con este dinero?»
 
 **Ejemplo principal.** Nerea, 14 años, recibe 25 € de paga al mes. Un viernes ve en redes una
 sudadera de 45 € que lleva todo el mundo y quiere comprarla esa misma noche con el dinero que tiene
@@ -196,31 +200,32 @@ cuántas sigues queriendo.
 
 ### 1.4 Págate primero · 6 min
 
-**Objetivo.** Al terminar sabrás por qué «ahorrar lo que sobre» casi nunca funciona y cómo ahorrar
-sin depender de la fuerza de voluntad.
+**Objetivo.** Al terminar sabrás por qué «ahorrar lo que sobre» casi nunca funciona, cómo ponerte
+una meta de ahorro con nombre, cifra y fecha, y cómo ahorrar sin depender de la fuerza de voluntad.
 
 **Términos nuevos**
 
 - _Ahorrar_: guardar una parte del dinero que recibes para usarla más adelante.
 - _Págate primero_: apartar tu ahorro el mismo día que recibes dinero, antes de gastar nada.
-- _Meta de ahorro_: para qué ahorras y cuánto necesitas.
+- _Meta de ahorro_: para qué ahorras, cuánto necesitas y para cuándo. Por ejemplo: «80 € para
+  unos cascos en junio».
 
 **Ideas clave**
 
-1. El dinero que tienes a mano tiende a gastarse: si esperas a ver lo que sobra, no sobra nada.
-2. Aparta el ahorro primero: una cantidad o un porcentaje fijo (por ejemplo, el 25 %) en cuanto
-   recibes la paga o un regalo.
+1. Si esperas a ver lo que sobra, no sobra nada: aparta el ahorro primero, el mismo día que
+   recibes la paga o un regalo. Un buen punto de partida es el 20 %.
+2. Se ahorra mejor con una meta con nombre y cifra: «80 € para unos cascos en junio» funciona
+   mejor que «ahorrar algo». La herramienta **Meta de ahorro** te dice cuánto apartar cada mes.
 3. Ponlo difícil de tocar: en un sitio separado (otra hucha, un sobre o una cuenta distinta) y, si
    puedes, que se haga solo cada mes.
 
 **Ejemplo principal.** Iván, 16 años, recibe 40 € de paga al mes. El año pasado intentó ahorrar
-«lo que sobrara» y en diciembre tenía 0 €. Este año, el día que cobra, aparta 10 € (el 25 %) en
-una hucha que no abre. En su cumpleaños le regalan 100 € y guarda la mitad. Al final del año tiene
-10 € × 12 meses + 50 € = **170 €** para el viaje de fin de curso, sin haber tenido que pensar en
-ello cada día.
+«lo que sobrara» y en diciembre tenía 0 €. Este año se pone una meta: **80 € para unos cascos en
+junio**. En septiembre la mete en la herramienta Meta de ahorro: 80 € en 10 meses (de septiembre
+a junio) son 8 € al mes, justo el 20 % de su paga. Cada vez que cobra, aparta 8 € en una hucha que
+no abre. En junio tiene sus 80 € sin haber tenido que pensar en ello cada día.
 
-**Dato clave:** 170 € · lo que junta Iván en un año apartando 10 € al mes y la mitad de su
-cumpleaños.
+**Dato clave:** 8 € · lo que aparta Iván cada mes (el 20 % de su paga) para tener 80 € en junio.
 
 **Preguntas**
 
@@ -234,86 +239,103 @@ cumpleaños.
    **B) Porque el dinero que tienes disponible se acaba gastando y al final no sobra nada**
    C) Porque los bancos cobran por guardar lo que sobra
    D) Porque solo funciona con sueldos grandes
-3. Apartas 15 € cada mes. ¿Cuánto tendrás ahorrado en 8 meses?
-   A) 105 € · **B) 120 €** · C) 150 € · D) 80 €
+3. Quieres 60 € para un regalo dentro de 6 meses. ¿Cuánto tienes que apartar cada mes?
+   A) 6 € · **B) 10 €** · C) 12 € · D) 60 €
+   _Por qué: 60 ÷ 6 = 10. Es la cuenta que hace la herramienta Meta de ahorro._
 4. ¿Qué te ayuda más a cumplir tu plan de ahorro?
    A) Llevar todo el dinero junto en la cartera e intentar no tocar la parte del ahorro
-   **B) Guardar el ahorro en un sitio separado y apartarlo siempre el mismo día**
+   **B) Tener una meta con nombre y cifra, guardar el ahorro aparte y apartarlo siempre el mismo
+   día**
    C) Ahorrar solo los meses en los que te acuerdes
    D) Ahorrar el 100 % y no gastar nada
-   _Por qué: si el ahorro está mezclado con el resto, acabarás gastándolo sin darte cuenta._
+   _Por qué: si el ahorro está mezclado con el resto, acabarás gastándolo sin darte cuenta; y sin
+   meta, cualquier capricho parece mejor plan._
 
-**Reto práctico.** Elige qué porcentaje vas a apartar (entre el 10 % y el 25 %), elige dónde lo vas
-a guardar (separado del resto) y apártalo la próxima vez que recibas dinero, ya sea la paga o un
-regalo. Si tienes cuenta, pregunta en casa si se puede programar que se haga sola cada mes.
+**Reto práctico.** Ponle nombre, cifra y fecha a una meta (por ejemplo, «80 € para unos cascos en
+junio»). Calcula con la herramienta Meta de ahorro cuánto tienes que apartar cada mes; si no sabes
+por dónde empezar, prueba con el 20 % de tu paga. Elige dónde lo vas a guardar (separado del resto)
+y apártalo la próxima vez que recibas dinero. Si tienes cuenta, pregunta en casa si se puede
+programar que se haga sola cada mes.
+
+> Herramienta relacionada: **Meta de ahorro** (en Herramientas, fase 4). Le dices cuánto necesitas
+> y para cuándo, y te dice cuánto apartar al mes y qué porcentaje de tu paga es. Usa el 20 % como
+> valor de ejemplo, igual que las lecciones.
 
 ---
 
 ### 1.5 Tu primer presupuesto · 8 min
 
-**Objetivo.** Al terminar sabrás hacer un presupuesto sencillo con tu paga usando la regla
-50/30/20 y seguir tus gastos para ver si lo cumples.
+**Objetivo.** Al terminar sabrás hacer un presupuesto sencillo con tu paga en tres partes (lo que
+pagas tú, ahorro y gasto libre), seguir tus gastos para ver si lo cumples y qué regla usarás
+cuando cobres tu primer sueldo.
 
 **Términos nuevos**
 
 - _Presupuesto_: un plan de cuánto vas a gastar y en qué, hecho **antes** de gastar.
 - _Ingresos_: el dinero que te entra (paga, regalos, trabajos).
-- _Gastos fijos_: los que tienes sí o sí cada mes (recarga del móvil, transporte, el almuerzo del
-  recreo).
-- _Regla 50/30/20_: repartir lo que recibes en 50 % para gastos que tienes que cubrir, 30 % para
-  gustos y 20 % para ahorro. Es un punto de partida: puedes adaptar los porcentajes a tu caso.
+- _Lo que pagas tú_: los gastos que cubres tú de verdad cada mes, no tu familia (recarga del
+  móvil, transporte, el almuerzo del recreo).
+- _Gasto libre_: lo que te queda para lo que quieras (cine, juegos, salir) después de pagar lo
+  tuyo y apartar el ahorro.
+- _Regla 50/30/20_: la regla para cuando vivas de tu sueldo y pagues casa y comida: 50 % para
+  necesidades, 30 % para gustos y 20 % para ahorro. La verás en el curso «Tu primer sueldo».
 
 **Ideas clave**
 
 1. Un presupuesto no es para prohibirte cosas: es decidir tú a dónde va tu dinero antes de que
    desaparezca.
-2. Empieza con 50/30/20 y ajústalo: si tu familia te paga casi todo, quizá puedas ahorrar más.
+2. Con la paga, reparte en tres: lo que pagas tú de verdad, ahorro (el 20 %) y gasto libre. La
+   regla 50/30/20 es para tu primer sueldo, cuando pagues casa y comida: la verás en el curso 2.
 3. Apuntar lo que gastas es lo que hace que un presupuesto funcione. Sin apuntar, solo es un deseo.
 
-**Ejemplo principal.** Hugo, 15 años, recibe 60 € de paga al mes. Su presupuesto:
+**Ejemplo principal.** Hugo, 15 años, recibe 60 € de paga al mes. Su familia le paga la comida y
+la ropa. Su presupuesto:
 
-| Apartado                            | %    | Euros |
-| ----------------------------------- | ---- | ----- |
-| Gastos fijos (recarga y bocadillos) | 50 % | 30 €  |
-| Gustos (cine, juegos, salir)        | 30 % | 18 €  |
-| Ahorro                              | 20 % | 12 €  |
+| Parte                                          | Cómo se calcula | Euros |
+| ---------------------------------------------- | --------------- | ----- |
+| Lo que paga él (recarga del móvil y almuerzos) | lo que cuesta   | 20 €  |
+| Ahorro                                         | 20 % de la paga | 12 €  |
+| Gasto libre (cine, juegos, salir)              | lo que queda    | 28 €  |
 
 En marzo, Hugo paga 32 € de pizzas en el cumpleaños de un amigo para los cuatro que van, él
-incluido. Cada amigo le tiene que enviar 8 € por Bizum. Si no los reclama, se come 24 € de su
-presupuesto de gustos, que solo era de 18 €. Lo apunta y se lo recuerda a sus amigos esa misma
-noche.
+incluido. Cada amigo le tiene que enviar 8 € por Bizum. Si no los reclama, se come 24 € de sus
+28 € de gasto libre y le quedan 4 € para el resto del mes. Lo apunta y se lo recuerda a sus amigos
+esa misma noche.
 
 **Preguntas**
 
-1. Recibes 50 € de paga. Con la regla 50/30/20, ¿cuánto ahorras?
-   **A) 10 €** · B) 20 € · C) 15 € · D) 5 €
-2. Hugo se ha gastado 28 € en gustos en lugar de 18 €. ¿Qué es lo más útil que puede hacer?
+1. Recibes 50 € de paga, pagas tú 15 € de transporte y apartas el 20 % de la paga para ahorrar.
+   ¿Cuánto te queda de gasto libre?
+   **A) 25 €** · B) 35 € · C) 28 € · D) 15 €
+   _Por qué: el 20 % de 50 € son 10 €; 50 − 15 − 10 = 25. La B olvida el ahorro y la C calcula el
+   20 % sobre lo que queda en lugar de sobre la paga._
+2. Hugo se ha gastado 38 € de gasto libre en lugar de 28 €. ¿Qué es lo más útil que puede hacer?
    A) Dejar el presupuesto, porque está claro que no le funciona
-   **B) Ver en qué se pasó y ajustar: recortar otro apartado este mes o planear mejor el
-   siguiente**
+   **B) Ver en qué se pasó y ajustar: gastar menos el resto del mes o planear mejor el siguiente**
    C) Pedir que le suban la paga
    D) Coger lo que le falta del ahorro y no darle más vueltas
-3. Tu familia te paga la comida y la ropa. ¿Cuál de estos gastos encaja mejor en tu 50 % de gastos
-   que tienes que cubrir?
-   **A) El bono de transporte para ir al instituto**
-   B) La suscripción a una plataforma de series
-   C) Una skin para tu juego favorito
-   D) Unas zapatillas de marca
+3. ¿Para quién está pensada la regla 50/30/20?
+   A) Para repartir la paga de un adolescente cuyos padres pagan casa y comida
+   **B) Para quien vive de su sueldo y paga casa y comida: la usarás con tu primer sueldo**
+   C) Solo para empresas
+   D) Para quien no quiere ahorrar
+   _Por qué: si tu familia te paga casa y comida, el 50 % para necesidades no encaja con tu paga._
 4. Pagas 32 € de pizzas para cuatro personas, tú incluido. ¿Cuánto te tiene que enviar cada amigo
    por Bizum?
    A) 10,67 € · **B) 8 €** · C) 32 € · D) 6 €
    _Por qué: 32 ÷ 4 = 8. El error frecuente es dividir entre 3 y olvidar que tú también comiste._
 
-**Reto práctico.** Haz tu presupuesto del mes que viene en una nota del móvil: cuánto vas a recibir
-y cuánto va a cada apartado. Durante dos semanas, apunta todo lo que gastes, aunque sea 1 €, y
-compáralo con lo que planeaste.
+**Reto práctico.** Haz tu presupuesto del mes que viene en una nota del móvil: cuánto vas a
+recibir, qué pagas tú de verdad, tu 20 % de ahorro y lo que te queda de gasto libre. Durante dos
+semanas, apunta todo lo que gastes, aunque sea 1 €, y compáralo con lo que planeaste.
 
 ---
 
 ### 1.6 Trampas de consumo · 7 min
 
-**Objetivo.** Al terminar sabrás reconocer tres trampas habituales: pagar a plazos, las monedas
-virtuales de los juegos y las técnicas que te meten prisa para comprar.
+**Objetivo.** Al terminar sabrás reconocer tres trampas habituales: pagar a plazos (con y sin
+intereses), las monedas virtuales de los juegos y las técnicas de venta que te meten prisa:
+la urgencia y la escasez.
 
 **Términos nuevos**
 
@@ -321,27 +343,38 @@ virtuales de los juegos y las técnicas que te meten prisa para comprar.
   golpe.
 - _Deuda_: dinero que debes y que tendrás que devolver.
 - _Intereses_: lo que pagas de más por que te dejen dinero o por pagar más tarde.
+- _Con intereses / sin intereses_: con intereses, al final pagas más que el precio. Sin intereses,
+  pagas lo mismo (mira que no haya comisiones), pero sigues debiendo dinero hasta la última cuota.
 - _Recargo_: dinero extra que te cobran si te retrasas en un pago.
 - _Moneda virtual de un juego_: gemas, monedas o puntos que compras con euros para gastarlos dentro
   del juego.
 - _Caja de botín_: un pago dentro de un juego en el que no sabes qué te va a tocar.
+- _Urgencia_: técnica de venta que te mete prisa con el tiempo («la oferta acaba en 10 minutos»).
+- _Escasez_: técnica de venta que te mete prisa con la cantidad («quedan 2»).
 
 **Ideas clave**
 
-1. Pagar a plazos es una deuda: a menudo acabas pagando más que el precio y, si te retrasas, puede
-   haber recargos.
+1. Pagar a plazos es una deuda. Con intereses, pagas más que el precio. Sin intereses, no pagas más,
+   pero sigue siendo una deuda: si te retrasas en una cuota, hay recargos.
 2. Las monedas virtuales esconden el precio real en euros y casi nunca puedes comprar justo lo que
    necesitas: siempre te sobra algo, para que vuelvas a comprar.
-3. «Quedan 2», «la oferta acaba en 10 minutos»: muchas veces son técnicas para meterte prisa. Si no
-   lo necesitabas antes, aplica la regla de las 48 horas.
+3. «La oferta acaba en 10 minutos» es **urgencia** y «quedan 2» es **escasez**: dos técnicas de
+   venta para meterte prisa. Si no lo necesitabas antes, aplica la regla de las 48 horas.
 
-**Ejemplo principal.** Leo, 16 años, quiere un móvil de 300 €. La tienda le ofrece «llévatelo hoy
-y págalo en 6 cuotas de 55 €». Al final pagaría 330 €: **30 € más** que pagándolo de una vez. Y
-si se retrasa en una cuota, puede haber recargos. En su juego favorito, el pack de 1.000 gemas
-cuesta 9,99 €. La skin que quiere cuesta 1.200 gemas: tiene que comprar dos packs (19,98 €) y le
-sobran 800 gemas que no le sirven para nada… todavía.
+**Ejemplo principal.** Leo, 16 años, acompaña a su hermana Marta, de 19, a comprar un móvil de
+300 €. La tienda le ofrece a Marta dos formas de pagarlo a plazos:
 
-**Dato clave:** 30 € · lo que paga de más Leo por el móvil a plazos.
+- **Con intereses:** 6 cuotas de 55 €. Paga 330 €: **30 € más** que pagándolo de una vez.
+- **Sin intereses:** 6 cuotas de 50 €. Paga 300 €, lo mismo, pero durante seis meses debe dinero
+  y, si se retrasa en una cuota, le cobran un recargo.
+
+A Leo todavía no se lo pueden ofrecer: para contratar un pago a plazos normalmente hay que ser
+mayor de edad `TODO(verify)`. Marta le avisa: «Cuando cumplas 18, te lo van a ofrecer en todas
+partes: en tiendas, en webs y al pagar en apps». En casa, Leo abre su juego favorito: el pack de
+1.000 gemas cuesta 9,99 € y la skin que quiere cuesta 1.200 gemas. Tiene que comprar dos packs
+(19,98 €) y le sobran 800 gemas que no le sirven para nada… todavía.
+
+**Dato clave:** 30 € · lo que paga de más Marta por el móvil a plazos con intereses.
 
 **Preguntas**
 
@@ -355,19 +388,21 @@ sobran 800 gemas que no le sirven para nada… todavía.
    _Por qué: no puedes comprar «media» bolsa de gemas. La C es lo que valdría si pudieras._
 3. En una web ves: «Quedan 2 unidades · La oferta termina en 09:59». ¿Qué es lo más sensato?
    A) Comprar ya: si lo pone, es que es verdad
-   **B) Tomarlo como una técnica para meterte prisa y, si no lo necesitabas, esperar 48 horas**
+   **B) Reconocer la escasez y la urgencia, dos técnicas para meterte prisa, y, si no lo
+   necesitabas, esperar 48 horas**
    C) Denunciar la web, porque es ilegal poner eso
    D) Comprar dos, por si se acaban
-4. ¿Qué es «compra ahora, paga después»?
-   A) Un descuento por pagar más tarde
-   **B) Una forma de deuda: te adelantan el dinero y tú lo devuelves después, a veces con intereses
-   o recargos**
-   C) Un regalo de la tienda para clientes nuevos
-   D) Pagar con la tarjeta de tus padres
+4. «Compra ahora, paga después, sin intereses»: unos cascos de 120 € en 4 cuotas de 30 €. ¿Qué es
+   verdad?
+   A) Es gratis: como no hay intereses, no es una deuda
+   **B) Pagas 120 €, lo mismo, pero es una deuda: si te retrasas en una cuota, puede haber recargo**
+   C) Pagas 30 € más que al contado
+   D) Solo tienes que pagar la primera cuota
+   _Por qué: 4 × 30 = 120, así que no pagas más; pero hasta la última cuota debes dinero._
 
 **Reto práctico.** Revisa (o pide ver en casa) cuánto has gastado en juegos y apps el último mes y
-súmalo en euros. Además, busca una oferta con cuenta atrás y vuelve a mirarla una semana después:
-¿seguía ahí?
+súmalo en euros. Además, busca una oferta con urgencia o escasez (una cuenta atrás, «quedan
+pocas») y vuelve a mirarla una semana después: ¿seguía ahí?
 
 ---
 
@@ -755,7 +790,8 @@ en la fuente oficial. Mientras tanto, el texto usa ejemplos marcados como tales.
 | 18  | 2.5      | Que con ingresos bajos el impuesto final puede ser 0 € y se devuelve toda la retención (mínimo personal)                        | AEAT · Ley 35/2006 del IRPF, arts. 56 y 57; simulador de Renta                                                  |
 | 19  | 2.5      | Cómo afectan los ingresos de un hijo a la declaración de sus padres (mínimo por descendientes y su límite de rentas)            | AEAT · Ley 35/2006 del IRPF, art. 58                                                                            |
 | 20  | 2.5      | Formas de identificarse en Renta Web (Cl@ve, número de referencia, certificado digital)                                         | AEAT · sede electrónica, «Renta: identificación»                                                                |
+| 21  | 1.6      | Edad para contratar un pago a plazos o un crédito al consumo (mayoría de edad y capacidad para contratar)                       | BOE · Código Civil, arts. 322 y 1263; Ley 16/2011 de contratos de crédito al consumo                            |
 
-No hay `TODO(verify)` en el curso 1: no usa datos legales ni fiscales. La inflación del 3 % es una
+En el curso 1 solo hay un `TODO(verify)` (el 21, la edad para pagar a plazos). La inflación del 3 % es una
 cifra de ejemplo y lo dice en pantalla. Si en algún momento se cita un IPC real, la fuente será el
 INE.

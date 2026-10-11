@@ -234,7 +234,7 @@ está listo por si la CLI se puede usar en local.
 
 ## TODO(verify) — datos pendientes de verificar con fuente oficial
 
-_Lista completa (20 datos, todos del curso 2) en [`docs/temario.md`](./docs/temario.md#lista-de-todoverify--datos-pendientes-de-fuente-oficial). Se copiará aquí, con el archivo de cada uno, al escribir las lecciones en la fase 3._
+_Lista completa (21 datos: 20 del curso 2 y 1 del curso 1) en [`docs/temario.md`](./docs/temario.md#lista-de-todoverify--datos-pendientes-de-fuente-oficial). Se copiará aquí, con el archivo de cada uno, al escribir las lecciones en la fase 3._
 
 | Archivo | Dato | Fuente a consultar |
 | ------- | ---- | ------------------ |
@@ -254,6 +254,12 @@ Al cerrar cada fase: `npm run check` + `npm run build` + e2e, commit y resumen.
 ## Decisiones de contenido (aprobadas)
 
 - Preguntas con 4 opciones solo si las 4 son creíbles; si no, 3.
+- Un solo porcentaje de ahorro de ejemplo en todo Monedo: **el 20 %** (lecciones, preguntas,
+  evaluaciones y herramientas, incluida Meta de ahorro).
+- Se enseñan las palabras reales (coste de oportunidad, urgencia, escasez…), explicadas con
+  sencillez.
+- Con la paga, el presupuesto se hace en tres partes (lo que pagas tú, ahorro y gasto libre). La
+  regla 50/30/20 es para el primer sueldo y se presenta como puente al curso 2.
 - Evaluación final: curso 1 con 10 preguntas (aprobado 7/10) y curso 2 con 8 (aprobado 6/8).
   Banco de preguntas un 50 % más grande (15 y 12), elegidas al azar en cada intento; se puede
   repetir y al terminar se explica cada fallo.

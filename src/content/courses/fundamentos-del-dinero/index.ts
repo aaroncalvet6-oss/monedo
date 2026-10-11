@@ -44,7 +44,7 @@ export const fundamentosDelDinero = {
     {
       slug: "tu-primer-presupuesto",
       title: "Tu primer presupuesto",
-      summary: "Reparte una paga real con la regla 50/30/20.",
+      summary: "Reparte tu paga: lo que pagas tú, ahorro y gasto libre.",
       minutes: 8,
     },
     {
