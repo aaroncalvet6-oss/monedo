@@ -30,7 +30,7 @@ for (const [name, path] of pages) {
       page.on("console", (m) => m.type() === "error" && errors.push(`${path}: ${m.text()}`));
       page.on("pageerror", (e) => errors.push(`${path}: ${e.message}`));
       await page.goto(baseUrl + path, { waitUntil: "networkidle" });
-      await page.waitForTimeout(900); // let entrance animations settle
+      await page.waitForTimeout(2500); // let entrance animations and Monedo's first bubbles settle
       const file = `${name}-${device}-${colorScheme}.png`;
       await page.screenshot({ path: outDir + file, fullPage: true });
       console.log("saved", file);

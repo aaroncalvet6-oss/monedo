@@ -49,6 +49,7 @@ src/
   components/layout/      cabecera, navegación inferior, pie, contenedor, selector de tema
   components/graphics/    logotipo, SVG geométricos de marca y Monedo (el personaje)
   features/{courses,lessons,progress,tools,certificates}/   código por funcionalidad
+  features/tutor/         TutorProvider + ScriptedTutor (lo que dice Monedo)
   content/                cursos y lecciones como datos TS validados con Zod
   lib/finance/            funciones financieras puras + tests
   lib/progress/           ProgressRepository + LocalProgressRepository
@@ -98,14 +99,56 @@ Reglas de arquitectura:
 - **Añadir una lección**: crea `src/content/courses/<curso>/<leccion>.ts` (`satisfies LessonInput`),
   regístrala en `lessonContent` de `src/content/index.ts` y listo: se genera su página estática.
 - **Widgets interactivos**: el contenido los referencia por id (`config.widget`) con props
-  validadas por Zod; se registran en `features/lessons/components/widgets/interactive-step.tsx`.
+  validadas por Zod; se registran en `features/lessons/components/conversation/tutor-cards.tsx`.
 - **Progreso**: `lib/progress/` (tipos, funciones puras y repositorios) + store Zustand en
   `features/progress/` inyectado con `<ProgressProvider>`. Se guarda en cada paso (paso actual,
   pasos completados, respuestas bloqueadas tras comprobar, decisiones, días de actividad).
   Cualquier repositorio nuevo debe pasar `describeProgressRepositoryContract`.
-- **Lector** (`features/lessons/`): un bloque por pantalla y una pregunta por pantalla; preguntas y
-  decisiones bloquean «Continuar» hasta responder; retoma donde lo dejaste; ← → en escritorio;
-  el foco va al título de cada paso nuevo; barra de acción inferior con zona segura en móvil.
+- **Lector** (`features/lessons/components/lesson-reader.tsx`): la lección es una **conversación
+  con Monedo**. Monedo explica en burbujas cortas y muestra tarjetas (ejemplo, dato clave,
+  calculadora, ideas clave, reto); el alumno avanza tocando su respuesta en la barra inferior
+  o eligiendo una opción, y Monedo reacciona con su expresión (celebrando si acierta, «uy» si
+  falla, con la respuesta correcta y la explicación). El historial queda en pantalla; al volver
+  se reconstruye y Monedo retoma en el paso guardado. → continúa en escritorio; el foco sigue a la
+  conversación; `role="log"` anuncia los mensajes nuevos.
+- **Móvil**: Monedo va en su propia columna, dentro del flujo (nunca flotando): no tapa el texto
+  ni la barra de acción. Los e2e lo comprueban en cada paso de la lección 1.1.
+
+## Tutor (Monedo en las lecciones)
+
+- **Interfaz** `TutorProvider` (`features/tutor/types.ts`): `open(step)` devuelve lo que Monedo
+  dice al abrir un paso (burbujas, tarjetas, expresión y lo que puede contestar el alumno) y
+  `react(step, optionId)` su reacción a una respuesta o decisión. Es asíncrona a propósito. El
+  lector solo habla con esta interfaz.
+- **`ScriptedTutor`** (la implementación actual): todo sale de `src/content`, nada se genera en
+  tiempo real. Cada lección tiene un campo `tutor` con el guion por paso (clave = id del bloque o de
+  la pregunta): `expression`, `say` (burbujas), `after` (burbujas tras la tarjeta), `reply` (la
+  respuesta del alumno para avanzar) y, en preguntas, `correct` / `wrong`. Lo que no esté en el
+  guion usa el texto del propio bloque.
+- **Burbujas cortas**: máximo 220 caracteres; el esquema lo valida también en los textos de los
+  bloques que se usan como burbuja. Respuestas del alumno: máximo 40.
+- **Nombre**: en la interfaz es «Monedo, tu guía». Nunca «IA» (lo vigila un test).
+- **Añadir el guion a una lección**: escribe su `tutor` en el archivo de la lección; si falta, la
+  lección funciona igual con el texto de los bloques y respuestas «Continuar».
+
+## Tutor con modelo (futuro)
+
+Una versión de Monedo que responda con un modelo de IA real implementaría `TutorProvider` sin
+tocar el lector. Antes de publicarla hace falta, como mínimo:
+
+- **Backend propio** que guarde la clave de la API: nunca en el navegador ni en el repositorio. El
+  export estático de GitHub Pages no basta; haría falta una función serverless o un servidor.
+- **Respuestas limitadas al contenido de los cursos**: el backend envía al modelo solo la lección
+  actual y sus reglas; si la pregunta se sale del temario, Monedo lo dice y vuelve a la lección.
+- **Sin asesoramiento personalizado**: nada de recomendar productos, entidades, inversiones ni
+  decisiones personales (mismas «Reglas de contenido»), con filtro de salida además del prompt.
+- **Aviso claro de que es una IA** en el momento en que se usa el modelo (las partes guionizadas
+  siguen sin llamarse IA). Revisar los requisitos legales para menores antes de lanzarlo.
+- **Sin guardar conversaciones**: ni en el backend ni en registros; solo métricas agregadas sin
+  texto del alumno.
+- **Límite de gasto**: tope mensual en el proveedor, límite de peticiones por usuario y por IP,
+  respuestas cortas (máximo de tokens) y vuelta automática a `ScriptedTutor` si se supera.
+- Los e2e y los tests de contenido siguen usando `ScriptedTutor` (determinista).
 
 ## Sistema de diseño
 
@@ -168,8 +211,11 @@ como «Monedo, tu guía». Nunca uses la palabra «IA» para referirte a él.
 - **Voz**: cercano y con humor ligero, nunca infantil. Habla de tú, frases cortas, sin emojis ni
   exclamaciones en cadena. Reacciona sin juzgar («Uy, esa no era. Le pasa a cualquiera»). Mismas
   reglas de contenido que el resto: nunca recomienda productos ni decisiones personales.
+- **Canto estriado**: rayitas finas en el borde de la cara y en el grosor, para que se reconozca
+  como moneda a primera vista (sin cifras ni símbolos).
 - **Referencia**: `/design/monedo` (solo en desarrollo). Capturas en `docs/screenshots/monedo/`
-  (`npm run dev` y luego `node scripts/screenshots-monedo.mjs`).
+  (`npm run dev` y luego `node scripts/screenshots-monedo.mjs`) y del lector en
+  `docs/screenshots/reader/`.
 
 Componentes: el registro de shadcn no es accesible desde el contenedor cloud, así que los componentes
 se escriben a mano con el mismo patrón (código propio + `radix-ui` + `cva` + `cn`). `components.json`
@@ -197,6 +243,8 @@ _Lista completa (20 datos, todos del curso 2) en [`docs/temario.md`](./docs/tema
 
 1. ✅ Base: proyecto, tokens, componentes, `/design`, layout, navegación y modo oscuro.
 2. ✅ Motor de cursos: esquema Zod, `ProgressRepository`, lector con todos los bloques, lección 1.1.
+   ✅ Monedo y lector en formato conversación (`TutorProvider` + `ScriptedTutor`), lección 1.1
+   adaptada. Pendiente: probar la 1.1 con alumnos antes de escribir el resto.
 3. Contenido: resto de cursos 1 y 2, evaluaciones y certificados.
 4. Panel, catálogo, fichas de curso, perfil y herramientas.
 5. Landing, legal, SEO, tests e2e, Lighthouse y README de despliegue.

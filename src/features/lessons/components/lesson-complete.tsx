@@ -5,8 +5,9 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ProgressRing } from "@/components/ui/progress-ring";
-import { STEP_TITLE_ID } from "./blocks/step-shell";
 import type { ReaderNextLesson } from "./reader-types";
+
+export const LESSON_COMPLETE_TITLE_ID = "lesson-complete-title";
 
 export function LessonComplete({
   courseSlug,
@@ -42,7 +43,7 @@ export function LessonComplete({
           Lección completada
         </p>
         <h2
-          id={STEP_TITLE_ID}
+          id={LESSON_COMPLETE_TITLE_ID}
           tabIndex={-1}
           className="text-[1.625rem] leading-tight font-semibold tracking-tight outline-none sm:text-3xl"
         >

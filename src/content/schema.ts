@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { MONEDO_EXPRESSIONS } from "@/components/graphics/monedo-expressions";
 
 /** Kebab-case identifiers used in URLs and progress keys. */
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use kebab-case");
@@ -132,6 +133,32 @@ export const blockSchema = z.discriminatedUnion("type", [
 ]);
 
 // ---------------------------------------------------------------------------
+// Tutor script: what Monedo says in the conversational reader
+// ---------------------------------------------------------------------------
+
+/** Longest text Monedo may say in one bubble. Short bubbles read like a chat, not a page. */
+export const MAX_BUBBLE_LENGTH = 220;
+const bubble = text.max(MAX_BUBBLE_LENGTH, `Bubbles are at most ${MAX_BUBBLE_LENGTH} characters`);
+
+/**
+ * Optional per-step script, keyed by block id or quiz question id. Anything left out falls
+ * back to the block's own text (paragraphs, situation, question prompt…), which must then
+ * also fit in a bubble.
+ */
+export const tutorStepSchema = z.object({
+  expression: z.enum(MONEDO_EXPRESSIONS).optional(),
+  /** Monedo's bubbles. Text blocks: instead of the paragraphs. Others: before the card. */
+  say: z.array(bubble).min(1).max(4).optional(),
+  /** Bubbles after the card (example, key figure, widget, ideas, challenge). */
+  after: z.array(bubble).min(1).max(3).optional(),
+  /** The learner's tap-to-continue reply, e.g. «¿Y cómo se calcula?». */
+  reply: z.string().trim().min(1).max(40).optional(),
+  /** Quiz questions: Monedo's first reaction; the explanation follows. */
+  correct: bubble.optional(),
+  wrong: bubble.optional(),
+});
+
+// ---------------------------------------------------------------------------
 // Lessons and courses
 // ---------------------------------------------------------------------------
 
@@ -142,6 +169,7 @@ export const lessonSchema = z
     summary: text,
     minutes: z.number().int().min(3).max(10),
     blocks: z.array(blockSchema).min(3),
+    tutor: z.record(id, tutorStepSchema).default({}),
   })
   .superRefine((lesson, ctx) => {
     const seen = new Set<string>();
@@ -195,6 +223,48 @@ export const lessonSchema = z
     if (types.filter((t) => t === "quiz").length > 1) {
       ctx.addIssue({ code: "custom", message: "Only one quiz block per lesson", path: ["blocks"] });
     }
+
+    // Tutor script: keys must be real steps, and every fallback text must fit in a bubble.
+    for (const key of Object.keys(lesson.tutor)) {
+      if (!seen.has(key)) {
+        ctx.addIssue({
+          code: "custom",
+          message: `Tutor key "${key}" is not a step`,
+          path: ["tutor", key],
+        });
+      }
+    }
+    const long = (value: string, path: (string | number)[]) => {
+      if (value.length > MAX_BUBBLE_LENGTH) {
+        ctx.addIssue({
+          code: "custom",
+          message: `Too long for a bubble (${value.length} > ${MAX_BUBBLE_LENGTH}); shorten it or script it in "tutor"`,
+          path,
+        });
+      }
+    };
+    lesson.blocks.forEach((block, index) => {
+      const scripted = lesson.tutor[block.id]?.say !== undefined;
+      if (block.type === "text" && !scripted) {
+        block.paragraphs.forEach((p, i) => long(p, ["blocks", index, "paragraphs", i]));
+      }
+      if (block.type === "example" && !scripted) {
+        block.paragraphs.forEach((p, i) => long(p, ["blocks", index, "paragraphs", i]));
+      }
+      if (block.type === "decision") {
+        if (!scripted) long(block.situation, ["blocks", index, "situation"]);
+        block.options.forEach((o, i) => long(o.consequence, ["blocks", index, "options", i]));
+        long(block.takeaway, ["blocks", index, "takeaway"]);
+      }
+      if (block.type === "interactive" && !scripted) long(block.instructions, ["blocks", index]);
+      if (block.type === "quiz") {
+        block.questions.forEach((q, i) => {
+          if (lesson.tutor[q.id]?.say === undefined)
+            long(q.prompt, ["blocks", index, "questions", i]);
+          long(q.explanation, ["blocks", index, "questions", i, "explanation"]);
+        });
+      }
+    });
   });
 
 /** Syllabus entry. `content` is present once the lesson is written. */
@@ -229,6 +299,7 @@ export type BlockType = Block["type"];
 export type QuizQuestion = z.infer<typeof quizQuestionSchema>;
 export type Lesson = z.infer<typeof lessonSchema>;
 export type LessonInput = z.input<typeof lessonSchema>;
+export type TutorStep = z.infer<typeof tutorStepSchema>;
 export type LessonEntry = z.infer<typeof lessonEntrySchema>;
 export type Course = z.infer<typeof courseSchema>;
 export type CourseInput = z.input<typeof courseSchema>;

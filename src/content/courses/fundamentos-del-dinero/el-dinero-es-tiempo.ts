@@ -191,4 +191,89 @@ export const elDineroEsTiempo = {
       ],
     },
   ],
+  // What Monedo says in the conversational reader. Steps not listed here use the block's
+  // own text. Reviewed copy: nothing is generated at run time.
+  tutor: {
+    objetivo: {
+      expression: "normal",
+      say: [
+        "Hola, soy Monedo, tu guía en este curso.",
+        "Hoy vas a mirar los precios de otra forma: en horas de tu vida, no solo en euros. Esto es lo que vas a saber hacer:",
+      ],
+      reply: "Vamos allá",
+    },
+    "precio-real": { expression: "explaining", reply: "¿Y cómo se calcula?" },
+    "precio-por-hora": {
+      expression: "explaining",
+      say: [
+        "Fácil. Primero necesitas tu precio por hora: lo que cobras dividido entre las horas que trabajas.",
+        "Usa el sueldo neto, lo que te llega de verdad después de impuestos y cotizaciones. Lo verás a fondo en el curso «Tu primer sueldo».",
+        "¿Aún no trabajas? Haz la misma cuenta con tu paga: cuántas semanas de paga cuesta algo.",
+      ],
+      reply: "Vale. ¿Un ejemplo?",
+    },
+    "ejemplo-lucia": {
+      expression: "explaining",
+      say: [
+        "Te presento a Lucía, 17 años, de Valencia. Trabaja los sábados en una heladería: 5 horas por 40 € netos.",
+        "Quiere unas zapatillas de 90 €. Antes de comprarlas, hace la cuenta.",
+      ],
+      after: [
+        "40 € entre 5 horas son 8 € por hora. Y 90 € entre 8 son más de 11 horas: más de dos sábados enteros en la heladería.",
+      ],
+      reply: "Uf. Dos sábados.",
+    },
+    "dato-movil": {
+      expression: "explaining",
+      say: ["Y eso son unas zapatillas. Mira lo que pasa con un móvil de 600 €."],
+      after: ["No te digo que no te lo compres. Te digo que sepas lo que cuesta."],
+      reply: "Visto",
+    },
+    "calculadora-horas": {
+      expression: "normal",
+      say: [
+        "Ahora tú. Pon lo que cobras por hora, o lo que cobrarías, y el precio de algo que quieras.",
+      ],
+      reply: "Hecho",
+    },
+    "gastos-repetidos": { expression: "thinking", reply: "No lo había pensado así" },
+    "decision-videojuego": {
+      expression: "thinking",
+      say: [
+        "Te toca decidir. Aquí no hay trampa.",
+        "Sale un videojuego que te apetece mucho. Cuesta 70 € y cobras 8 € por hora. ¿Qué haces?",
+      ],
+    },
+    "ideas-clave": {
+      expression: "normal",
+      say: ["Resumen rápido. Si te quedas con tres cosas, que sean estas:"],
+      reply: "Lo tengo",
+    },
+    "q-calculo": {
+      say: [
+        "Ahora, cuatro preguntas rápidas. Sin presión: si fallas, te lo explico.",
+        "Cobras 9 € netos por hora. ¿Cuántas horas te cuesta una chaqueta de 63 €?",
+      ],
+      correct: "Eso es.",
+      wrong: "Uy, esa no era. Le pasa a cualquiera.",
+    },
+    "q-neto": {
+      correct: "Bien visto.",
+      wrong: "Uy, no. Es una confusión muy común, así que mejor verla ahora.",
+    },
+    "q-repetidos": {
+      correct: "Exacto.",
+      wrong: "Uy, casi. La clave está en los 12 meses.",
+    },
+    "q-utilidad": {
+      correct: "Eso es. Es la idea de toda la lección.",
+      wrong: "Uy, esa no era. Ni tanto ni tan poco.",
+    },
+    reto: {
+      expression: "normal",
+      say: ["Último paso: un reto para esta semana. Es lo que convierte la idea en costumbre."],
+      after: ["Y ya está. Buen trabajo."],
+      reply: "Terminar lección",
+    },
+  },
 } satisfies LessonInput;

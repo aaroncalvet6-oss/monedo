@@ -163,6 +163,23 @@ function useBlink(enabled: boolean): boolean {
 }
 
 /**
+ * Reeded edge, the fine grooves that make a coin read as a coin: radial ticks around the rim
+ * of the face and vertical grooves on the visible thickness below it. Computed once.
+ */
+const RIM_TICKS = Array.from({ length: 72 }, (_, i) => {
+  const a = (i / 72) * Math.PI * 2;
+  const [cos, sin] = [Math.cos(a), Math.sin(a)];
+  const r = (n: number) => n.toFixed(2);
+  return `M${r(60 + 38.5 * cos)} ${r(62 + 38.5 * sin)}L${r(60 + 41.5 * cos)} ${r(62 + 41.5 * sin)}`;
+}).join("");
+
+const EDGE_GROOVES = Array.from({ length: 27 }, (_, i) => {
+  const dx = -39 + i * 3;
+  const y = 62 + Math.sqrt(42 * 42 - dx * dx);
+  return `M${60 + dx} ${(y + 0.6).toFixed(2)}V${(y + 3.6).toFixed(2)}`;
+}).join("");
+
+/**
  * Monedo, the course guide: an original coin with a simple face, in brand colours.
  * Five expressions; blinks every few seconds and bounces gently while `talking`.
  * All motion stops when the learner asks for reduced motion.
@@ -204,9 +221,11 @@ export function MonedoCharacter({
         }
         style={{ transformBox: "fill-box", transformOrigin: "50% 100%" }}
       >
-        {/* Coin: the darker disc peeking below gives it thickness. */}
+        {/* Coin: the darker disc peeking below gives it thickness; the grooves make it a coin. */}
         <circle cx="60" cy="66" r="42" className="fill-brand-hover" />
         <circle cx="60" cy="62" r="42" className="fill-brand" />
+        <path d={EDGE_GROOVES} className="stroke-brand-fg" strokeOpacity={0.28} strokeWidth={1.2} />
+        <path d={RIM_TICKS} className="stroke-brand-fg" strokeOpacity={0.22} strokeWidth={1.4} />
         <circle
           cx="60"
           cy="62"
