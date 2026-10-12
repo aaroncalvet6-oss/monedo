@@ -22,6 +22,8 @@ export type TutorSection = {
   card?: TutorCard | undefined;
   /** Short paragraphs after the card. */
   after: readonly string[];
+  /** Official sources for the facts in this section. */
+  sources?: readonly { label: string; url: string }[] | undefined;
   /** Questions and decisions: the options to choose from. */
   choice?:
     | { kind: "question" | "decision"; options: readonly { id: string; label: string }[] }

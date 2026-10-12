@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { elDineroEsTiempo } from "./courses/fundamentos-del-dinero/el-dinero-es-tiempo";
 import {
@@ -31,10 +33,22 @@ describe("content registry", () => {
   it("publishes a course only when every lesson is written", () => {
     for (const course of getCourses()) {
       const written = course.lessons.every((l) => getLesson(course.slug, l.slug));
-      expect(isPublished(course), course.slug).toBe(written);
+      expect(isPublished(course), course.slug).toBe(written && !course.draft);
     }
     expect(getPublishedCourses().map((c) => c.slug)).toEqual(["fundamentos-del-dinero"]);
     expect(getUpcomingCourses().map((c) => c.slug)).not.toContain("fundamentos-del-dinero");
+  });
+
+  it("keeps course 2 as a draft: written, but not published until reviewed", () => {
+    const course = getCourse("tu-primer-sueldo")!;
+    expect(course.draft).toBe(true);
+    expect(course.lessons.every((l) => getLesson(course.slug, l.slug))).toBe(true);
+    expect(isPublished(course)).toBe(false);
+  });
+
+  it("never shows drafts in the deployed site", () => {
+    const workflow = readFileSync(join(process.cwd(), ".github/workflows/deploy.yml"), "utf8");
+    expect(workflow).not.toContain("SHOW_DRAFTS");
   });
 
   it("generates pages only for lessons of published courses", () => {

@@ -6,6 +6,42 @@ const id = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use kebab-case ids");
 const text = z.string().trim().min(1);
 const paragraphs = z.array(text).min(1);
 
+/**
+ * Official sources lessons may link to (approved list, see docs/fuentes.md). A link to any
+ * other domain fails validation, so a secondary source can never reach a learner.
+ */
+export const OFFICIAL_DOMAINS = [
+  "agenciatributaria.gob.es",
+  "seg-social.es",
+  "boe.es",
+  "sepe.es",
+  "mites.gob.es",
+  "ine.es",
+  "bde.es",
+  "cnmv.es",
+  "finanzasparatodos.es",
+  "fgd.es",
+  "consumo.gob.es",
+  "cnmc.es",
+  "educacionfpydeportes.gob.es",
+  "ecb.europa.eu",
+  "incibe.es",
+  "aepd.es",
+  "policia.es",
+  "guardiacivil.es",
+] as const;
+
+const officialSource = z.object({
+  /** What the learner will find there, e.g. «Agencia Tributaria: quién está obligado a declarar». */
+  label: text,
+  url: z.url().refine((value) => {
+    const host = new URL(value).hostname;
+    return OFFICIAL_DOMAINS.some((domain) => host === domain || host.endsWith(`.${domain}`));
+  }, "Only official sources (OFFICIAL_DOMAINS) can be linked from a lesson"),
+});
+/** Up to three official links shown under a section («Fuente oficial»). */
+const sources = z.array(officialSource).min(1).max(3).optional();
+
 // ---------------------------------------------------------------------------
 // Blocks
 // ---------------------------------------------------------------------------
@@ -23,6 +59,7 @@ export const textBlockSchema = z.object({
   title: text,
   /** One idea per screen: keep it to 1–3 short paragraphs. */
   paragraphs: paragraphs.max(3),
+  sources,
 });
 
 export const exampleBlockSchema = z.object({
@@ -55,6 +92,7 @@ export const keyFigureBlockSchema = z.object({
   unit: z.string().optional(),
   context: text,
   source: z.string().optional(),
+  sources,
 });
 
 /** Interactive widgets are referenced by id; each widget validates its own props. */
@@ -284,6 +322,8 @@ export const courseSchema = z
   .object({
     slug,
     area: z.enum(AREAS.map((a) => a.id) as [AreaId, ...AreaId[]]),
+    /** Written but waiting for editorial review: never published, even if complete. */
+    draft: z.boolean().default(false),
     order: z.number().int().positive(),
     title: text,
     tagline: text,

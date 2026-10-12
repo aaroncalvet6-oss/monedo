@@ -3,6 +3,8 @@ import type { CourseInput } from "@/content/schema";
 export const tuPrimerSueldo = {
   slug: "tu-primer-sueldo",
   area: "trabajo-e-ingresos",
+  // Waiting for editorial review before release.
+  draft: true,
   order: 2,
   title: "Tu primer sueldo",
   tagline: "Qué firmas, qué cobras y a dónde va lo que no te llega.",

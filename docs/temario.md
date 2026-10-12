@@ -442,11 +442,13 @@ de firmar y qué no te pueden pedir si tienes menos de 18 años.
 - _Alta en la Seguridad Social_: el registro que hace la empresa para que tu trabajo cuente
   oficialmente y estés protegido (por ejemplo, si tienes un accidente).
 - _Jornada_: las horas que trabajas a la semana.
-- _Periodo de prueba_: un tiempo al principio del contrato en el que la empresa o tú podéis
-  terminarlo con más facilidad. Lo trabajado se cobra siempre.
+- _Periodo de prueba_: un tiempo al principio del contrato en el que cualquiera de las dos partes,
+  la empresa o tú, puede terminar la relación `✓ fuente #5`. Tiene un máximo: en contratos
+  temporales de hasta 6 meses, 1 mes `✓ fuente #5`.
 - _Convenio colectivo_: un acuerdo entre empresas y trabajadores de un sector (hostelería,
-  comercio…) que fija mínimos de sueldo, horarios y vacaciones.
-- _Indefinido, temporal, fijo-discontinuo, formativo_: los tipos de contrato (ver ideas clave).
+  comercio…) que fija mínimos de sueldo, horarios y vacaciones `TODO(verify) #8` (fuera de la
+  lección hasta verificarlo).
+- _Indefinido, fijo discontinuo, temporal, formativo_: los tipos de contrato (ver ideas clave).
 - _Horas extra_: las que trabajas por encima de tu jornada.
 - _Trabajo nocturno_: el que se hace por la noche. Qué horas cuentan como noche lo fija la ley
   (de 22:00 a 6:00 según el art. 36 del Estatuto de los Trabajadores, `TODO(verify) #23`: hasta
@@ -457,17 +459,19 @@ de firmar y qué no te pueden pedir si tienes menos de 18 años.
 1. Trabajar con contrato y alta en la Seguridad Social te protege. «Sin papeles» significa sin
    protección si pasa algo. Antes de firmar, lee jornada, sueldo, duración, periodo de prueba y
    convenio, y quédate siempre una copia.
-2. Tipos principales: _indefinido_ (sin fecha de fin), _fijo-discontinuo_ (trabajos de temporada
-   que se repiten cada año), _temporal_ (para una necesidad concreta y con fin) y _formativo_
-   (para aprender un oficio o hacer prácticas). `TODO(verify) #3`
+2. Tipos de contrato tras la reforma laboral: _indefinido_, _fijo discontinuo_, _temporal_ (por
+   circunstancias de la producción, como mucho 6 meses, ampliables a 12 por convenio, o por
+   sustitución) y _formativos_ `✓ fuente #3`. Para qué sirve el fijo discontinuo sigue sin
+   verificar `TODO(verify) #4` y queda fuera de la lección.
 3. Si tienes menos de 18 años, la ley te protege más: **no puedes trabajar de noche ni hacer horas
    extra**, aunque la empresa te lo pida o tú quieras ganar más `✓ fuente #2`.
 
 **Ejemplo principal.** Sara, 17 años, consigue trabajo de camarera en un chiringuito de Cádiz para
 julio y agosto. Como es menor de edad, necesita el consentimiento de sus padres para firmar
-`✓ fuente #22`. Antes de firmar repasa su lista: contrato temporal del 1 de julio al 31 de agosto,
-30 horas a la semana, 1.200 € brutos al mes, periodo de prueba de unos días y convenio de hostelería
-de su provincia. Ve que no pone el horario y lo pregunta antes de firmar.
+`✓ fuente #22`. Antes de firmar repasa su lista: contrato temporal por circunstancias de la
+producción `✓ fuente #3`, de 2 meses (del 1 de julio al 31 de agosto), 30 horas a la semana y 1.200 €
+brutos al mes. Como su contrato dura menos de 6 meses, el periodo de prueba no puede pasar de 1 mes
+`✓ fuente #5`. Ve que no pone el horario y lo pregunta antes de firmar.
 
 A mitad de julio, un sábado de mucho trabajo, el encargado le pide que se quede a cerrar hasta la
 1:00 «y te pago las horas extra aparte». Sara le recuerda que tiene 17 años: no puede trabajar de
@@ -479,8 +483,7 @@ cierre a un compañero mayor de edad y ella sigue en el turno de día.
 1. A Marta, de 17 años, le ofrecen trabajar de camarera en verano «sin papeles, te pago en mano».
    ¿Cuál es el problema principal?
    A) Ninguno, si le pagan lo acordado
-   **B) No está dada de alta: si tiene un accidente no está protegida y ese trabajo no cuenta
-   oficialmente**
+   **B) No tiene contrato ni está dada de alta: oficialmente ese trabajo no existe**
    C) Que cobrará menos que con contrato
    D) Que tendrá que hacer la declaración de la renta
 2. Tienes 17 años y en el chiringuito te piden quedarte hasta la 1:00 a cerrar, «y te lo pago como
@@ -491,12 +494,11 @@ cierre a un compañero mayor de edad y ella sigue en el turno de día.
    D) Solo puedes hacerlo los fines de semana
    _Por qué: la prohibición es para proteger a los menores; no cambia aunque te paguen más ni
    aunque tú quieras. `✓ fuente #2`_
-3. Trabajas cada verano en la misma piscina municipal, en la misma temporada. ¿Qué tipo de
-   contrato encaja mejor?
-   A) Indefinido a jornada completa todo el año
-   **B) Fijo-discontinuo** `TODO(verify) #4`
-   C) Temporal por sustitución
-   D) Formativo
+3. Sara tiene un contrato temporal de 2 meses. ¿Cuánto puede durar como máximo su periodo de
+   prueba?
+   **A) 1 mes** · B) 2 meses · C) 6 meses · D) No puede tener periodo de prueba
+   _Por qué: en los contratos temporales de hasta 6 meses, el periodo de prueba no puede pasar de
+   1 mes. `✓ fuente #5`_
 4. Te dan el contrato y te dicen: «Firma aquí, ya lo leerás en casa». ¿Qué haces?
    A) Firmo: es lo normal y si no, pierdo el trabajo
    **B) Pido tiempo para leerlo, compruebo horas, sueldo, duración y periodo de prueba, y pido una
@@ -519,18 +521,18 @@ del bruto al neto y cómo comparar ofertas de trabajo.
 
 - _Sueldo bruto_: lo que pone en el contrato, antes de descuentos.
 - _Sueldo neto_: lo que te llega a la cuenta después de los descuentos.
-- _Cotizaciones a la Seguridad Social_: la parte de tu sueldo que va a la Seguridad Social y que
-  te da derechos como el paro o la jubilación. (Lección 2.4.)
+- _Cotizaciones a la Seguridad Social_: la parte de tu sueldo que va a la Seguridad Social.
+  (Lección 2.4.) Qué derechos generan sigue sin verificar `TODO(verify) #15` y queda fuera.
 - _Retención de IRPF_: una parte de tu sueldo que la empresa adelanta cada mes a Hacienda a cuenta
   de tus impuestos. (Lección 2.4.)
-- _Pagas extra_: parte de tu sueldo anual que se cobra en meses concretos (normalmente en verano y
-  en Navidad) o repartida en todas las nóminas `TODO(verify) #9`.
+- _Pagas extra_: hay dos al año, una en Navidad y otra cuando fije el convenio. Solo se reparten en
+  las 12 nóminas si el convenio lo acuerda `✓ fuente #9`.
 
 **Ideas clave**
 
 1. Neto = bruto − cotizaciones a la Seguridad Social − retención de IRPF.
-2. Un sueldo anual se puede cobrar en 12 o en 14 pagas: el total del año es el mismo, cambia cómo
-   se reparte.
+2. Un sueldo anual se cobra en 14 pagas (12 nóminas y 2 pagas extra) o, si el convenio lo acuerda,
+   en 12 con las extras repartidas `✓ fuente #9`: el total del año es el mismo, cambia cómo se reparte.
 3. Para comparar ofertas, compáralas igual: todo en bruto anual o todo en neto mensual.
 
 **Ejemplo principal.** El contrato de Sara dice 1.200 € brutos al mes, solo para el verano. Con un
@@ -560,7 +562,7 @@ ejemplo y retención mínima del 2 %).
    _Por qué: 1.200 − 72 − 24 = 1.104. La B solo resta la cotización y la C solo el IRPF._
 4. ¿Qué es una paga extra?
    A) Un premio que la empresa da si quiere
-   **B) Parte de tu sueldo anual que se cobra en meses concretos o repartida en las nóminas**
+   **B) Parte de tu sueldo anual: hay dos al año, una en Navidad y otra cuando fije el convenio**
    C) Lo que te pagan por las horas extra
    D) El dinero que te devuelve Hacienda
 
@@ -577,21 +579,21 @@ cuadra.
 
 **Términos nuevos**
 
-- _Nómina_: el documento que te da la empresa cada mes con lo que has ganado, lo que te descuentan
-  y lo que cobras `TODO(verify) #12`.
+- _Nómina_: el documento con lo que has ganado en el mes, lo que te descuentan y lo que cobras. La
+  obligación de entregarla y su modelo oficial siguen sin verificar `TODO(verify) #12`: la lección no
+  describe la estructura oficial, solo un ejemplo simplificado.
 - _Devengos_: todo lo que has ganado ese mes (salario base, pluses, la parte de las pagas extra…).
 - _Salario base_: la parte fija de tu sueldo.
 - _Plus o complemento_: dinero extra por algo concreto (transporte, trabajar de noche, idiomas…).
 - _Deducciones_: lo que te descuentan: tus cotizaciones y la retención de IRPF.
 - _Líquido a percibir_: lo que te ingresan. Devengos − deducciones.
-- _Base de cotización_: la cantidad sobre la que se calculan los porcentajes de las cotizaciones.
 - _Aportación de la empresa_: lo que la empresa paga a la Seguridad Social por ti, aparte de tu
-  sueldo. Aparece en la nómina solo para informarte; no te lo descuentan.
+  sueldo. No te lo descuentan a ti.
 
 **Ideas clave**
 
-1. Una nómina tiene cuatro partes: datos (empresa, tú, periodo), devengos, deducciones y líquido a
-   percibir.
+1. En una nómina vas a ver lo que has ganado (devengos), lo que te descuentan (deducciones) y lo que
+   cobras (líquido a percibir).
 2. La cuenta que siempre tienes que comprobar: devengos − deducciones = líquido a percibir = lo que
    llega a tu cuenta.
 3. La empresa paga a la Seguridad Social por ti más de lo que te descuentan a ti `✓ fuente #13`:
@@ -610,9 +612,8 @@ cuadra.
 | **Total a deducir**                       | **−96,00**   |
 | **Líquido a percibir**                    | **1.104,00** |
 
-Debajo aparece la aportación de la empresa: lo que la empresa paga por Sara y que no sale de su
-sueldo. La nómina del ejemplo es inventada y simplificada: una real tiene más líneas
-`TODO(verify) #12`.
+Además, la empresa paga a la Seguridad Social por Sara más de lo que le descuentan a ella, sin
+sacarlo de su sueldo `✓ fuente #13`. La nómina del ejemplo es inventada y simplificada.
 
 **Preguntas**
 
@@ -628,17 +629,16 @@ sueldo. La nómina del ejemplo es inventada y simplificada: una real tiene más 
    **B) En las deducciones, como retención de IRPF**
    C) En los datos de la empresa
    D) En la aportación de la empresa
-4. Ves en tu nómina «aportación de la empresa» con una cantidad mayor que tus cotizaciones. ¿Qué
-   significa?
-   A) Que te lo descuentan a ti también, aparte
-   **B) Que es lo que la empresa paga a la Seguridad Social por ti, además de tu sueldo; no sale de
-   tu nómina**
-   C) Que hay un error y debes reclamarlo
-   D) Que es una paga extra que cobrarás más adelante
+4. ¿Quién paga más a la Seguridad Social por tu trabajo?
+   A) Tú, porque te lo descuentan de la nómina
+   **B) La empresa: paga por ti más de lo que te descuentan a ti, sin sacarlo de tu sueldo**
+   C) Los dos pagan exactamente lo mismo
+   D) Nadie: solo se paga cuando te jubilas
+   _Por qué: tu trabajo le cuesta a la empresa más que tu sueldo bruto. `✓ fuente #13`_
 
 **Reto práctico.** Con la nómina de ejemplo de la lección (o una real que alguien de tu familia
-quiera enseñarte, tapando los datos personales), localiza las cuatro partes y comprueba que
-devengos − deducciones = líquido a percibir.
+quiera enseñarte, tapando los datos personales), localiza los devengos, las deducciones y el líquido
+a percibir, y comprueba que devengos − deducciones = líquido a percibir.
 
 ---
 
@@ -656,27 +656,26 @@ qué sirven y por qué, en el IRPF, ganar más nunca hace que te quedes con meno
 - _Tramo_: cada franja de ingresos de la tabla del IRPF. Cada franja tiene su porcentaje.
 - _Impuesto progresivo_: quien gana más paga un porcentaje mayor, pero **solo por la parte que
   supera cada tramo**.
-- _Seguridad Social_: el sistema público que paga, entre otras cosas, las pensiones de jubilación,
-  el paro y las bajas por enfermedad.
-- _Prestación_: el dinero que te paga la Seguridad Social en esas situaciones.
+- _Seguridad Social_: el sistema público al que van las cotizaciones. Qué prestaciones generan sigue
+  sin verificar `TODO(verify) #15` y queda fuera de la lección.
 
 **Ideas clave**
 
 1. La retención de IRPF de cada nómina es un adelanto. Una vez al año, en la declaración, se
    calcula el impuesto real y te devuelven o pagas la diferencia (lección 2.5).
-2. El IRPF va por tramos: el porcentaje más alto solo se aplica al dinero que pasa del límite. Por
+2. El IRPF va por tramos, con una escala estatal y otra autonómica: cada porcentaje solo se aplica a
+   la parte que cae en su tramo `✓ fuente #14`. Por
    el IRPF, ganar más nunca te deja con menos dinero. Otras cosas con límites de ingresos, como
    algunas becas o ayudas, sí pueden tener saltos: compruébalo en cada caso.
-3. Las cotizaciones no son dinero perdido: generan derechos para ti, como la jubilación futura, el
-   paro o las bajas `TODO(verify) #15`. Y los impuestos pagan servicios que usas cada día.
+3. Las cotizaciones a la Seguridad Social son otra cosa: se descuentan de tu nómina y la empresa
+   también cotiza por ti, más que tú `✓ fuente #13`.
 
 **Ejemplo principal.** Los tramos de este ejemplo son **inventados** para entender la idea (los
-reales son otros y cambian según la comunidad autónoma `TODO(verify) #14`): imagina que hasta 10.000 €
+reales son una escala estatal más otra autonómica y cambian `✓ fuente #14`; la lección no los da): imagina que hasta 10.000 €
 al año pagas un 0 % y por lo que pase de 10.000 € pagas un 20 %. Si Sara ganara 13.000 € en un
 año, solo pagaría el 20 % de 3.000 €: **600 €**, no el 20 % de 13.000 € (2.600 €). Su compañera,
 que gana 9.000 €, paga 0 €. Si a Sara le suben el sueldo y pasa de tramo, por el IRPF gana más
-dinero, no menos. Además, los 72 € de cotización de Sara en julio cuentan como días trabajados para su
-futuro.
+dinero, no menos.
 
 **Dato clave:** 600 € · lo que pagaría Sara con los tramos del ejemplo, y no 2.600 €.
 
@@ -702,11 +701,12 @@ futuro.
    diferencia**
    C) Una multa por cobrar en verano
    D) Tu cotización a la Seguridad Social
-4. ¿Para qué sirven tus cotizaciones a la Seguridad Social?
-   A) Solo pagan las pensiones de otros; a ti no te sirven de nada
-   **B) Generan derechos para ti, como la jubilación, el paro o las bajas por enfermedad**
-   C) Son un ahorro que te devuelven cuando dejas el trabajo
-   D) Sirven para pagar el sueldo de tu jefe
+4. ¿Qué diferencia hay entre la retención de IRPF y la cotización a la Seguridad Social?
+   A) Ninguna: son lo mismo con dos nombres
+   **B) La retención es un adelanto del impuesto sobre lo que ganas; la cotización va a la Seguridad
+   Social, y la empresa también cotiza por ti**
+   C) La cotización solo la pagan los autónomos
+   D) La retención solo se aplica a los mayores de edad
 
 **Reto práctico.** Haz una lista de cinco servicios públicos que hayas usado esta semana
 (instituto, centro de salud, autobús, biblioteca, polideportivo…). Al lado de cada uno, escribe

@@ -53,7 +53,13 @@ export class ScriptedTutor implements TutorProvider {
           minutes: this.lesson.minutes,
         });
       case "text":
-        return { label, title: block.title, paragraphs: script.say ?? block.paragraphs, after };
+        return {
+          label,
+          title: block.title,
+          paragraphs: script.say ?? block.paragraphs,
+          after,
+          sources: block.sources,
+        };
       case "example":
         // The character goes in the label so the reader meets them before the story.
         return {
@@ -61,7 +67,7 @@ export class ScriptedTutor implements TutorProvider {
           label: `${label} · ${block.character}`,
         };
       case "key-figure":
-        return withCard("Dato clave", { kind: "key-figure", block });
+        return { ...withCard("Dato clave", { kind: "key-figure", block }), sources: block.sources };
       case "interactive":
         return withCard(block.title, { kind: "interactive", block }, [block.instructions]);
       case "key-ideas":

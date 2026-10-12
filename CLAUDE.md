@@ -68,7 +68,9 @@ Reglas de arquitectura:
 - **Nada a medio hacer a la vista**: un curso solo se publica (catálogo, inicio, ficha y páginas de
   lección) cuando **todas** sus lecciones están escritas y sus datos verificados (`isPublished` en
   `content/index.ts`). Los demás aparecen, como mucho, por su título en «Próximos cursos» al final del
-  catálogo. Nada de «Pronto», «Próximamente» ni herramientas sin terminar
+  catálogo. Un curso con `draft: true` está escrito pero pendiente de revisión editorial: nunca se
+  publica; para revisarlo, compila en local con `NEXT_PUBLIC_SHOW_DRAFTS=1 npm run build` (un test
+  impide usarlo en el despliegue). Nada de «Pronto», «Próximamente» ni herramientas sin terminar
   (`features/tools/tools.ts` lista solo las publicadas). Las lecciones no remiten a cursos sin
   publicar.
 - **Web pública solo para el alumno**: nada de textos sobre cómo está hecha la web (tecnologías,
@@ -213,28 +215,34 @@ está listo por si la CLI se puede usar en local.
   decisiones personales de inversión. Ninguna marca de banco, bróker ni producto financiero.
 - Toda mención a rentabilidad aclara que **no está garantizada y que las inversiones pueden bajar**.
 - **Nada de cifras que cambian cada año** (límites para declarar, tramos del IRPF, porcentajes de
-  cotización, fechas de campaña): explica el concepto y enlaza a la fuente oficial.
-- **Fuentes**: cada dato legal o fiscal se verifica en agenciatributaria.gob.es, seg-social.es o
-  boe.es y se apunta en [`docs/fuentes.md`](./docs/fuentes.md) con enlace exacto y fecha de
-  consulta. Sin esa fila completa, el dato no entra en una lección. Una fuente secundaria vale solo
-  de forma provisional y se sustituye por la oficial antes de publicar la lección.
+  cotización, fechas de campaña): explica el concepto y enlaza a la fuente oficial con el campo
+  `sources` de los bloques `text` y `key-figure`. El esquema solo acepta dominios de
+  `OFFICIAL_DOMAINS`, así que una fuente secundaria nunca llega al alumno.
+- **Fuentes**: cada dato legal o fiscal se verifica en una fuente oficial y se apunta en
+  [`docs/fuentes.md`](./docs/fuentes.md) con enlace exacto y fecha de consulta. Fuentes oficiales
+  válidas: Agencia Tributaria, Seguridad Social, BOE, SEPE, Ministerio de Trabajo, INE, Banco de
+  España (y su Portal del Cliente Bancario), CNMV, finanzasparatodos.es, Fondo de Garantía de
+  Depósitos, Ministerio de Consumo, CNMC, Ministerio de Educación, BCE, INCIBE, AEPD, Policía
+  Nacional y Guardia Civil. Una fuente secundaria solo vale si cita el texto legal literalmente;
+  queda marcada «secundaria» y se sustituye por la oficial antes de publicar la lección. Sin fila
+  verificada, el dato no entra en una lección.
 - **No inventar cifras legales o fiscales.** Todo dato sobre IRPF, Seguridad Social, salario mínimo,
   umbrales para declarar, etc. lleva `// TODO(verify) #n` (su fila en `docs/fuentes.md`) hasta que
   se verifica; entonces `// fuente #n` con el enlace oficial.
 
 ## TODO(verify) — datos pendientes de verificar con fuente oficial
 
-_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 58 datos, 10 verificados (5 en web
-oficial y 5 en fuente secundaria, pendientes de sustituir por la oficial) y 48 sin verificar (35 de
-ellos, filas 24 a 58, son de los cursos de la hoja de ruta). En el
-temario cada dato lleva `✓ fuente #n` o `TODO(verify) #n`. Lo que está sin verificar no entra en
-las lecciones._
+_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 58 datos, 14 verificados (5 en web
+oficial y 9 en fuente secundaria, pendientes de sustituir por la oficial) y 44 sin verificar (35 de
+ellos, filas 24 a 58, son de los cursos de la hoja de ruta). En el temario cada dato lleva
+`✓ fuente #n` o `TODO(verify) #n`. Lo que está sin verificar no entra en las lecciones._
 
 ## Fases
 
 1. ✅ Base: proyecto, tokens, componentes, `/design`, layout, navegación y modo oscuro.
 2. ✅ Motor de cursos: esquema Zod, `ProgressRepository`, lector, `TutorProvider` + `ScriptedTutor`.
-3. Contenido. ✅ Curso 1 completo (6 lecciones). Pendiente: curso 2 (temario cerrado), evaluaciones y
+3. Contenido. ✅ Curso 1 completo (6 lecciones). ✅ Curso 2 escrito (5 lecciones), en borrador hasta la
+   revisión editorial y hasta sustituir sus fuentes secundarias. Pendiente: evaluaciones y
    certificados. Hoja de ruta del catálogo (13 cursos en 4 áreas) en `docs/temario.md`.
 4. ✅ Inicio como centro (con el panel), catálogo por áreas, fichas de curso y perfil. Pendiente:
    herramientas de interés compuesto, presupuesto para adolescentes y meta de ahorro.

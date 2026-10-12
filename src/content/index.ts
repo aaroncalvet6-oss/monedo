@@ -9,6 +9,11 @@ import { trampasDeConsumo } from "./courses/fundamentos-del-dinero/trampas-de-co
 import { tuPrimerPresupuesto } from "./courses/fundamentos-del-dinero/tu-primer-presupuesto";
 import { queNoTeEstafen } from "./courses/que-no-te-estafen";
 import { tuPrimerSueldo } from "./courses/tu-primer-sueldo";
+import { brutoYNeto } from "./courses/tu-primer-sueldo/bruto-y-neto";
+import { irpfYSeguridadSocial } from "./courses/tu-primer-sueldo/irpf-y-seguridad-social";
+import { leerUnaNomina } from "./courses/tu-primer-sueldo/leer-una-nomina";
+import { primeraDeclaracionDeLaRenta } from "./courses/tu-primer-sueldo/primera-declaracion-de-la-renta";
+import { tiposDeContrato } from "./courses/tu-primer-sueldo/tipos-de-contrato";
 import { courseSchema, lessonSchema, type Course, type Lesson, type LessonEntry } from "./schema";
 
 /**
@@ -36,6 +41,13 @@ const lessonContent: Record<string, readonly Lesson[]> = {
     tuPrimerPresupuesto,
     trampasDeConsumo,
   ].map((lesson) => lessonSchema.parse(lesson)),
+  "tu-primer-sueldo": [
+    tiposDeContrato,
+    brutoYNeto,
+    leerUnaNomina,
+    irpfYSeguridadSocial,
+    primeraDeclaracionDeLaRenta,
+  ].map((lesson) => lessonSchema.parse(lesson)),
 };
 
 function assertRegistryConsistency(): void {
@@ -62,10 +74,17 @@ export function getCourses(): readonly Course[] {
 }
 
 /**
+ * Review builds only (`NEXT_PUBLIC_SHOW_DRAFTS=1 npm run build`): draft courses show up so
+ * they can be checked before release. Never set in the deploy workflow.
+ */
+const SHOW_DRAFTS = process.env.NEXT_PUBLIC_SHOW_DRAFTS === "1";
+
+/**
  * A course is published only when every lesson in its syllabus is written (and, by
  * process, its legal data verified in docs/fuentes.md). Nothing half-done is shown.
  */
 export function isPublished(course: Course): boolean {
+  if (course.draft && !SHOW_DRAFTS) return false;
   return course.lessons.every((lesson) => hasContent(course.slug, lesson.slug));
 }
 

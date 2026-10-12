@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLink } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { Callout } from "@/components/ui/callout";
 import { ChoiceGroup, ChoiceItem, type ChoiceStatus } from "@/components/ui/choice-group";
@@ -57,6 +58,27 @@ export function SectionView({
       <Paragraphs items={section.paragraphs} />
       {section.card ? <SectionCard card={section.card} /> : null}
       <Paragraphs items={section.after} />
+      {section.sources ? (
+        <div className="flex measure flex-col gap-1 border-l-2 border-border pl-4">
+          <p className="text-sm font-medium text-fg-muted">Fuente oficial</p>
+          <ul className="flex flex-col">
+            {section.sources.map((source) => (
+              <li key={source.url}>
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-1 text-base text-brand-text underline underline-offset-4 hover:text-fg focus-visible:outline-2 focus-visible:outline-focus md:min-h-0"
+                >
+                  {source.label}
+                  <ExternalLink aria-hidden className="size-3.5 shrink-0" />
+                  <span className="sr-only">(se abre en otra pestaña)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
       {choice ? (
         <ChoiceGroup
           aria-labelledby={STEP_TITLE_ID}
