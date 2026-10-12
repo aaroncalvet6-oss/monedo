@@ -2,8 +2,6 @@ import type { LessonInput } from "@/content/schema";
 
 const MANUAL =
   "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025";
-const MANUAL_EN_GB =
-  "https://sede.agenciatributaria.gob.es/Sede/en_gb/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025";
 
 /**
  * Lesson 2.4. Withholding is a payment on account (fuente #59). Brackets (fuente #14) are
@@ -56,11 +54,11 @@ export const irpfYSeguridadSocial = {
       sources: [
         {
           label: "Agencia Tributaria: escala estatal",
-          url: `${MANUAL_EN_GB}/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-estatal.html`,
+          url: `${MANUAL}/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-estatal.html`,
         },
         {
           label: "Agencia Tributaria: escala autonómica",
-          url: `${MANUAL_EN_GB}/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-autonomico.html`,
+          url: `${MANUAL}/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-autonomico.html`,
         },
       ],
     },

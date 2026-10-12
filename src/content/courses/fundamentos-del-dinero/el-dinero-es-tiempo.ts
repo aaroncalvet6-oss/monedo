@@ -38,6 +38,7 @@ export const elDineroEsTiempo = {
         "Usa lo que te llega de verdad: el sueldo neto, lo que queda después de impuestos y cotizaciones.",
         "¿Aún no trabajas? Haz la misma cuenta con tu paga: cuántas semanas de paga cuesta algo.",
       ],
+      tool: "horas-de-trabajo",
     },
     {
       type: "example",

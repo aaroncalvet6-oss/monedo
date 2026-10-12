@@ -41,6 +41,9 @@ test.describe("touch targets", () => {
   for (const path of [
     "/",
     "/herramientas",
+    "/herramientas/interes-compuesto",
+    "/herramientas/presupuesto",
+    "/herramientas/meta-de-ahorro",
     "/perfil",
     "/legal",
     "/cursos",

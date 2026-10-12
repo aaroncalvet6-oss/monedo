@@ -82,6 +82,17 @@ export const inflacion = {
         "es lo que podrán comprar dentro de tres años los 100 € de Marcos si los precios suben un 3 % al año (cifra de ejemplo).",
     },
     {
+      type: "text",
+      id: "interes-compuesto",
+      title: "El mismo efecto, a tu favor",
+      paragraphs: [
+        "La inflación se acumula: cada año los precios suben sobre lo que ya subieron. Con el ahorro puede pasar lo mismo, pero a tu favor.",
+        "Si tu dinero gana un porcentaje y lo dejas ahí, al año siguiente también gana sobre lo ganado. Eso es el interés compuesto: cuanto más tiempo, más se nota.",
+        "Ninguna rentabilidad está garantizada y las inversiones pueden bajar. Pruébalo con cifras de ejemplo.",
+      ],
+      tool: "interes-compuesto",
+    },
+    {
       type: "key-ideas",
       id: "ideas-clave",
       items: [

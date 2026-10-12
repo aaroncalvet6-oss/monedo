@@ -1,4 +1,4 @@
-import type { Block } from "@/content/schema";
+import type { Block, ToolId } from "@/content/schema";
 import type { Step } from "@/features/lessons/lib/steps";
 
 type BlockOf<T extends Block["type"]> = Extract<Block, { type: T }>;
@@ -24,6 +24,8 @@ export type TutorSection = {
   after: readonly string[];
   /** Official sources for the facts in this section. */
   sources?: readonly { label: string; url: string }[] | undefined;
+  /** A tool to practise this section. */
+  tool?: ToolId | undefined;
   /** Questions and decisions: the options to choose from. */
   choice?:
     | { kind: "question" | "decision"; options: readonly { id: string; label: string }[] }

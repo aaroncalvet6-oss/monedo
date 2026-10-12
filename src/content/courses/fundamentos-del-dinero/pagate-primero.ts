@@ -48,6 +48,7 @@ export const pagatePrimero = {
         "Con una meta así, ahorrar tiene sentido y es más fácil decir que no a un capricho.",
         "Para saber cuánto apartar cada mes, divide lo que necesitas entre los meses que faltan.",
       ],
+      tool: "meta-de-ahorro",
     },
     {
       type: "example",

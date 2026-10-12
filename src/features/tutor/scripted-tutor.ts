@@ -59,6 +59,7 @@ export class ScriptedTutor implements TutorProvider {
           paragraphs: script.say ?? block.paragraphs,
           after,
           sources: block.sources,
+          tool: block.tool,
         };
       case "example":
         // The character goes in the label so the reader meets them before the story.

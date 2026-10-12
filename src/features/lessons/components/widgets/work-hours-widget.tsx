@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 import { InputWithUnit } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { formatNumber } from "@/lib/format";
+import { formatNumber, parseEuroInput, toEuroInput as toInputValue } from "@/lib/format";
 import { workHoursFor } from "@/lib/finance/work-hours";
 import { cn } from "@/lib/utils";
 
@@ -15,16 +15,7 @@ const presets = [
   { label: "Móvil", price: 600 },
 ];
 
-/** Parses Spanish-formatted input: "1.234,50" → 1234.5. Empty or invalid → NaN. */
-export function parseEuroInput(value: string): number {
-  const normalised = value.trim().replace(/\s|€/g, "").replace(/\./g, "").replace(",", ".");
-  if (normalised === "" || !/^\d*\.?\d*$/.test(normalised)) return Number.NaN;
-  return Number.parseFloat(normalised);
-}
-
-function toInputValue(n: number): string {
-  return formatNumber(n, 2).replace(/\./g, "");
-}
+export { parseEuroInput };
 
 export function WorkHoursWidget({
   defaultPrice,

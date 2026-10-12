@@ -99,7 +99,7 @@ export const primeraDeclaracionDeLaRenta = {
       sources: [
         {
           label: "Agencia Tributaria: reducción por obtención de rendimientos del trabajo",
-          url: `${AEAT}/Sede/en_gb/ayuda/manuales-videos-folletos/manuales-ayuda-presentacion/irpf-2025/7-cumplimentacion-irpf/7_1-rendimientos-trabajo-personal/7_1_6-reduccion-obtencion-rendimientos-trabajo.html`,
+          url: `${AEAT}/Sede/ayuda/manuales-videos-folletos/manuales-ayuda-presentacion/irpf-2025/7-cumplimentacion-irpf/7_1-rendimientos-trabajo-personal/7_1_6-reduccion-obtencion-rendimientos-trabajo.html`,
         },
         {
           label: "Agencia Tributaria: mínimo del contribuyente",

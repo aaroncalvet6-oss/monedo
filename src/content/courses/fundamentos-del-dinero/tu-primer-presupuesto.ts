@@ -40,6 +40,7 @@ export const tuPrimerPresupuesto = {
         "Ahorro: el 20 % de lo que recibes, apartado el primer día.",
         "Gasto libre: lo que queda, para lo que quieras. Cine, juegos, salir.",
       ],
+      tool: "presupuesto",
     },
     {
       type: "example",

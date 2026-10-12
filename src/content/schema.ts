@@ -43,6 +43,15 @@ const officialSource = z.object({
 /** Up to three official links shown under a section («Fuente oficial»). */
 const sources = z.array(officialSource).min(1).max(3).optional();
 
+/** Published tools a lesson can link to (registry in features/tools/tools.ts). */
+export const TOOL_IDS = [
+  "horas-de-trabajo",
+  "interes-compuesto",
+  "presupuesto",
+  "meta-de-ahorro",
+] as const;
+export type ToolId = (typeof TOOL_IDS)[number];
+
 // ---------------------------------------------------------------------------
 // Blocks
 // ---------------------------------------------------------------------------
@@ -61,6 +70,8 @@ export const textBlockSchema = z.object({
   /** One idea per screen: keep it to 1–3 short paragraphs. */
   paragraphs: paragraphs.max(3),
   sources,
+  /** A tool to practise this section, linked under it. The tool links back to this lesson. */
+  tool: z.enum(TOOL_IDS).optional(),
 });
 
 export const exampleBlockSchema = z.object({

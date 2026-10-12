@@ -65,6 +65,10 @@ Reglas de arquitectura:
 - **Contenido** = datos. Añadir un curso es añadir archivos en `src/content/`; si no valida con Zod,
   el build falla.
 - **Lógica financiera** solo en `src/lib/finance/`, funciones puras con tests de casos límite.
+- **Herramientas**: registro en `features/tools/tools.ts` (`TOOL_IDS` en `content/schema.ts`). Cada
+  una enlaza a la lección que la explica, y esa lección la enlaza con el campo `tool` de un bloque
+  `text` (lo vigila `tools.test.ts`). Valores de ejemplo cargados, resultado explicado en una frase
+  y nada se guarda: el estado vive solo en la página.
 - **Nada a medio hacer a la vista**: un curso solo se publica (catálogo, inicio, ficha y páginas de
   lección) cuando **todas** sus lecciones están escritas y sus datos verificados (`isPublished` en
   `content/index.ts`). Los demás aparecen, como mucho, por su título en «Próximos cursos» al final del
@@ -245,8 +249,9 @@ ruta). En el temario cada dato lleva
 3. Contenido. ✅ Curso 1 completo (6 lecciones). ✅ Curso 2 publicado (5 lecciones), revisado y con
    todas sus fuentes verificadas. Pendiente: evaluaciones y
    certificados. Hoja de ruta del catálogo (13 cursos en 4 áreas) en `docs/temario.md`.
-4. ✅ Inicio como centro (con el panel), catálogo por áreas, fichas de curso y perfil. Pendiente:
-   herramientas de interés compuesto, presupuesto para adolescentes y meta de ahorro.
+4. ✅ Inicio como centro (con el panel), catálogo por áreas, fichas de curso y perfil. ✅ Herramientas
+   (horas de trabajo, presupuesto, meta de ahorro e interés compuesto), cada una en
+   `/herramientas/<id>` y enlazada con su lección en los dos sentidos.
 5. Landing, legal, SEO, tests e2e, Lighthouse y README de despliegue.
 
 Al cerrar cada fase: `npm run check` + `npm run build` + e2e, commit y resumen.

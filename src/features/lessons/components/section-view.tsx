@@ -1,9 +1,11 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
+import { ArrowRight, Calculator, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { Callout } from "@/components/ui/callout";
 import { ChoiceGroup, ChoiceItem, type ChoiceStatus } from "@/components/ui/choice-group";
+import { getTool, toolHref } from "@/features/tools/tools";
 import type { TutorFeedback, TutorSection } from "@/features/tutor/types";
 import { keepUnits } from "@/lib/format";
 import { SectionCard } from "./section-cards";
@@ -79,6 +81,7 @@ export function SectionView({
           </ul>
         </div>
       ) : null}
+      {section.tool ? <ToolLink id={section.tool} /> : null}
       {choice ? (
         <ChoiceGroup
           aria-labelledby={STEP_TITLE_ID}
@@ -142,5 +145,24 @@ function Paragraphs({ items }: { items: readonly string[] }) {
         <p key={paragraph}>{keepUnits(paragraph)}</p>
       ))}
     </div>
+  );
+}
+
+function ToolLink({ id }: { id: NonNullable<TutorSection["tool"]> }) {
+  const tool = getTool(id);
+  return (
+    <Link
+      href={toolHref(tool)}
+      className="flex measure items-center gap-4 rounded-lg border border-border bg-surface p-4 transition-colors duration-(--duration-fast) hover:border-border-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+    >
+      <span className="grid size-10 shrink-0 place-items-center rounded-md bg-brand-subtle text-brand-subtle-fg">
+        <Calculator aria-hidden className="size-5" />
+      </span>
+      <span className="flex min-w-0 flex-1 flex-col">
+        <span className="text-sm text-fg-muted">Practica con la herramienta</span>
+        <span className="text-lg font-medium">{tool.title}</span>
+      </span>
+      <ArrowRight aria-hidden className="size-5 shrink-0 text-fg-muted" />
+    </Link>
   );
 }

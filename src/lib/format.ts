@@ -54,3 +54,20 @@ export function formatDate(date: Date): string {
 export function keepUnits(text: string): string {
   return text.replace(/(\d) (?=(€|h\b|%|horas|meses|años|gemas|min\b))/g, "$1 ");
 }
+
+/** Parses Spanish-formatted input: "1.234,50" → 1234.5. Empty or invalid → NaN. */
+export function parseEuroInput(value: string): number {
+  const normalised = value.trim().replace(/\s|€/g, "").replace(/\./g, "").replace(",", ".");
+  if (normalised === "" || !/^\d*\.?\d*$/.test(normalised)) return Number.NaN;
+  return Number.parseFloat(normalised);
+}
+
+/** The text an amount input starts with: 1234.5 → "1234,5". */
+export function toEuroInput(n: number): string {
+  return formatNumber(n, 2).replace(/\./g, "");
+}
+
+/** «junio de 2027». */
+export function formatMonthYear(date: Date): string {
+  return new Intl.DateTimeFormat(LOCALE, { month: "long", year: "numeric" }).format(date);
+}
