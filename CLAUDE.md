@@ -224,8 +224,9 @@ está listo por si la CLI se puede usar en local.
 
 ## TODO(verify) — datos pendientes de verificar con fuente oficial
 
-_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 23 datos, 10 verificados (5 en web
-oficial y 5 en fuente secundaria, pendientes de sustituir por la oficial) y 13 sin verificar. En el
+_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 58 datos, 10 verificados (5 en web
+oficial y 5 en fuente secundaria, pendientes de sustituir por la oficial) y 48 sin verificar (35 de
+ellos, filas 24 a 58, son de los cursos de la hoja de ruta). En el
 temario cada dato lleva `✓ fuente #n` o `TODO(verify) #n`. Lo que está sin verificar no entra en
 las lecciones._
 
@@ -234,7 +235,7 @@ las lecciones._
 1. ✅ Base: proyecto, tokens, componentes, `/design`, layout, navegación y modo oscuro.
 2. ✅ Motor de cursos: esquema Zod, `ProgressRepository`, lector, `TutorProvider` + `ScriptedTutor`.
 3. Contenido. ✅ Curso 1 completo (6 lecciones). Pendiente: curso 2 (temario cerrado), evaluaciones y
-   certificados.
+   certificados. Hoja de ruta del catálogo (13 cursos en 4 áreas) en `docs/temario.md`.
 4. ✅ Inicio como centro (con el panel), catálogo por áreas, fichas de curso y perfil. Pendiente:
    herramientas de interés compuesto, presupuesto para adolescentes y meta de ahorro.
 5. Landing, legal, SEO, tests e2e, Lighthouse y README de despliegue.

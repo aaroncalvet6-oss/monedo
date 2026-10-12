@@ -1,4 +1,4 @@
-# Temario de Monedo · Cursos 1 y 2
+# Temario de Monedo
 
 Documento de trabajo para aprobar el contenido **antes** de escribir las lecciones completas
 (fase 3). Para cada lección: objetivo, términos nuevos, 3 ideas clave, ejemplo principal,
@@ -794,6 +794,237 @@ declaración (antes, que lo hable en casa).
 **Reto práctico.** Entra en la web de la Agencia Tributaria sin iniciar sesión. Busca la sección de
 la Renta, apunta las fechas de la campaña de este año y las formas de identificarte. Si alguien en
 casa hace la declaración, pregúntale si usa el borrador y si te tiene en cuenta como descendiente.
+
+---
+
+## Hoja de ruta del catálogo
+
+Catálogo completo previsto, por áreas. Para cada curso: objetivo, 3 ideas clave y los datos que
+habrá que verificar antes de escribir sus lecciones (filas `#n` de [`fuentes.md`](./fuentes.md)).
+Las lecciones de cada curso se detallarán en este documento, como los cursos 1 y 2, antes de
+escribirlas. Ningún curso se publica hasta tener todas sus lecciones escritas y sus datos
+verificados.
+
+**Fuentes oficiales por tema.** Además de la Agencia Tributaria, la Seguridad Social y el BOE,
+estos cursos necesitan otros organismos oficiales: Banco de España (Portal del Cliente Bancario),
+CNMV, Ministerio de Consumo, CNMC, Ministerio de Educación, INE, Banco Central Europeo e INCIBE. Se
+propone añadirlos a la lista de fuentes válidas de `CLAUDE.md`.
+
+| Área                          | Curso                          | Estado          |
+| ----------------------------- | ------------------------------ | --------------- |
+| Tu dinero hoy                 | Fundamentos del dinero         | Publicado       |
+| Tu dinero hoy                 | Bancos y pagos                 | Hoja de ruta    |
+| Tu dinero hoy                 | Consumo inteligente            | Hoja de ruta    |
+| Trabajo e ingresos            | Tu primer sueldo               | Temario cerrado |
+| Trabajo e ingresos            | Ganar dinero por tu cuenta     | Hoja de ruta    |
+| Trabajo e ingresos            | Estudios y carrera             | Hoja de ruta    |
+| Hacer crecer tu dinero        | Ahorro e inversión: lo básico  | Hoja de ruta    |
+| Hacer crecer tu dinero        | Deudas y créditos              | Hoja de ruta    |
+| Hacer crecer tu dinero        | Cripto, trading y falsos gurús | Hoja de ruta    |
+| Protégete y entiende el mundo | Que no te estafen              | Hoja de ruta    |
+| Protégete y entiende el mundo | Impuestos y Estado             | Hoja de ruta    |
+| Protégete y entiende el mundo | Cómo funciona la economía      | Hoja de ruta    |
+| Protégete y entiende el mundo | Independizarte                 | Hoja de ruta    |
+
+### Área «Tu dinero hoy»
+
+#### Fundamentos del dinero · publicado
+
+Ver curso 1 más arriba.
+
+#### Bancos y pagos
+
+**Objetivo.** Entender qué es una cuenta bancaria, en qué se diferencian una tarjeta de débito y
+una de crédito, cómo funcionan los pagos con el móvil entre amigos y qué comisiones hay que mirar
+antes de abrir una cuenta.
+
+**Ideas clave**
+
+1. Con una tarjeta de débito pagas con tu propio dinero; con una de crédito, con dinero prestado
+   que tendrás que devolver.
+2. Antes de abrir una cuenta, mira lo que te puede costar: comisiones de mantenimiento, por
+   tarjeta, por transferencia o por sacar dinero.
+3. Tus claves y códigos son solo tuyos. Ningún banco te los pide por mensaje ni por teléfono.
+
+**Datos que habrá que verificar:** #24 cómo puede abrir y usar una cuenta un menor · #25 cuenta de
+pago básica y sus comisiones · #26 garantía de los depósitos · #27 responsabilidad del cliente ante
+pagos no autorizados.
+
+#### Consumo inteligente
+
+**Objetivo.** Comprar con la cabeza: controlar las suscripciones, conocer tus derechos al comprar
+online, entender un contrato de móvil y reconocer la publicidad, también la de los influencers.
+
+**Ideas clave**
+
+1. Una suscripción que no usas es un gasto fijo invisible: revísalas cada pocos meses y cancela lo
+   que sobra.
+2. Al comprar online tienes derechos: en general puedes devolver lo que compras en un plazo y los
+   productos tienen garantía. Infórmate antes de comprar.
+3. Si alguien gana dinero por enseñarte un producto, es publicidad, aunque parezca un consejo de
+   un amigo.
+
+**Datos que habrá que verificar:** #28 derecho de desistimiento en compras a distancia · #29
+garantía legal de los productos · #30 permanencia y baja en contratos de telefonía · #31
+identificación de la publicidad de influencers · #32 edad para contratar una línea de móvil.
+
+### Área «Trabajo e ingresos»
+
+#### Tu primer sueldo · temario cerrado
+
+Ver curso 2 más arriba.
+
+#### Ganar dinero por tu cuenta
+
+**Objetivo.** Saber qué cuenta como ingreso cuando ganas dinero sin contrato (clases particulares,
+cuidar niños, vender cosas que ya no usas, crear contenido) y qué dice Hacienda de cada caso.
+
+**Ideas clave**
+
+1. No todo el dinero que entra es igual: vender algo usado no es lo mismo que trabajar por tu
+   cuenta de forma habitual.
+2. Las plataformas de venta y de creadores pueden informar a Hacienda de lo que ganas. Mejor
+   conocer las reglas que llevarte una sorpresa.
+3. Cuando una actividad deja de ser algo puntual, pueden aparecer obligaciones (darte de alta,
+   declarar). Infórmate en las fuentes oficiales antes de que sea un problema.
+
+**Datos que habrá que verificar:** #33 cuándo hay que darse de alta como autónomo · #34 cómo
+tributa vender objetos usados entre particulares · #35 información que las plataformas digitales
+dan a Hacienda · #36 cómo tributan los ingresos de creadores de contenido. Se reutilizan #1 y #22
+(edad mínima para trabajar y consentimiento de los padres).
+
+#### Estudios y carrera
+
+**Objetivo.** Ver cuánto cuesta estudiar después de la ESO, qué becas existen y cómo comparar FP y
+universidad como decisiones con costes, tiempos y salidas distintas.
+
+**Ideas clave**
+
+1. Estudiar tiene costes directos (matrícula, material, transporte, alojamiento) y un coste de
+   oportunidad: el tiempo que no estás trabajando.
+2. Las becas existen y se piden cada año en plazos concretos: apúntate las fechas y los requisitos
+   en la fuente oficial.
+3. FP y universidad no son «mejor» o «peor»: son caminos distintos. Compara duración, coste y
+   salidas antes de decidir.
+
+**Datos que habrá que verificar:** #37 becas generales del Ministerio (requisitos y plazos) · #38
+precios públicos de matrícula · #39 acceso a la FP y a la universidad.
+
+### Área «Hacer crecer tu dinero»
+
+#### Ahorro e inversión: lo básico
+
+**Objetivo.** Entender el interés compuesto, la relación entre riesgo y rentabilidad, qué es
+diversificar y qué es un fondo indexado. Todo explicativo: Monedo no recomienda productos ni
+decisiones de inversión.
+
+**Ideas clave**
+
+1. El interés compuesto hace crecer el dinero sobre lo ya ganado: el tiempo es su mejor aliado.
+2. Más rentabilidad posible siempre significa más riesgo. Ninguna rentabilidad está garantizada y
+   las inversiones pueden bajar.
+3. Diversificar es no depender de una sola cosa. Un fondo indexado reparte el dinero entre muchas
+   empresas siguiendo un índice.
+
+**Datos que habrá que verificar:** #26 garantía de los depósitos · #40 qué protege y qué no la
+normativa al invertir (test de conveniencia) · #41 cómo tributan los rendimientos del ahorro (solo
+el concepto; los tipos cambian).
+
+#### Deudas y créditos
+
+**Objetivo.** Entender qué es un préstamo, cómo se compara su coste con la TAE, cómo funcionan las
+tarjetas de crédito y los minicréditos y qué son los ficheros de morosos.
+
+**Ideas clave**
+
+1. Para comparar préstamos, mira la TAE: incluye intereses y comisiones en un solo porcentaje.
+2. Los minicréditos rápidos pueden salir muy caros. Lee el coste total antes de firmar.
+3. Si dejas de pagar, la deuda crece con intereses y recargos, y puedes acabar en un fichero de
+   morosos.
+
+**Datos que habrá que verificar:** #21 edad para contratar un crédito · #42 qué es la TAE y cómo se
+calcula · #43 derecho de desistimiento en el crédito al consumo · #44 requisitos para incluir a
+alguien en un fichero de morosos.
+
+#### Cripto, trading y falsos gurús
+
+**Objetivo.** Saber qué son las criptomonedas y el trading, por qué tienen tanto riesgo y cómo
+reconocer a los falsos gurús que prometen hacerte rico.
+
+**Ideas clave**
+
+1. Las criptomonedas pueden subir y bajar mucho en poco tiempo. Puedes perder todo lo que pongas.
+2. Si alguien promete ganancias seguras y rápidas, desconfía: nadie puede garantizarlas.
+3. Comprueba si quien te ofrece invertir está autorizado y si aparece en las advertencias de los
+   organismos oficiales.
+
+**Datos que habrá que verificar:** #45 normativa europea sobre criptoactivos · #46 reglas de la
+publicidad de criptoactivos · #47 advertencias oficiales sobre entidades no autorizadas · #48 cómo
+tributan las ganancias con criptomonedas (solo el concepto).
+
+### Área «Protégete y entiende el mundo»
+
+#### Que no te estafen
+
+**Objetivo.** Reconocer las estafas más comunes entre jóvenes (phishing, estafas por Bizum, falsas
+ofertas de trabajo, mulas de dinero) y saber qué hacer si te pasa.
+
+**Ideas clave**
+
+1. Desconfía de las prisas, los premios y los enlaces: tu banco no te pide claves por mensaje.
+2. Una oferta para «recibir dinero en tu cuenta y reenviarlo» no es un trabajo: puede ser un
+   delito, y quien presta su cuenta también responde.
+3. Si te pasa, actúa rápido: avisa a tu banco, guarda las pruebas, denuncia y pide ayuda.
+
+**Datos que habrá que verificar:** #27 responsabilidad ante pagos no autorizados · #49 por qué
+prestar tu cuenta puede ser delito (mulas de dinero) · #50 dónde pedir ayuda y denunciar.
+
+#### Impuestos y Estado
+
+**Objetivo.** Entender qué es el IVA y otros impuestos que pagas sin darte cuenta, para qué sirven
+y cómo funcionan las pensiones.
+
+**Ideas clave**
+
+1. Pagas impuestos desde muy joven: el IVA va incluido en casi todo lo que compras.
+2. Los impuestos pagan servicios que usas cada día: el instituto, la sanidad, el transporte.
+3. Las pensiones de hoy se pagan con las cotizaciones de quienes trabajan hoy.
+
+**Datos que habrá que verificar:** #51 tipos de IVA y a qué se aplica cada uno (solo el concepto;
+los tipos pueden cambiar) · #52 cómo se financian las pensiones.
+
+#### Cómo funciona la economía
+
+**Objetivo.** Entender la inflación a gran escala, qué son los tipos de interés y qué hace el
+Banco Central Europeo, y cómo todo eso llega a tu bolsillo.
+
+**Ideas clave**
+
+1. Los tipos de interés son el precio del dinero: cuando suben, pedir prestado sale más caro y
+   ahorrar da algo más.
+2. El Banco Central Europeo fija los tipos de interés para los países del euro con el objetivo de
+   mantener los precios estables.
+3. Las noticias económicas acaban en tu bolsillo: en lo que cuesta un préstamo, un alquiler o la
+   compra.
+
+**Datos que habrá que verificar:** #53 qué decide el BCE y su objetivo de inflación · #54 cómo se
+mide la inflación en España (IPC).
+
+#### Independizarte
+
+**Objetivo.** Saber cuánto cuesta independizarse: alquiler, fianza y gastos de un piso, y qué
+revisar antes de firmar un contrato de alquiler.
+
+**Ideas clave**
+
+1. Independizarte cuesta más que el alquiler: hay fianza, suministros, internet, comida y
+   transporte.
+2. Antes de firmar, lee el contrato: duración, fianza, quién paga qué y en qué estado está el piso.
+3. Haz un presupuesto realista antes de mudarte y guarda un colchón para imprevistos.
+
+**Datos que habrá que verificar:** #55 fianza legal en el alquiler de vivienda · #56 duración
+mínima del contrato de alquiler · #57 quién paga los gastos de la inmobiliaria · #58 ayudas al
+alquiler para jóvenes (solo el concepto y el enlace; cambian cada año).
 
 ---
 
