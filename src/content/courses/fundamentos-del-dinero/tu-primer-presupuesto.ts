@@ -83,7 +83,7 @@ export const tuPrimerPresupuesto = {
       paragraphs: [
         "Cuando vivas de tu sueldo y pagues casa y comida, se suele usar otra regla: la 50/30/20.",
         "Es un 50 % para necesidades, un 30 % para gustos y un 20 % para ahorro.",
-        "Con la paga no encaja, porque tu familia cubre casi todas tus necesidades. Por eso, de momento, usa las tres partes.",
+        "Con la paga no encaja, porque tu familia cubre casi todas tus necesidades. Por eso, de momento, usa las tres partes. El sueldo lo verás en el curso «Tu primer sueldo».",
       ],
     },
     {

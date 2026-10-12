@@ -55,7 +55,7 @@ test("nothing half-done is shown: no «Pronto», upcoming courses only as a shor
   const upcoming = page.getByRole("region", { name: "Próximos cursos" });
   await expect(upcoming).toBeVisible();
   await expect(upcoming.getByRole("link")).toHaveCount(0);
-  const response = await page.goto(route("/cursos/tu-primer-sueldo"));
+  const response = await page.goto(route("/cursos/bancos-y-pagos"));
   expect(response?.status()).toBe(404);
 });
 

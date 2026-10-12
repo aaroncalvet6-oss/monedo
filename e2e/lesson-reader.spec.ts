@@ -149,6 +149,19 @@ test("every lesson of course 1 opens", async ({ page }) => {
   }
 });
 
+test("every lesson of course 2 opens", async ({ page }) => {
+  for (const slug of [
+    "tipos-de-contrato",
+    "bruto-y-neto",
+    "leer-una-nomina",
+    "irpf-y-seguridad-social",
+    "primera-declaracion-de-la-renta",
+  ]) {
+    await page.goto(route(`/cursos/tu-primer-sueldo/${slug}`));
+    await expect(title(page)).toHaveText("Al terminar sabrás…");
+  }
+});
+
 test("unknown lessons are 404", async ({ page }) => {
   const response = await page.goto(route("/cursos/fundamentos-del-dinero/no-existe"));
   expect(response?.status()).toBe(404);

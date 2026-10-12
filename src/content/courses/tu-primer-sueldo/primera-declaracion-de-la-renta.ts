@@ -5,7 +5,7 @@ const AEAT = "https://sede.agenciatributaria.gob.es";
 /**
  * Lesson 2.5. Official sources (docs/fuentes.md): campaign and identification (fuentes #16,
  * #20), who must file (#17), low earnings leave the tax at 0 € (#18), dependant allowance
- * (#19), minimum 2 % withholding (#11). Figures that change every year (limits, dates,
+ * (#19), minimum 2 % withholding (#11), withholding as a payment on account (#59). Figures that change every year (limits, dates,
  * allowances) are not given: the lesson links to the source.
  * Arithmetic: 1.200 × 2 = 2.400 € · 2.400 × 2 % = 48 €.
  */

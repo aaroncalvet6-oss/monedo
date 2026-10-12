@@ -1,11 +1,14 @@
 import type { LessonInput } from "@/content/schema";
 
+const ET = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430";
+
 /**
  * Lesson 2.1. Legal data (docs/fuentes.md): minimum age 16 (fuente #1), no night work,
- * overtime or dangerous work under 18 (fuente #2), contract types after the 2021 reform
- * (fuente #3), probation period (fuente #5), parental consent from 16 to 18 (fuente #22).
- * Left out until verified: what fijo discontinuo is for (#4), written contract and copy
- * (#6), checking registration (#7), collective agreements (#8), night-time hours (#23).
+ * overtime or dangerous work under 18 (fuente #2), indefinite or temporary contracts, with the
+ * detail left to the Estatuto (fuente #3), probation period (fuente #5), parental consent from
+ * 16 to 18 (fuente #22). Left out until verified: contract types in detail (#3, #4), written
+ * contract and copy as a right (#6), checking registration (#7), collective agreements (#8),
+ * night-time hours (#23).
  */
 export const tiposDeContrato = {
   slug: "tipos-de-contrato",
@@ -37,9 +40,10 @@ export const tiposDeContrato = {
       id: "tipos",
       title: "Los tipos de contrato",
       paragraphs: [
-        "Desde la reforma laboral, los contratos pueden ser indefinidos, fijos discontinuos, temporales o formativos.",
-        "Un contrato temporal puede ser por circunstancias de la producción, como mucho de 6 meses (hasta 12 si lo amplía el convenio), o por sustitución de otra persona.",
+        "Un contrato puede ser indefinido, sin fecha de fin, o temporal, para un tiempo concreto.",
+        "La ley regula varios tipos de contrato temporal y cuánto pueden durar. Si quieres el detalle, está en el Estatuto de los Trabajadores.",
       ],
+      sources: [{ label: "BOE: Estatuto de los Trabajadores", url: ET }],
     },
     {
       type: "text",
@@ -49,6 +53,7 @@ export const tiposDeContrato = {
         "Al empezar puede haber un periodo de prueba. Durante ese tiempo, cualquiera de las dos partes, la empresa o tú, puede terminar la relación.",
         "Tiene un máximo. Si tu contrato es temporal y dura hasta 6 meses, el periodo de prueba no puede pasar de 1 mes.",
       ],
+      sources: [{ label: "BOE: Estatuto de los Trabajadores, artículo 14", url: `${ET}#a14` }],
     },
     {
       type: "text",
@@ -59,6 +64,10 @@ export const tiposDeContrato = {
         "Y la ley te protege más: no puedes trabajar de noche, ni hacer horas extra, ni hacer trabajos peligrosos.",
         "Las horas extra son las que trabajas por encima de tu jornada. Aunque te las paguen aparte, con menos de 18 años no puedes hacerlas.",
       ],
+      sources: [
+        { label: "BOE: Estatuto de los Trabajadores, artículo 6", url: `${ET}#a6` },
+        { label: "BOE: Estatuto de los Trabajadores, artículo 7", url: `${ET}#a7` },
+      ],
     },
     {
       type: "example",
@@ -67,7 +76,7 @@ export const tiposDeContrato = {
       character: "Sara, 17 años, Cádiz",
       paragraphs: [
         "Sara consigue trabajo de camarera en un chiringuito para julio y agosto. Como tiene 17 años, sus padres dan su consentimiento para que firme.",
-        "Su contrato es temporal por circunstancias de la producción, de 2 meses, con 30 horas a la semana y 1.200 € brutos al mes.",
+        "Su contrato es temporal, de 2 meses, con 30 horas a la semana y 1.200 € brutos al mes.",
         "Ve que no pone el horario y lo pregunta antes de firmar. Cuando firma, pide una copia.",
       ],
       figures: [
@@ -90,7 +99,7 @@ export const tiposDeContrato = {
       id: "ideas-clave",
       items: [
         "Trabaja con contrato y dado de alta: así tu trabajo existe oficialmente. Antes de firmar, lee jornada, sueldo, duración y periodo de prueba, y quédate una copia.",
-        "Los contratos son indefinidos, fijos discontinuos, temporales (por circunstancias de la producción o por sustitución) o formativos.",
+        "Un contrato puede ser indefinido o temporal. Si es temporal y dura hasta 6 meses, el periodo de prueba no puede pasar de 1 mes.",
         "Con menos de 18 años, la ley te protege más: no puedes trabajar de noche, ni hacer horas extra, ni trabajos peligrosos, aunque te lo pidan o tú quieras ganar más.",
       ],
     },

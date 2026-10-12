@@ -1,9 +1,9 @@
 import type { LessonInput } from "@/content/schema";
 
 /**
- * Lesson 2.3. Uses an invented, simplified payslip; the official payslip model and the
- * obligation to hand it out are not verified yet (#12), so the lesson does not describe an
- * official structure. Employer contributions are higher than the worker's (fuente #13).
+ * Lesson 2.3. Uses an invented, simplified payslip with the terms of the official model
+ * (devengos, deducciones, líquido total a percibir: fuente #12, Orden ESS/2098/2014). Employer
+ * contributions are higher than the worker's (fuente #13).
  * Arithmetic: 1.150 + 50 = 1.200 · 72 + 24 = 96 · 1.200 − 96 = 1.104 · Q2: 1.050 − 98 = 952.
  */
 export const leerUnaNomina = {
@@ -30,14 +30,20 @@ export const leerUnaNomina = {
         "Lo que has ganado se llama devengos: el salario base, que es la parte fija, y los pluses o complementos, como el de transporte.",
         "Lo que te descuentan se llama deducciones: tus cotizaciones a la Seguridad Social y la retención de IRPF.",
       ],
+      sources: [
+        {
+          label: "BOE: modelo oficial de nómina (Orden ESS/2098/2014)",
+          url: "https://www.boe.es/buscar/doc.php?id=BOE-A-2014-11637",
+        },
+      ],
     },
     {
       type: "text",
       id: "la-cuenta",
       title: "La cuenta que siempre tienes que hacer",
       paragraphs: [
-        "Lo que te ingresan se llama líquido a percibir.",
-        "Devengos − deducciones = líquido a percibir. Y esa cifra tiene que ser la que llega a tu cuenta.",
+        "Lo que te ingresan se llama líquido total a percibir.",
+        "Devengos − deducciones = líquido total a percibir. Y esa cifra tiene que ser la que llega a tu cuenta.",
         "Si no cuadra, pregunta en la empresa: puede haber un error.",
       ],
     },
@@ -56,7 +62,7 @@ export const leerUnaNomina = {
         { label: "Plus de transporte", value: 50, unit: "€" },
         { label: "Total devengado", value: 1200, unit: "€" },
         { label: "Total a deducir", value: 96, unit: "€" },
-        { label: "Líquido a percibir", value: 1104, unit: "€", emphasis: true },
+        { label: "Líquido total a percibir", value: 1104, unit: "€", emphasis: true },
       ],
     },
     {
@@ -65,7 +71,7 @@ export const leerUnaNomina = {
       value: 1104,
       unit: "€",
       context:
-        "es el líquido a percibir de Sara: 1.200 € devengados menos 96 € de deducciones. Es lo que tiene que llegar a su cuenta.",
+        "es el líquido total a percibir de Sara: 1.200 € devengados menos 96 € de deducciones. Es lo que tiene que llegar a su cuenta.",
     },
     {
       type: "text",
@@ -80,8 +86,8 @@ export const leerUnaNomina = {
       type: "key-ideas",
       id: "ideas-clave",
       items: [
-        "En una nómina vas a ver lo que has ganado (devengos), lo que te descuentan (deducciones) y lo que cobras (líquido a percibir).",
-        "La cuenta que siempre tienes que comprobar: devengos − deducciones = líquido a percibir = lo que llega a tu cuenta.",
+        "En una nómina vas a ver lo que has ganado (devengos), lo que te descuentan (deducciones) y lo que cobras (líquido total a percibir).",
+        "La cuenta que siempre tienes que comprobar: devengos − deducciones = líquido total a percibir = lo que llega a tu cuenta.",
         "La empresa paga a la Seguridad Social por ti más de lo que te descuentan a ti: tu trabajo le cuesta más que tu sueldo bruto.",
       ],
     },
@@ -91,7 +97,7 @@ export const leerUnaNomina = {
       questions: [
         {
           id: "q-liquido",
-          prompt: "¿Qué es el «líquido a percibir»?",
+          prompt: "¿Qué es el «líquido total a percibir»?",
           options: [
             { id: "a", text: "El sueldo bruto del contrato" },
             { id: "b", text: "Lo que te ingresan: los devengos menos las deducciones" },
@@ -150,8 +156,8 @@ export const leerUnaNomina = {
       description: "Haz la cuenta que importa con una nómina de verdad.",
       steps: [
         "Usa la nómina de Sara o una real que alguien de tu familia quiera enseñarte, tapando los datos personales.",
-        "Localiza los devengos, las deducciones y el líquido a percibir.",
-        "Comprueba que devengos − deducciones = líquido a percibir.",
+        "Localiza los devengos, las deducciones y el líquido total a percibir.",
+        "Comprueba que devengos − deducciones = líquido total a percibir.",
       ],
     },
   ],

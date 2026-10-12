@@ -35,15 +35,16 @@ describe("content registry", () => {
       const written = course.lessons.every((l) => getLesson(course.slug, l.slug));
       expect(isPublished(course), course.slug).toBe(written && !course.draft);
     }
-    expect(getPublishedCourses().map((c) => c.slug)).toEqual(["fundamentos-del-dinero"]);
+    expect(getPublishedCourses().map((c) => c.slug)).toEqual([
+      "fundamentos-del-dinero",
+      "tu-primer-sueldo",
+    ]);
     expect(getUpcomingCourses().map((c) => c.slug)).not.toContain("fundamentos-del-dinero");
   });
 
-  it("keeps course 2 as a draft: written, but not published until reviewed", () => {
-    const course = getCourse("tu-primer-sueldo")!;
-    expect(course.draft).toBe(true);
-    expect(course.lessons.every((l) => getLesson(course.slug, l.slug))).toBe(true);
-    expect(isPublished(course)).toBe(false);
+  it("publishes course 2 once reviewed: no draft flag left on a published course", () => {
+    expect(isPublished(getCourse("tu-primer-sueldo")!)).toBe(true);
+    for (const course of getPublishedCourses()) expect(course.draft, course.slug).toBe(false);
   });
 
   it("never shows drafts in the deployed site", () => {

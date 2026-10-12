@@ -1,7 +1,13 @@
 import type { LessonInput } from "@/content/schema";
 
+const MANUAL =
+  "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025";
+const MANUAL_EN_GB =
+  "https://sede.agenciatributaria.gob.es/Sede/en_gb/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025";
+
 /**
- * Lesson 2.4. Brackets (fuente #14) are explained with invented figures that say so; real
+ * Lesson 2.4. Withholding is a payment on account (fuente #59). Brackets (fuente #14) are
+ * explained with invented figures that say so; real
  * brackets change and are not given. Employer contributions: fuente #13. What contributions
  * entitle you to (#15) is not verified yet and is left out.
  * Arithmetic: 13.000 − 10.000 = 3.000 · 3.000 × 20 % = 600 · 13.000 × 20 % = 2.600 ·
@@ -31,6 +37,12 @@ export const irpfYSeguridadSocial = {
         "El IRPF es el impuesto sobre lo que ganas en un año.",
         "La retención de cada nómina es un adelanto. El impuesto real se calcula una vez al año, en la declaración: si te retuvieron de más, te devuelven la diferencia; si fue de menos, la pagas tú.",
       ],
+      sources: [
+        {
+          label: "Agencia Tributaria: el resultado de la declaración (cuota diferencial)",
+          url: `${MANUAL}/c18-cuota-liquida-resultante-autoliquidacion/cuota-diferencial.html`,
+        },
+      ],
     },
     {
       type: "text",
@@ -40,6 +52,16 @@ export const irpfYSeguridadSocial = {
         "El IRPF va por tramos: franjas de ingresos con un porcentaje cada una. Hay una escala estatal y otra de tu comunidad autónoma.",
         "Cada porcentaje solo se aplica a la parte de tus ingresos que cae en su tramo.",
         "Por eso, en el IRPF, ganar más nunca te deja con menos dinero. Otras cosas con límites de ingresos, como algunas becas o ayudas, sí pueden tener saltos.",
+      ],
+      sources: [
+        {
+          label: "Agencia Tributaria: escala estatal",
+          url: `${MANUAL_EN_GB}/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-estatal.html`,
+        },
+        {
+          label: "Agencia Tributaria: escala autonómica",
+          url: `${MANUAL_EN_GB}/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-autonomico.html`,
+        },
       ],
     },
     {

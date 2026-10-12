@@ -448,7 +448,8 @@ de firmar y qué no te pueden pedir si tienes menos de 18 años.
 - _Convenio colectivo_: un acuerdo entre empresas y trabajadores de un sector (hostelería,
   comercio…) que fija mínimos de sueldo, horarios y vacaciones `TODO(verify) #8` (fuera de la
   lección hasta verificarlo).
-- _Indefinido, fijo discontinuo, temporal, formativo_: los tipos de contrato (ver ideas clave).
+- _Indefinido o temporal_: sin fecha de fin o para un tiempo concreto `✓ fuente #3`. El detalle de
+  los tipos de contrato no entra en la lección: enlaza al Estatuto de los Trabajadores en el BOE.
 - _Horas extra_: las que trabajas por encima de tu jornada.
 - _Trabajo nocturno_: el que se hace por la noche. Qué horas cuentan como noche lo fija la ley
   (de 22:00 a 6:00 según el art. 36 del Estatuto de los Trabajadores, `TODO(verify) #23`: hasta
@@ -459,17 +460,16 @@ de firmar y qué no te pueden pedir si tienes menos de 18 años.
 1. Trabajar con contrato y alta en la Seguridad Social te protege. «Sin papeles» significa sin
    protección si pasa algo. Antes de firmar, lee jornada, sueldo, duración, periodo de prueba y
    convenio, y quédate siempre una copia.
-2. Tipos de contrato tras la reforma laboral: _indefinido_, _fijo discontinuo_, _temporal_ (por
-   circunstancias de la producción, como mucho 6 meses, ampliables a 12 por convenio, o por
-   sustitución) y _formativos_ `✓ fuente #3`. Para qué sirve el fijo discontinuo sigue sin
-   verificar `TODO(verify) #4` y queda fuera de la lección.
+2. Un contrato puede ser _indefinido_ o _temporal_ `✓ fuente #3`. Si es temporal y dura hasta 6
+   meses, el periodo de prueba no puede pasar de 1 mes `✓ fuente #5`. Los tipos de contrato en
+   detalle (incluido el fijo discontinuo, `TODO(verify) #4`) quedan fuera: la lección enlaza al
+   Estatuto de los Trabajadores.
 3. Si tienes menos de 18 años, la ley te protege más: **no puedes trabajar de noche ni hacer horas
    extra**, aunque la empresa te lo pida o tú quieras ganar más `✓ fuente #2`.
 
 **Ejemplo principal.** Sara, 17 años, consigue trabajo de camarera en un chiringuito de Cádiz para
 julio y agosto. Como es menor de edad, necesita el consentimiento de sus padres para firmar
-`✓ fuente #22`. Antes de firmar repasa su lista: contrato temporal por circunstancias de la
-producción `✓ fuente #3`, de 2 meses (del 1 de julio al 31 de agosto), 30 horas a la semana y 1.200 €
+`✓ fuente #22`. Antes de firmar repasa su lista: contrato temporal `✓ fuente #3`, de 2 meses (del 1 de julio al 31 de agosto), 30 horas a la semana y 1.200 €
 brutos al mes. Como su contrato dura menos de 6 meses, el periodo de prueba no puede pasar de 1 mes
 `✓ fuente #5`. Ve que no pone el horario y lo pregunta antes de firmar.
 
@@ -579,22 +579,22 @@ cuadra.
 
 **Términos nuevos**
 
-- _Nómina_: el documento con lo que has ganado en el mes, lo que te descuentan y lo que cobras. La
-  obligación de entregarla y su modelo oficial siguen sin verificar `TODO(verify) #12`: la lección no
-  describe la estructura oficial, solo un ejemplo simplificado.
+- _Nómina_: el documento con lo que has ganado en el mes, lo que te descuentan y lo que cobras. La lección usa
+  los términos del modelo oficial (devengos, deducciones y líquido total a percibir) `✓ fuente #12`,
+  con un ejemplo simplificado.
 - _Devengos_: todo lo que has ganado ese mes (salario base, pluses, la parte de las pagas extra…).
 - _Salario base_: la parte fija de tu sueldo.
 - _Plus o complemento_: dinero extra por algo concreto (transporte, trabajar de noche, idiomas…).
 - _Deducciones_: lo que te descuentan: tus cotizaciones y la retención de IRPF.
-- _Líquido a percibir_: lo que te ingresan. Devengos − deducciones.
+- _Líquido total a percibir_: lo que te ingresan. Devengos − deducciones.
 - _Aportación de la empresa_: lo que la empresa paga a la Seguridad Social por ti, aparte de tu
   sueldo. No te lo descuentan a ti.
 
 **Ideas clave**
 
 1. En una nómina vas a ver lo que has ganado (devengos), lo que te descuentan (deducciones) y lo que
-   cobras (líquido a percibir).
-2. La cuenta que siempre tienes que comprobar: devengos − deducciones = líquido a percibir = lo que
+   cobras (líquido total a percibir).
+2. La cuenta que siempre tienes que comprobar: devengos − deducciones = líquido total a percibir = lo que
    llega a tu cuenta.
 3. La empresa paga a la Seguridad Social por ti más de lo que te descuentan a ti `✓ fuente #13`:
    tu trabajo cuesta a la empresa más que tu sueldo bruto. (Los porcentajes cambian cada año: la
@@ -610,14 +610,14 @@ cuadra.
 | Cotizaciones del trabajador (ejemplo 6 %) | −72,00       |
 | Retención de IRPF (mínimo 2 %)            | −24,00       |
 | **Total a deducir**                       | **−96,00**   |
-| **Líquido a percibir**                    | **1.104,00** |
+| **Líquido total a percibir**              | **1.104,00** |
 
 Además, la empresa paga a la Seguridad Social por Sara más de lo que le descuentan a ella, sin
 sacarlo de su sueldo `✓ fuente #13`. La nómina del ejemplo es inventada y simplificada.
 
 **Preguntas**
 
-1. ¿Qué es el «líquido a percibir»?
+1. ¿Qué es el «líquido total a percibir»?
    A) El sueldo bruto del contrato
    **B) Lo que te ingresan: los devengos menos las deducciones**
    C) Lo que pagas a Hacienda
@@ -638,7 +638,7 @@ sacarlo de su sueldo `✓ fuente #13`. La nómina del ejemplo es inventada y sim
 
 **Reto práctico.** Con la nómina de ejemplo de la lección (o una real que alguien de tu familia
 quiera enseñarte, tapando los datos personales), localiza los devengos, las deducciones y el líquido
-a percibir, y comprueba que devengos − deducciones = líquido a percibir.
+a percibir, y comprueba que devengos − deducciones = líquido total a percibir.
 
 ---
 
@@ -662,7 +662,7 @@ qué sirven y por qué, en el IRPF, ganar más nunca hace que te quedes con meno
 **Ideas clave**
 
 1. La retención de IRPF de cada nómina es un adelanto. Una vez al año, en la declaración, se
-   calcula el impuesto real y te devuelven o pagas la diferencia (lección 2.5).
+   calcula el impuesto real y te devuelven o pagas la diferencia (lección 2.5) `✓ fuente #59`.
 2. El IRPF va por tramos, con una escala estatal y otra autonómica: cada porcentaje solo se aplica a
    la parte que cae en su tramo `✓ fuente #14`. Por
    el IRPF, ganar más nunca te deja con menos dinero. Otras cosas con límites de ingresos, como

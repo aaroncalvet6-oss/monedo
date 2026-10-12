@@ -1,5 +1,7 @@
 import type { LessonInput } from "@/content/schema";
 
+const ET = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430";
+
 /**
  * Lesson 2.2. The 6 % contribution is an example figure and says so (real rates change
  * every year, #10 unverified). The 2 % is the minimum withholding for contracts under a
@@ -41,6 +43,12 @@ export const brutoYNeto = {
         "Los porcentajes de cotización cambian cada año, así que en esta lección usamos un 6 % de ejemplo.",
         "La retención de IRPF depende de cada persona, pero en los contratos de menos de un año hay un mínimo del 2 %.",
       ],
+      sources: [
+        {
+          label: "BOE: Real Decreto 31/2023 (retención mínima del 2 %)",
+          url: "https://boe.es/boe/dias/2023/01/25/pdfs/BOE-A-2023-2023.pdf",
+        },
+      ],
     },
     {
       type: "example",
@@ -76,6 +84,7 @@ export const brutoYNeto = {
         "Por eso un sueldo anual se cobra en 14 pagas. Solo se reparte en 12 nóminas si el convenio lo acuerda.",
         "El total del año es el mismo: 14.000 € brutos son 1.000 € al mes en 14 pagas o 1.166,67 € al mes en 12.",
       ],
+      sources: [{ label: "BOE: Estatuto de los Trabajadores, artículo 31", url: `${ET}#a31` }],
     },
     {
       type: "text",

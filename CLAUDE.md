@@ -232,17 +232,18 @@ está listo por si la CLI se puede usar en local.
 
 ## TODO(verify) — datos pendientes de verificar con fuente oficial
 
-_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 58 datos, 14 verificados (5 en web
-oficial y 9 en fuente secundaria, pendientes de sustituir por la oficial) y 44 sin verificar (35 de
-ellos, filas 24 a 58, son de los cursos de la hoja de ruta). En el temario cada dato lleva
+_Lista completa en [`docs/fuentes.md`](./docs/fuentes.md): 59 datos, 16 verificados (9 en web
+oficial, 6 en reproducción literal del texto legal con enlace al BOE y 1 en mutua colaboradora con la
+Seguridad Social) y 43 sin verificar (35 de ellos, filas 24 a 58, son de los cursos de la hoja de
+ruta). En el temario cada dato lleva
 `✓ fuente #n` o `TODO(verify) #n`. Lo que está sin verificar no entra en las lecciones._
 
 ## Fases
 
 1. ✅ Base: proyecto, tokens, componentes, `/design`, layout, navegación y modo oscuro.
 2. ✅ Motor de cursos: esquema Zod, `ProgressRepository`, lector, `TutorProvider` + `ScriptedTutor`.
-3. Contenido. ✅ Curso 1 completo (6 lecciones). ✅ Curso 2 escrito (5 lecciones), en borrador hasta la
-   revisión editorial y hasta sustituir sus fuentes secundarias. Pendiente: evaluaciones y
+3. Contenido. ✅ Curso 1 completo (6 lecciones). ✅ Curso 2 publicado (5 lecciones), revisado y con
+   todas sus fuentes verificadas. Pendiente: evaluaciones y
    certificados. Hoja de ruta del catálogo (13 cursos en 4 áreas) en `docs/temario.md`.
 4. ✅ Inicio como centro (con el panel), catálogo por áreas, fichas de curso y perfil. Pendiente:
    herramientas de interés compuesto, presupuesto para adolescentes y meta de ahorro.
