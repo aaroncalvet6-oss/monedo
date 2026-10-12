@@ -15,6 +15,7 @@ export const OFFICIAL_DOMAINS = [
   "seg-social.es",
   "boe.es",
   "sepe.es",
+  "trabajo.gob.es",
   "mites.gob.es",
   "ine.es",
   "bde.es",
