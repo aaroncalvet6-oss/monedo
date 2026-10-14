@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import { WorkHoursWidget } from "@/features/lessons/components/widgets/work-hours-widget";
 import { ToolPage } from "@/features/tools/components/tool-page";
 import { getTool } from "@/features/tools/tools";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
 const tool = getTool("horas-de-trabajo");
 
-export const metadata: Metadata = { title: tool.title, description: tool.description };
+export const metadata: Metadata = pageMetadata({
+  title: tool.title,
+  description: tool.description,
+  path: "/herramientas/horas-de-trabajo",
+});
 
 export default function Page() {
   return (

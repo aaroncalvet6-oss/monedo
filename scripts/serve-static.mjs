@@ -1,10 +1,13 @@
 // Serves the static export (out/) the way GitHub Pages does, so previews and e2e
 // tests exercise the real deployment: files live under BASE_PATH, "/x" resolves to
-// "x.html" or "x/index.html", and unknown paths get 404.html with a 404 status.
+// "x.html" or "x/index.html", unknown paths get 404.html with a 404 status, and text files
+// are gzipped when the browser accepts it (Pages does the same, so Lighthouse measures the
+// real transfer sizes).
 // Usage: node scripts/serve-static.mjs [port]   (after `npm run build`)
 import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
 import { createServer } from "node:http";
+import { createGzip } from "node:zlib";
 import { extname, join, normalize, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -45,12 +48,19 @@ async function resolve(urlPath) {
   return null;
 }
 
-function send(res, status, file) {
+const COMPRESSIBLE = new Set([".html", ".js", ".css", ".json", ".txt", ".svg", ".xml"]);
+
+function send(req, res, status, file) {
+  const gzip =
+    COMPRESSIBLE.has(extname(file)) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "");
   res.writeHead(status, {
     "content-type": TYPES[extname(file)] ?? "application/octet-stream",
     "cache-control": "no-cache",
+    vary: "Accept-Encoding",
+    ...(gzip ? { "content-encoding": "gzip" } : {}),
   });
-  createReadStream(file).pipe(res);
+  const stream = createReadStream(file);
+  (gzip ? stream.pipe(createGzip()) : stream).pipe(res);
 }
 
 createServer(async (req, res) => {
@@ -60,7 +70,7 @@ createServer(async (req, res) => {
     return;
   }
   if (pathname !== BASE_PATH && !pathname.startsWith(`${BASE_PATH}/`)) {
-    send(res, 404, join(ROOT, "404.html"));
+    send(req, res, 404, join(ROOT, "404.html"));
     return;
   }
   // GitHub Pages redirects a directory without trailing slash to the slashed URL.
@@ -70,8 +80,8 @@ createServer(async (req, res) => {
     res.writeHead(301, { location: `${pathname}/` }).end();
     return;
   }
-  if (file) send(res, 200, file);
-  else send(res, 404, join(ROOT, "404.html"));
+  if (file) send(req, res, 200, file);
+  else send(req, res, 404, join(ROOT, "404.html"));
 }).listen(PORT, () => {
   console.log(`Serving out/ at http://localhost:${PORT}${BASE_PATH}/`);
 });

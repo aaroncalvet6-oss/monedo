@@ -7,6 +7,9 @@ import { PageHeader } from "@/components/layout/page-header";
 import { getAssessment, getCourse, getPublishedCourses, isPublished } from "@/content";
 import { CourseAssessmentCard } from "@/features/assessment/components/course-assessment-card";
 import { CourseProgressActions } from "@/features/courses/components/course-progress-actions";
+import { courseJsonLd } from "@/lib/seo/course-json-ld";
+import { JsonLd } from "@/lib/seo/json-ld";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
 export const dynamicParams = false;
 
@@ -18,7 +21,13 @@ export async function generateMetadata({
   params,
 }: PageProps<"/cursos/[curso]">): Promise<Metadata> {
   const course = getCourse((await params).curso);
-  return course ? { title: course.title, description: course.tagline } : {};
+  if (!course) return {};
+  return pageMetadata({
+    title: course.title,
+    description: `${course.tagline} Curso gratuito de ${course.lessons.length} lecciones cortas, con evaluación final y certificado de finalización.`,
+    path: `/cursos/${course.slug}`,
+    image: `/og/curso-${course.slug}.png`,
+  });
 }
 
 /** Course page: only published courses (every lesson written) get one. */
@@ -31,6 +40,7 @@ export default async function CoursePage({ params }: PageProps<"/cursos/[curso]"
 
   return (
     <Container>
+      <JsonLd data={courseJsonLd(course)} />
       <PageHeader
         eyebrow={`Curso ${course.order} · ${course.level}`}
         title={course.title}

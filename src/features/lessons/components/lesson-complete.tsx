@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, Check, RotateCcw } from "lucide-react";
-import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ProgressRing } from "@/components/ui/progress-ring";
@@ -27,14 +26,9 @@ export function LessonComplete({
     <div className="flex flex-col gap-8">
       <div className="relative w-fit">
         <ProgressRing value={1} label="Lección completada" size={96} stroke={6}>
-          <motion.span
-            initial={{ scale: 0.4, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.55, type: "spring", stiffness: 380, damping: 22 }}
-            className="grid size-12 place-items-center rounded-full bg-brand text-brand-fg"
-          >
+          <span className="grid size-12 animate-check-in place-items-center rounded-full bg-brand text-brand-fg">
             <Check aria-hidden className="size-6" strokeWidth={2.5} />
-          </motion.span>
+          </span>
         </ProgressRing>
       </div>
       <header className="flex flex-col gap-3">

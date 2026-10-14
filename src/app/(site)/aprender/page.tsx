@@ -2,8 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { BASE_PATH } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
-export const metadata: Metadata = { title: "Inicio", robots: { index: false, follow: true } };
+export const metadata: Metadata = pageMetadata({
+  title: "Inicio",
+  description: "Esta página se ha movido a la portada de Monedo.",
+  path: "/",
+  noindex: true,
+});
 
 /** Old dashboard URL. Static hosting has no server redirects: refresh to the home page. */
 export default function LearnRedirectPage() {

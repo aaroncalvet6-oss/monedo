@@ -1,16 +1,12 @@
 "use client";
 
-import { MotionConfig } from "motion/react";
 import type { ReactNode } from "react";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { ProgressProvider } from "@/features/progress/progress-provider";
 
+/**
+ * App-wide providers. Kept to the minimum because they load on every page: animation config
+ * lives in the lesson reader (the only place that animates).
+ */
 export function Providers({ children }: { children: ReactNode }) {
-  return (
-    <MotionConfig reducedMotion="user">
-      <ProgressProvider>
-        <TooltipProvider delayDuration={300}>{children}</TooltipProvider>
-      </ProgressProvider>
-    </MotionConfig>
-  );
+  return <ProgressProvider>{children}</ProgressProvider>;
 }

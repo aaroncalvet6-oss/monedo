@@ -16,7 +16,8 @@ los proyectos de Pages de la cuenta: ver «Almacenamiento»).
 
 Next.js 16 (App Router, Turbopack) · React 19 · TypeScript 5 estricto · Tailwind CSS 4 · componentes
 estilo shadcn/ui sobre `radix-ui` · Motion (`motion/react`) · Lucide · Recharts · Zustand · Zod ·
-Vitest + Testing Library · Playwright · ESLint 9 (flat) + Prettier · fuentes Geist autoalojadas (`geist`).
+Vitest + Testing Library · Playwright · ESLint 9 (flat) + Prettier · fuentes Geist autoalojadas
+(`src/fonts/`, recortadas al español con `scripts/subset-fonts.py`; carga en `src/lib/fonts.ts`).
 
 Next 16 cambia APIs respecto a versiones anteriores: consulta `node_modules/next/dist/docs/` antes de
 usar una API nueva (p. ej. `params` es asíncrono, `LayoutProps`/`PageProps` son globales generados).
@@ -82,6 +83,16 @@ Reglas de arquitectura:
   Las páginas internas se nombran `page.dev.tsx`: `next.config.ts` solo las reconoce en `next dev`,
   así que no entran en el build, la navegación ni un futuro sitemap.
 - **Privacidad**: sin analítica, sin cookies de terceros, sin recursos externos (fuentes incluidas).
+  Nunca se publica un dato personal del autor (nombre, dirección, teléfono); el correo de contacto
+  del proyecto va en `CONTACT_EMAIL` (`src/lib/site.ts`) y, mientras sea `null`, `/legal` no muestra
+  la sección de contacto.
+- **Rendimiento** (Lighthouse móvil ≥ 95): nada pesado en todas las páginas. Zod solo en el build
+  (el progreso se valida con `lib/progress/validate.ts`), sin Motion ni Radix en la cabecera (menú
+  de tema propio), animaciones de lección en CSS, gráficos con `next/dynamic`.
+- **SEO**: cada página exporta `pageMetadata()` (`lib/seo/page-metadata.ts`: descripción, URL
+  canónica, Open Graph y Twitter); las personales (perfil, certificado) van con `noindex`.
+  `app/sitemap.ts` lista las públicas; las fichas de curso llevan `Course` en JSON-LD. Imágenes
+  para redes en `public/og/` (`scripts/generate-og-images.mjs`).
 - **Almacenamiento**: todas las claves de `localStorage` llevan el prefijo `monedo:` y se definen
   solo en `src/lib/storage-keys.ts` (lo vigila un test). El origen `<cuenta>.github.io` se comparte
   con otros proyectos de Pages: nunca uses `localStorage.clear()`, borra solo las claves `monedo:`.
@@ -268,7 +279,8 @@ ruta). En el temario cada dato lleva
 4. ✅ Inicio como centro (con el panel), catálogo por áreas, fichas de curso y perfil. ✅ Herramientas
    (horas de trabajo, presupuesto, meta de ahorro e interés compuesto), cada una en
    `/herramientas/<id>` y enlazada con su lección en los dos sentidos.
-5. Landing, legal, SEO, tests e2e, Lighthouse y README de despliegue.
+5. ✅ Legal (privacidad y uso educativo), «Fuentes y metodología», SEO (metadatos, sitemap, Open
+   Graph y Course en JSON-LD), Lighthouse ≥ 95 en móvil (`docs/lighthouse.md`) y README.
 
 Al cerrar cada fase: `npm run check` + `npm run build` + e2e, commit y resumen.
 

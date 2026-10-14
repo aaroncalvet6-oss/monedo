@@ -5,6 +5,7 @@ import { Container } from "@/components/layout/container";
 import { PageHeader } from "@/components/layout/page-header";
 import { getAssessment, getCourse, getCourseParams, isPublished } from "@/content";
 import { CertificateView } from "@/features/certificates/components/certificate-view";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
 export const dynamicParams = false;
 
@@ -16,7 +17,13 @@ export async function generateMetadata({
   params,
 }: PageProps<"/cursos/[curso]/certificado">): Promise<Metadata> {
   const course = getCourse((await params).curso);
-  return course ? { title: `Certificado de finalización · ${course.title}` } : {};
+  if (!course) return {};
+  return pageMetadata({
+    title: `Certificado de finalización · ${course.title}`,
+    description: `Descarga tu certificado de finalización del curso «${course.title}» de Monedo.`,
+    path: `/cursos/${course.slug}/certificado`,
+    noindex: true,
+  });
 }
 
 export default async function CertificatePage({

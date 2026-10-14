@@ -1,20 +1,20 @@
 "use client";
 
 import { useId, useState } from "react";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import dynamic from "next/dynamic";
 import { Callout } from "@/components/ui/callout";
 import { compoundGrowth, type YearPoint } from "@/lib/finance/compound-interest";
 import { formatEuro, formatNumber, parseEuroInput, toEuroInput, keepUnits } from "@/lib/format";
 import { MoneyField } from "./money-field";
+import { SERIES } from "./growth-series";
 import { SliderField } from "./slider-field";
+
+// The chart library is large: it loads after the page, which is already usable without it
+// (the same figures are in the sentence and the table).
+const GrowthAreaChart = dynamic(() => import("./growth-area-chart"), {
+  ssr: false,
+  loading: () => <div className="h-full w-full rounded-md bg-surface-muted" />,
+});
 
 const euros = (n: number) => formatEuro(n, { decimals: false });
 
@@ -107,11 +107,6 @@ export function CompoundInterestTool() {
   );
 }
 
-const SERIES = [
-  { key: "balance", label: "Lo que acumulas", color: "var(--chart-1)" },
-  { key: "contributed", label: "Lo que aportas", color: "var(--chart-2)" },
-] as const;
-
 function GrowthChart({ points }: { points: YearPoint[] }) {
   return (
     <figure className="flex flex-col gap-4">
@@ -133,70 +128,7 @@ function GrowthChart({ points }: { points: YearPoint[] }) {
         </ul>
       </figcaption>
       <div aria-hidden className="h-60 w-full md:h-72">
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={points} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
-            <CartesianGrid vertical={false} stroke="var(--border)" />
-            <XAxis
-              dataKey="year"
-              tickLine={false}
-              axisLine={{ stroke: "var(--border-strong)" }}
-              tick={{ fill: "var(--fg-muted)", fontSize: 12 }}
-              tickFormatter={(year: number) => `${year}`}
-              minTickGap={16}
-            />
-            <YAxis
-              width={56}
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "var(--fg-muted)", fontSize: 12 }}
-              tickFormatter={(n: number) => euros(n)}
-            />
-            <Tooltip
-              cursor={{ stroke: "var(--border-strong)" }}
-              content={({ active, payload, label }) =>
-                active && payload?.length ? (
-                  <div className="flex flex-col gap-1 rounded-md border border-border bg-surface-raised p-3 text-sm shadow-overlay">
-                    <span className="font-medium">Año {label}</span>
-                    {SERIES.map((s) => {
-                      const point = payload[0]?.payload as YearPoint | undefined;
-                      return (
-                        <span key={s.key} className="flex items-center gap-2 text-fg-muted">
-                          <span
-                            aria-hidden
-                            className="size-2 rounded-full"
-                            style={{ background: s.color }}
-                          />
-                          {s.label}:{" "}
-                          <span className="font-mono tabular text-fg">
-                            {point ? euros(point[s.key]) : ""}
-                          </span>
-                        </span>
-                      );
-                    })}
-                  </div>
-                ) : null
-              }
-            />
-            <Area
-              type="monotone"
-              dataKey="balance"
-              stroke="var(--chart-1)"
-              strokeWidth={2}
-              fill="var(--chart-1)"
-              fillOpacity={0.12}
-              isAnimationActive={false}
-            />
-            <Area
-              type="monotone"
-              dataKey="contributed"
-              stroke="var(--chart-2)"
-              strokeWidth={2}
-              fill="var(--chart-2)"
-              fillOpacity={0.15}
-              isAnimationActive={false}
-            />
-          </AreaChart>
-        </ResponsiveContainer>
+        <GrowthAreaChart points={points} />
       </div>
       <details className="group measure">
         <summary className="inline-flex min-h-11 cursor-pointer items-center text-base text-brand-text underline underline-offset-4 hover:text-fg focus-visible:outline-2 focus-visible:outline-focus md:min-h-0">

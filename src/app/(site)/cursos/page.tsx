@@ -3,11 +3,14 @@ import { Container } from "@/components/layout/container";
 import { PageHeader } from "@/components/layout/page-header";
 import { getPublishedCourses, getUpcomingCourses } from "@/content";
 import { LearningPaths } from "@/features/courses/components/learning-paths";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Cursos",
-  description: "Cursos cortos con lecciones de 5 a 8 minutos y ejemplos reales en euros.",
-};
+  description:
+    "Cursos gratuitos de educación financiera por áreas, con lecciones de 5 a 8 minutos, ejemplos reales en euros y datos verificados en fuentes oficiales.",
+  path: "/cursos",
+});
 
 export default function CoursesPage() {
   const upcoming = getUpcomingCourses();

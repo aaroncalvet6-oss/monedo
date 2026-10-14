@@ -47,7 +47,7 @@ export function ContinueLearning({ courses }: { courses: readonly CourseOutline[
   );
 }
 
-/** Hero button: «Continuar» to the lesson to resume, or «Empezar» with the first course. */
+/** Hero button: «Continuar» to the lesson to resume, or «Empezar el primer curso». */
 export function PrimaryAction({ courses }: { courses: readonly CourseOutline[] }) {
   const lessons = useProgress((s) => s.snapshot.lessons);
   const ready = useProgress((s) => s.status === "ready");
@@ -61,7 +61,7 @@ export function PrimaryAction({ courses }: { courses: readonly CourseOutline[] }
   return (
     <Button asChild size="lg">
       <Link href={href}>
-        {target ? "Continuar" : "Empezar"}
+        {target ? "Continuar donde lo dejaste" : "Empezar el primer curso"}
         <ArrowRight />
       </Link>
     </Button>

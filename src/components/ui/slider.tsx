@@ -4,7 +4,17 @@ import { Slider as SliderPrimitive } from "radix-ui";
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
-export function Slider({ className, ...props }: ComponentProps<typeof SliderPrimitive.Root>) {
+/**
+ * The accessible name and value text belong to the thumb (role="slider"), not to the root:
+ * aria-label, aria-labelledby and aria-valuetext are forwarded there.
+ */
+export function Slider({
+  className,
+  "aria-label": ariaLabel,
+  "aria-labelledby": ariaLabelledBy,
+  "aria-valuetext": ariaValueText,
+  ...props
+}: ComponentProps<typeof SliderPrimitive.Root>) {
   const thumbs = (props.value ?? props.defaultValue ?? [0]).length;
   return (
     <SliderPrimitive.Root
@@ -20,7 +30,9 @@ export function Slider({ className, ...props }: ComponentProps<typeof SliderPrim
       {Array.from({ length: thumbs }, (_, i) => (
         <SliderPrimitive.Thumb
           key={i}
-          aria-label={props["aria-label"]}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+          aria-valuetext={ariaValueText}
           className={cn(
             "touch-hit block size-5 cursor-grab rounded-full border-2 border-brand bg-surface shadow-[0_1px_2px_rgb(0_0_0/0.15)]",
             "transition-transform duration-(--duration-fast) hover:scale-110 active:cursor-grabbing",

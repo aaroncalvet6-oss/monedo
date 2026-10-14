@@ -44,7 +44,7 @@ test("home shows paths, tools, how it works and a section for families", async (
   await expect(page.getByRole("link", { name: "Fundamentos del dinero" })).toBeVisible();
   // No progress yet: no «continue» card and the main button says «Empezar».
   await expect(page.getByText("Continúa donde lo dejaste")).toHaveCount(0);
-  await expect(page.getByRole("link", { name: "Empezar" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Empezar el primer curso" })).toBeVisible();
 });
 
 test("nothing half-done is shown: no «Pronto», upcoming courses only as a short list", async ({
@@ -70,6 +70,21 @@ test("theme choice persists across reloads without flashing", async ({ page }) =
   await page.getByRole("button", { name: "Cambiar tema" }).click();
   await page.getByRole("menuitemradio", { name: "Sistema" }).click();
   await expect(page.locator("html")).not.toHaveAttribute("data-theme", /.*/);
+});
+
+test("the theme menu works with the keyboard", async ({ page, isMobile }) => {
+  test.skip(isMobile, "keyboard navigation is a desktop concern");
+  await page.goto(route("/"));
+  const button = page.getByRole("button", { name: "Cambiar tema" });
+  await button.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("menuitemradio", { name: "Sistema" })).toBeFocused();
+  await page.keyboard.press("ArrowDown");
+  await page.keyboard.press("ArrowDown");
+  await expect(page.getByRole("menuitemradio", { name: "Oscuro" })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("menu")).toHaveCount(0);
+  await expect(button).toBeFocused();
 });
 
 test("skip link is the first focusable element", async ({ page, isMobile }) => {

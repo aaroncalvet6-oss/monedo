@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowRight, BadgeCheck, BookOpen, Calculator, Lock, Scale, Target } from "lucide-react";
 import Link from "next/link";
 import { GrowthField } from "@/components/graphics/growth-field";
@@ -8,6 +9,10 @@ import { LearningPaths } from "@/features/courses/components/learning-paths";
 import { toOutline } from "@/features/courses/outline";
 import { ContinueLearning, PrimaryAction } from "@/features/progress/components/continue-learning";
 import { ToolList } from "@/features/tools/components/tool-list";
+import { pageMetadata } from "@/lib/seo/page-metadata";
+import { SITE_DESCRIPTION } from "@/lib/site";
+
+export const metadata: Metadata = pageMetadata({ description: SITE_DESCRIPTION, path: "/" });
 
 const steps = [
   {
@@ -120,7 +125,11 @@ export default function HomePage() {
           </ol>
         </section>
         <section aria-labelledby="confianza" className="mt-16 flex flex-col gap-8">
-          <SectionHeading id="confianza" title="Por qué puedes fiarte" />
+          <SectionHeading
+            id="confianza"
+            title="Por qué puedes fiarte"
+            action={{ href: "/fuentes", label: "Fuentes y metodología" }}
+          />
           <ul className="grid gap-8 md:grid-cols-3">
             {trust.map((item) => (
               <li key={item.title} className="flex flex-col gap-3">

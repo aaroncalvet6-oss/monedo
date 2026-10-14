@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, ListOrdered, PanelLeftClose, PanelLeftOpen, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -52,11 +51,14 @@ export function LessonReader({
   lesson,
   next,
   tutor: tutorProp,
+  initialSections,
 }: {
   course: ReaderCourse;
   lesson: Lesson;
   next: ReaderNextLesson;
   tutor?: TutorProvider | undefined;
+  /** Sections prepared on the server (the first screen), so it is in the static HTML. */
+  initialSections?: Record<string, TutorSection> | undefined;
 }) {
   const tutor = useMemo(() => tutorProp ?? new ScriptedTutor(lesson), [tutorProp, lesson]);
   const steps = useMemo(() => buildSteps(lesson), [lesson]);
@@ -77,7 +79,7 @@ export function LessonReader({
   const [syllabusDialog, setSyllabusDialog] = useState(false);
 
   const [resumeChecked, setResumeChecked] = useState(false);
-  const [sections, setSections] = useState<Record<string, TutorSection>>({});
+  const [sections, setSections] = useState<Record<string, TutorSection>>(initialSections ?? {});
   const [feedback, setFeedback] = useState<Record<string, TutorFeedback>>({});
   const shouldFocus = useRef(false);
 
@@ -243,6 +245,9 @@ export function LessonReader({
     />
   );
 
+  const stepKey = finished ? "complete" : step.id;
+  const firstStepKey = useRef(stepKey);
+
   return (
     <div className="flex min-h-dvh flex-col">
       {/* Top bar */}
@@ -326,47 +331,46 @@ export function LessonReader({
                   : `Paso ${index + 1} de ${steps.length}: ${stepLabel(step)}`}
               </p>
 
-              <AnimatePresence mode="wait" initial={false} custom={direction}>
-                <motion.div
-                  key={finished ? "complete" : step.id}
-                  initial={{ opacity: 0, x: direction * 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction * -24 }}
-                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <OnStepMount onMount={focusTitleIfRequested} />
-                  {finished ? (
-                    <LessonComplete
-                      courseSlug={course.slug}
-                      lessonTitle={lesson.title}
-                      minutes={lesson.minutes}
-                      score={quizScore(steps, progress)}
-                      next={next}
-                      onReview={review}
-                    />
-                  ) : (
-                    <StepContent
-                      section={sections[step.id]}
-                      step={step}
-                      selected={choice}
-                      answer={storedChoice(step, progress)}
-                      feedback={
-                        storedChoice(step, progress) !== undefined
-                          ? feedback[feedbackKey(step.id, storedChoice(step, progress)!)]
-                          : undefined
+              {/* CSS slide-in on every step change (not on the first one shown). */}
+              <div
+                key={stepKey}
+                className={cn(
+                  stepKey !== firstStepKey.current &&
+                    (direction > 0 ? "animate-step-in-next" : "animate-step-in-prev"),
+                )}
+              >
+                <OnStepMount onMount={focusTitleIfRequested} />
+                {finished ? (
+                  <LessonComplete
+                    courseSlug={course.slug}
+                    lessonTitle={lesson.title}
+                    minutes={lesson.minutes}
+                    score={quizScore(steps, progress)}
+                    next={next}
+                    onReview={review}
+                  />
+                ) : (
+                  <StepContent
+                    section={sections[step.id]}
+                    step={step}
+                    selected={choice}
+                    answer={storedChoice(step, progress)}
+                    feedback={
+                      storedChoice(step, progress) !== undefined
+                        ? feedback[feedbackKey(step.id, storedChoice(step, progress)!)]
+                        : undefined
+                    }
+                    onSelect={(optionId) => {
+                      if (step.kind === "question") {
+                        setSelected((s) => ({ ...s, [step.question.id]: optionId }));
+                      } else if (step.block.type === "decision") {
+                        const blockId = step.block.id;
+                        update((p, now) => chooseDecision(p, blockId, optionId, now));
                       }
-                      onSelect={(optionId) => {
-                        if (step.kind === "question") {
-                          setSelected((s) => ({ ...s, [step.question.id]: optionId }));
-                        } else if (step.block.type === "decision") {
-                          const blockId = step.block.id;
-                          update((p, now) => chooseDecision(p, blockId, optionId, now));
-                        }
-                      }}
-                    />
-                  )}
-                </motion.div>
-              </AnimatePresence>
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </main>
 
@@ -421,9 +425,8 @@ export function LessonReader({
 }
 
 /**
- * Runs when a step mounts (after the previous step has left, thanks to AnimatePresence
- * mode="wait"); used to move focus to the new step's title (after the previous step has left,
- * thanks to AnimatePresence mode="wait"), so screen readers announce the new content.
+ * Runs when a step mounts (each step is keyed, so it remounts on every change); used to move
+ * focus to the new step's title, so screen readers announce the new content.
  * Only when navigation was user-initiated, never on first load.
  */
 function OnStepMount({ onMount }: { onMount: () => void }) {

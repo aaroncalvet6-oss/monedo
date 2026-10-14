@@ -101,7 +101,34 @@
 
   --animate-fade-in: fade-in var(--duration-base) var(--ease-out);
   --animate-pop-in: pop-in var(--duration-base) var(--ease-out);
+  --animate-ring-fill: ring-fill 800ms var(--ease-out) both;
+  --animate-step-in-next: step-in-next 220ms var(--ease-out);
+  --animate-step-in-prev: step-in-prev 220ms var(--ease-out);
+  --animate-check-in: check-in 320ms var(--ease-out) 550ms both;
 
+  @keyframes step-in-next {
+    from {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+  }
+  @keyframes step-in-prev {
+    from {
+      opacity: 0;
+      transform: translateX(-24px);
+    }
+  }
+  @keyframes check-in {
+    from {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+  }
+  @keyframes ring-fill {
+    from {
+      stroke-dashoffset: var(--ring-empty);
+    }
+  }
   @keyframes fade-in {
     from {
       opacity: 0;

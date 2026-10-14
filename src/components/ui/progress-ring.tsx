@@ -1,7 +1,4 @@
-"use client";
-
-import { motion } from "motion/react";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const tones = {
@@ -9,7 +6,7 @@ const tones = {
   amber: "text-amber",
 } as const;
 
-/** Circular progress. `value` is a fraction between 0 and 1; animates on change. */
+/** Circular progress. `value` is a fraction between 0 and 1; fills in with a CSS animation. */
 export function ProgressRing({
   value,
   label,
@@ -50,7 +47,7 @@ export function ProgressRing({
           strokeWidth={stroke}
           className="stroke-surface-muted"
         />
-        <motion.circle
+        <circle
           cx={size / 2}
           cy={size / 2}
           r={radius}
@@ -58,11 +55,10 @@ export function ProgressRing({
           strokeWidth={stroke}
           strokeLinecap="round"
           stroke="currentColor"
-          className={tones[tone]}
+          className={cn("animate-ring-fill", tones[tone])}
           strokeDasharray={circumference}
-          initial={{ strokeDashoffset: circumference }}
-          animate={{ strokeDashoffset: circumference * (1 - clamped) }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          strokeDashoffset={circumference * (1 - clamped)}
+          style={{ "--ring-empty": circumference } as CSSProperties}
         />
       </svg>
       <div className="absolute inset-0 grid place-items-center">{children}</div>

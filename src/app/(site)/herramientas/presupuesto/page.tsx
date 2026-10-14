@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import { BudgetTool } from "@/features/tools/components/budget-tool";
 import { ToolPage } from "@/features/tools/components/tool-page";
 import { getTool } from "@/features/tools/tools";
+import { pageMetadata } from "@/lib/seo/page-metadata";
 
 const tool = getTool("presupuesto");
 
-export const metadata: Metadata = { title: tool.title, description: tool.description };
+export const metadata: Metadata = pageMetadata({
+  title: tool.title,
+  description: tool.description,
+  path: "/herramientas/presupuesto",
+});
 
 export default function Page() {
   return (

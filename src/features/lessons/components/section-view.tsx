@@ -2,7 +2,6 @@
 
 import { ArrowRight, Calculator, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "motion/react";
 import { Callout } from "@/components/ui/callout";
 import { ChoiceGroup, ChoiceItem, type ChoiceStatus } from "@/components/ui/choice-group";
 import { getTool, toolHref } from "@/features/tools/tools";
@@ -104,34 +103,26 @@ export function SectionView({
         </ChoiceGroup>
       ) : null}
       <div aria-live="polite" className="measure">
-        <AnimatePresence mode="wait" initial={false}>
-          {feedback ? (
-            <motion.div
-              key={feedback.title}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        {feedback ? (
+          <div key={feedback.title} className="animate-pop-in">
+            <Callout
+              tone={
+                feedback.tone === "correct"
+                  ? "success"
+                  : feedback.tone === "incorrect"
+                    ? "danger"
+                    : "info"
+              }
+              title={keepUnits(feedback.title)}
             >
-              <Callout
-                tone={
-                  feedback.tone === "correct"
-                    ? "success"
-                    : feedback.tone === "incorrect"
-                      ? "danger"
-                      : "info"
-                }
-                title={keepUnits(feedback.title)}
-              >
-                <span className="flex flex-col gap-3">
-                  {feedback.paragraphs.map((p) => (
-                    <span key={p}>{keepUnits(p)}</span>
-                  ))}
-                </span>
-              </Callout>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
+              <span className="flex flex-col gap-3">
+                {feedback.paragraphs.map((p) => (
+                  <span key={p}>{keepUnits(p)}</span>
+                ))}
+              </span>
+            </Callout>
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { Container } from "./container";
 const links = [
   { href: "/cursos", label: "Cursos" },
   { href: "/herramientas", label: "Herramientas" },
+  { href: "/fuentes", label: "Fuentes y metodología" },
   { href: "/legal", label: "Privacidad y uso educativo" },
 ];
 

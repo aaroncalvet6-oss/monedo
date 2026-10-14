@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 import { Providers } from "@/components/providers";
+import { GeistMono, GeistSans } from "@/lib/fonts";
+import { SITE_ORIGIN } from "@/lib/site";
 import { themeInitScript } from "@/lib/theme/theme";
 import "./globals.css";
 
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     "Cursos cortos de educación financiera para jóvenes de 14 a 18 años: paga, primer sueldo, ahorro, bancos y cómo evitar estafas.",
   applicationName: "Monedo",
+  metadataBase: new URL(SITE_ORIGIN),
 };
 
 export const viewport: Viewport = {
