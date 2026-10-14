@@ -14,7 +14,17 @@ import { irpfYSeguridadSocial } from "./courses/tu-primer-sueldo/irpf-y-segurida
 import { leerUnaNomina } from "./courses/tu-primer-sueldo/leer-una-nomina";
 import { primeraDeclaracionDeLaRenta } from "./courses/tu-primer-sueldo/primera-declaracion-de-la-renta";
 import { tiposDeContrato } from "./courses/tu-primer-sueldo/tipos-de-contrato";
-import { courseSchema, lessonSchema, type Course, type Lesson, type LessonEntry } from "./schema";
+import { evaluacionFundamentos } from "./courses/fundamentos-del-dinero/evaluacion";
+import { evaluacionPrimerSueldo } from "./courses/tu-primer-sueldo/evaluacion";
+import {
+  assessmentSchema,
+  courseSchema,
+  lessonSchema,
+  type Assessment,
+  type Course,
+  type Lesson,
+  type LessonEntry,
+} from "./schema";
 
 /**
  * Content registry. Everything is validated with Zod when this module loads, which
@@ -50,7 +60,22 @@ const lessonContent: Record<string, readonly Lesson[]> = {
   ].map((lesson) => lessonSchema.parse(lesson)),
 };
 
+/** Final assessments, one per course. A course is not published without one (content.test.ts). */
+const assessmentContent: Record<string, Assessment> = {
+  "fundamentos-del-dinero": assessmentSchema.parse(evaluacionFundamentos),
+  "tu-primer-sueldo": assessmentSchema.parse(evaluacionPrimerSueldo),
+};
+
 function assertRegistryConsistency(): void {
+  for (const [courseSlug, assessment] of Object.entries(assessmentContent)) {
+    const course = courses.find((c) => c.slug === courseSlug);
+    if (!course) throw new Error(`Assessment for unknown course "${courseSlug}"`);
+    for (const question of assessment.questions) {
+      if (!course.lessons.some((l) => l.slug === question.lesson)) {
+        throw new Error(`Assessment question "${question.id}" points to a missing lesson`);
+      }
+    }
+  }
   const courseSlugs = new Set(courses.map((c) => c.slug));
   if (courseSlugs.size !== courses.length) throw new Error("Duplicate course slugs");
   for (const [courseSlug, lessons] of Object.entries(lessonContent)) {
@@ -109,6 +134,15 @@ export function hasContent(courseSlug: string, lessonSlug: string): boolean {
   return getLesson(courseSlug, lessonSlug) !== undefined;
 }
 
+export function getAssessment(courseSlug: string): Assessment | undefined {
+  return assessmentContent[courseSlug];
+}
+
+/** Published courses, for the assessment and certificate pages. */
+export function getCourseParams(): { curso: string }[] {
+  return getPublishedCourses().map((course) => ({ curso: course.slug }));
+}
+
 /** Lessons of published courses, for static generation. */
 export function getLessonParams(): { curso: string; leccion: string }[] {
   return getPublishedCourses().flatMap((course) =>
@@ -129,4 +163,12 @@ export function getAdjacentLessons(
   };
 }
 
-export type { Block, Course, Lesson, LessonEntry, QuizQuestion } from "./schema";
+export type {
+  Assessment,
+  AssessmentQuestion,
+  Block,
+  Course,
+  Lesson,
+  LessonEntry,
+  QuizQuestion,
+} from "./schema";

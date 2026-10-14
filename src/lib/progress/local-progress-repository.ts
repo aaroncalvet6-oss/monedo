@@ -1,11 +1,13 @@
 import { STORAGE_KEYS } from "@/lib/storage-keys";
 import { addActivityDay, lessonKey } from "./lesson-progress";
 import {
+  assessmentResultSchema,
   daySchema,
   emptySnapshot,
   lessonProgressSchema,
   progressSnapshotSchema,
   ProgressStorageError,
+  type AssessmentResult,
   type LessonProgress,
   type ProgressRepository,
   type ProgressSnapshot,
@@ -43,6 +45,13 @@ export class LocalProgressRepository implements ProgressRepository {
     const valid = lessonProgressSchema.parse(progress);
     const snapshot = this.read();
     snapshot.lessons[lessonKey(valid.courseSlug, valid.lessonSlug)] = valid;
+    this.write(snapshot);
+  }
+
+  async saveAssessment(result: AssessmentResult): Promise<void> {
+    const valid = assessmentResultSchema.parse(result);
+    const snapshot = this.read();
+    snapshot.assessments[valid.courseSlug] = valid;
     this.write(snapshot);
   }
 

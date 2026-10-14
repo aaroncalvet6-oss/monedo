@@ -11,11 +11,10 @@ import {
   YAxis,
 } from "recharts";
 import { Callout } from "@/components/ui/callout";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
 import { compoundGrowth, type YearPoint } from "@/lib/finance/compound-interest";
 import { formatEuro, formatNumber, parseEuroInput, toEuroInput, keepUnits } from "@/lib/format";
 import { MoneyField } from "./money-field";
+import { SliderField } from "./slider-field";
 
 const euros = (n: number) => formatEuro(n, { decimals: false });
 
@@ -104,46 +103,6 @@ export function CompoundInterestTool() {
       </output>
 
       {result ? <GrowthChart points={result.points} /> : null}
-    </div>
-  );
-}
-
-function SliderField({
-  id,
-  label,
-  value,
-  display,
-  valueText,
-  min,
-  max,
-  step,
-  onChange,
-}: {
-  id: string;
-  label: string;
-  value: number;
-  display: string;
-  valueText: string;
-  min: number;
-  max: number;
-  step: number;
-  onChange: (value: number) => void;
-}) {
-  return (
-    <div className="flex flex-col gap-3">
-      <div className="flex items-baseline justify-between gap-4">
-        <Label id={id}>{label}</Label>
-        <span className="font-mono tabular text-lg">{display}</span>
-      </div>
-      <Slider
-        aria-labelledby={id}
-        aria-valuetext={valueText}
-        min={min}
-        max={max}
-        step={step}
-        value={[value]}
-        onValueChange={([v]) => onChange(v ?? value)}
-      />
     </div>
   );
 }

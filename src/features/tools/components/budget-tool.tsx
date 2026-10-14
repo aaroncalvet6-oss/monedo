@@ -1,32 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Callout } from "@/components/ui/callout";
-import { SAVINGS_RATE, teenBudget, type TeenBudget } from "@/lib/finance/teen-budget";
+import {
+  MAX_SAVINGS_RATE,
+  SAVINGS_RATE,
+  teenBudget,
+  type TeenBudget,
+} from "@/lib/finance/teen-budget";
 import { formatEuro, parseEuroInput, toEuroInput, keepUnits } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { MoneyField } from "./money-field";
+import { SliderField } from "./slider-field";
 
 const eur = (n: number) => formatEuro(n, { decimals: !Number.isInteger(n) });
+const pct = (rate: number) => `${Math.round(rate * 100)} %`;
 
 /** The sentence that explains the budget. Exported for tests. */
 export function budgetSentence(budget: TeenBudget): string {
-  const { income, ownExpenses, savings, freeSpending, savingsTarget, shortfall, status } = budget;
+  const {
+    income,
+    ownExpenses,
+    savings,
+    freeSpending,
+    savingsTarget,
+    savingsRate,
+    shortfall,
+    status,
+  } = budget;
   if (income === 0 && ownExpenses === 0) return "Escribe lo que recibes al mes para empezar.";
   if (status === "over-income")
     return `Lo que pagas tú (${eur(ownExpenses)}) supera lo que recibes (${eur(income)}): te faltan ${eur(ownExpenses - income)} al mes. Revisa qué gastos puedes recortar antes de pensar en ahorrar.`;
   if (status === "savings-short")
-    return `De tus ${eur(income)} al mes, ${eur(ownExpenses)} van a lo que pagas tú. Solo te quedan ${eur(savings)} para ahorrar: te faltan ${eur(shortfall)} para llegar al 20 % (${eur(savingsTarget)}).`;
-  return `De tus ${eur(income)} al mes, ${eur(ownExpenses)} van a lo que pagas tú. Apartas ${eur(savings)} (el 20 %) el día que cobras y te quedan ${eur(freeSpending)} de gasto libre.`;
+    return `De tus ${eur(income)} al mes, ${eur(ownExpenses)} van a lo que pagas tú. Solo te quedan ${eur(savings)} para ahorrar: te faltan ${eur(shortfall)} para llegar al ${pct(savingsRate)} (${eur(savingsTarget)}).`;
+  const saving =
+    savingsRate === 0
+      ? "No apartas nada para ahorrar"
+      : `Apartas ${eur(savings)} (el ${pct(savingsRate)}) el día que cobras`;
+  return `De tus ${eur(income)} al mes, ${eur(ownExpenses)} van a lo que pagas tú. ${saving} y te quedan ${eur(freeSpending)} de gasto libre.`;
 }
 
 const PARTS = [
-  { key: "ownExpenses", label: "Lo que pagas tú", className: "bg-fg-subtle" },
-  { key: "savings", label: "Ahorro (20 %)", className: "bg-brand" },
-  { key: "freeSpending", label: "Gasto libre", className: "bg-chart-2" },
+  { key: "ownExpenses", label: () => "Lo que pagas tú", className: "bg-fg-subtle" },
+  { key: "savings", label: (rate: number) => `Ahorro (${pct(rate)})`, className: "bg-brand" },
+  { key: "freeSpending", label: () => "Gasto libre", className: "bg-chart-2" },
 ] as const;
 
 export function BudgetTool() {
+  const id = useId();
+  const [savingsPercent, setSavingsPercent] = useState(SAVINGS_RATE * 100);
   const [fields, setFields] = useState({
     allowance: toEuroInput(60),
     gifts: toEuroInput(0),
@@ -43,6 +65,7 @@ export function BudgetTool() {
     gifts: amount(fields.gifts),
     jobs: amount(fields.jobs),
     ownExpenses: amount(fields.ownExpenses),
+    savingsRate: savingsPercent / 100,
   });
 
   return (
@@ -86,6 +109,26 @@ export function BudgetTool() {
           />
         </div>
       </fieldset>
+      <fieldset className="flex flex-col gap-4">
+        <legend className="mb-4 text-lg font-semibold tracking-tight">Lo que ahorras</legend>
+        <div className="md:max-w-sm">
+          <SliderField
+            id={`${id}-savings`}
+            label="Porcentaje de ahorro"
+            value={savingsPercent}
+            display={`${savingsPercent} %`}
+            valueText={`${savingsPercent} por ciento de lo que recibes`}
+            min={0}
+            max={MAX_SAVINGS_RATE * 100}
+            step={5}
+            onChange={setSavingsPercent}
+          />
+        </div>
+        <p className="measure text-base leading-7 text-fg-muted">
+          Empieza por el {SAVINGS_RATE * 100} %. Si tu familia te paga casi todo, puedes ahorrar
+          más.
+        </p>
+      </fieldset>
 
       <output aria-live="polite" className="flex flex-col gap-6 border-t border-border pt-6">
         {budget ? (
@@ -95,7 +138,7 @@ export function BudgetTool() {
                 Lo que pagas tú es más de lo que recibes cada mes.
               </Callout>
             ) : budget.status === "savings-short" ? (
-              <Callout tone="info" title="No te llega para ahorrar el 20 %">
+              <Callout tone="info" title={`No te llega para ahorrar el ${savingsPercent} %`}>
                 Lo que pagas tú y el ahorro suman más de lo que recibes.
               </Callout>
             ) : null}
@@ -109,7 +152,6 @@ export function BudgetTool() {
         )}
       </output>
       <p className="measure text-base leading-7 text-fg-muted">
-        El ahorro es siempre el {SAVINGS_RATE * 100} % de lo que recibes, apartado el primer día.
         Nada de lo que escribes sale de tu navegador.
       </p>
     </div>
@@ -135,7 +177,7 @@ function BudgetBar({ budget }: { budget: TeenBudget }) {
           <div key={part.key} className="flex items-center justify-between gap-4 py-3 text-base">
             <dt className="flex items-center gap-2 text-fg-muted">
               <span aria-hidden className={cn("size-3 rounded-xs", part.className)} />
-              {part.label}
+              {part.label(budget.savingsRate)}
             </dt>
             <dd className="font-mono tabular">{eur(budget[part.key])}</dd>
           </div>

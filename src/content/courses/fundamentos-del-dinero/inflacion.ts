@@ -86,8 +86,8 @@ export const inflacion = {
       id: "interes-compuesto",
       title: "El mismo efecto, a tu favor",
       paragraphs: [
-        "La inflación se acumula: cada año los precios suben sobre lo que ya subieron. Con el ahorro puede pasar lo mismo, pero a tu favor.",
-        "Si tu dinero gana un porcentaje y lo dejas ahí, al año siguiente también gana sobre lo ganado. Eso es el interés compuesto: cuanto más tiempo, más se nota.",
+        "La inflación se acumula. Con el ahorro puede pasar lo mismo, a tu favor: si tu dinero gana un porcentaje y lo dejas ahí, al año siguiente también gana sobre lo ganado. Es el interés compuesto.",
+        "Pero si lo que te da tu ahorro es menos que la inflación, tu dinero sigue perdiendo poder de compra, aunque tengas más euros.",
         "Ninguna rentabilidad está garantizada y las inversiones pueden bajar. Pruébalo con cifras de ejemplo.",
       ],
       tool: "interes-compuesto",

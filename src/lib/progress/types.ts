@@ -20,18 +20,32 @@ export const lessonProgressSchema = z.object({
   completedAt: z.iso.datetime().nullable(),
 });
 
+/** Final assessment of one course: the best attempt counts. */
+export const assessmentResultSchema = z.object({
+  courseSlug: z.string().min(1),
+  bestScore: z.number().int().nonnegative(),
+  total: z.number().int().positive(),
+  attempts: z.number().int().positive(),
+  /** First time it was passed; the certificate shows this date. Null until passed. */
+  passedAt: z.iso.datetime().nullable(),
+  updatedAt: z.iso.datetime(),
+});
+
 export const progressSnapshotSchema = z.object({
   version: z.literal(PROGRESS_SCHEMA_VERSION),
   lessons: z.record(z.string(), lessonProgressSchema).default({}),
   /** Unique, sorted days with learning activity (streaks and weekly goal). */
   activityDays: z.array(daySchema).default([]),
+  /** courseSlug → final assessment result. */
+  assessments: z.record(z.string(), assessmentResultSchema).default({}),
 });
 
 export type LessonProgress = z.infer<typeof lessonProgressSchema>;
 export type ProgressSnapshot = z.infer<typeof progressSnapshotSchema>;
+export type AssessmentResult = z.infer<typeof assessmentResultSchema>;
 
 export function emptySnapshot(): ProgressSnapshot {
-  return { version: PROGRESS_SCHEMA_VERSION, lessons: {}, activityDays: [] };
+  return { version: PROGRESS_SCHEMA_VERSION, lessons: {}, activityDays: [], assessments: {} };
 }
 
 /**
@@ -43,6 +57,8 @@ export interface ProgressRepository {
   load(): Promise<ProgressSnapshot>;
   /** Insert or replace one lesson's progress. */
   saveLesson(progress: LessonProgress): Promise<void>;
+  /** Insert or replace one course's assessment result. */
+  saveAssessment(result: AssessmentResult): Promise<void>;
   /** Mark a day as active. Idempotent. */
   recordActivity(day: string): Promise<void>;
   /** Delete all progress for this learner. */

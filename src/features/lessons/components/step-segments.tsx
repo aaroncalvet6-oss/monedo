@@ -5,18 +5,20 @@ export function StepSegments({
   total,
   current,
   finished,
+  label = "Progreso de la lección",
   className,
 }: {
   total: number;
   current: number;
   finished: boolean;
+  label?: string | undefined;
   className?: string;
 }) {
   const done = finished ? total : current + 1;
   return (
     <div
       role="progressbar"
-      aria-label="Progreso de la lección"
+      aria-label={label}
       aria-valuemin={0}
       aria-valuemax={total}
       aria-valuenow={done}

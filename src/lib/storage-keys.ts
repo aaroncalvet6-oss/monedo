@@ -9,4 +9,6 @@ export const STORAGE_PREFIX = "monedo:";
 export const STORAGE_KEYS = {
   theme: `${STORAGE_PREFIX}theme`,
   progress: `${STORAGE_PREFIX}progress`,
+  /** The name on certificates. Only ever stored in this browser. */
+  certificateName: `${STORAGE_PREFIX}certificate-name`,
 } as const;

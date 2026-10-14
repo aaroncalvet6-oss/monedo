@@ -63,6 +63,7 @@ describe("progress store", () => {
       saveLesson: async () => {
         if (fail) throw new ProgressStorageError("full");
       },
+      saveAssessment: async () => {},
       recordActivity: async () => {},
       clear: async () => {},
     };
@@ -94,5 +95,16 @@ describe("progress store", () => {
     await store.getState().reset();
     expect(store.getState().snapshot.lessons).toEqual({});
     expect((await repo.load()).lessons).toEqual({});
+  });
+
+  it("records assessment attempts, keeping the best score and the first pass", async () => {
+    const repo = new InMemoryProgressRepository();
+    const store = createProgressStore(repo, clock);
+    store.getState().recordAssessment("c", 8, 10, true);
+    store.getState().recordAssessment("c", 5, 10, false);
+    await flush();
+    const result = (await repo.load()).assessments["c"];
+    expect(result).toMatchObject({ bestScore: 8, attempts: 2 });
+    expect(result?.passedAt).not.toBeNull();
   });
 });

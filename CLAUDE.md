@@ -123,6 +123,22 @@ Reglas de arquitectura:
   dejaste; ← → en escritorio; el foco va al título de cada paso nuevo; barra de acción inferior con
   zona segura en móvil. Sin personaje.
 
+## Evaluación final y certificado
+
+- **Banco de preguntas** en `src/content/courses/<curso>/evaluacion.ts` (`assessmentSchema`): el
+  banco es un 50 % mayor que cada intento; cada pregunta indica la lección que repasar. Situaciones
+  nuevas (no las de las lecciones) y solo datos verificados. Las opciones se barajan en cada
+  intento: ninguna opción ni explicación puede citar una letra («la B…»). Lo vigila
+  `content/assessment.test.ts`. Un curso publicado necesita su evaluación.
+- **Intentos** (`lib/assessment/attempt.ts`): preguntas y opciones al azar, sin corrección hasta el
+  final; al terminar se explica cada fallo con enlace a su lección. El resultado (mejor nota, número
+  de intentos y fecha del primer aprobado) se guarda con `ProgressRepository.saveAssessment`.
+- **Certificado**: se llama siempre «Certificado de finalización», nunca «título» ni «acreditación»,
+  y dice que no tiene validez académica oficial. Solo aparece con la evaluación aprobada. El nombre
+  lo escribe el alumno y solo se guarda en su navegador (`monedo:certificate-name`,
+  `lib/certificates/certificate-name.ts`). Se dibuja en un canvas y se descarga como PNG o PDF
+  (`lib/pdf/image-pdf.ts`, sin dependencias); «Compartir» solo si el navegador lo permite.
+
 ## Página de inicio y navegación
 
 - **Inicio** (`app/(site)/page.tsx`) es el centro: propuesta de valor con botón principal
@@ -247,8 +263,8 @@ ruta). En el temario cada dato lleva
 1. ✅ Base: proyecto, tokens, componentes, `/design`, layout, navegación y modo oscuro.
 2. ✅ Motor de cursos: esquema Zod, `ProgressRepository`, lector, `TutorProvider` + `ScriptedTutor`.
 3. Contenido. ✅ Curso 1 completo (6 lecciones). ✅ Curso 2 publicado (5 lecciones), revisado y con
-   todas sus fuentes verificadas. Pendiente: evaluaciones y
-   certificados. Hoja de ruta del catálogo (13 cursos en 4 áreas) en `docs/temario.md`.
+   todas sus fuentes verificadas. ✅ Evaluación final y certificado de finalización de los dos cursos.
+   Hoja de ruta del catálogo (13 cursos en 4 áreas) en `docs/temario.md`.
 4. ✅ Inicio como centro (con el panel), catálogo por áreas, fichas de curso y perfil. ✅ Herramientas
    (horas de trabajo, presupuesto, meta de ahorro e interés compuesto), cada una en
    `/herramientas/<id>` y enlazada con su lección en los dos sentidos.

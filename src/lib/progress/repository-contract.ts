@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { recordAttempt } from "./assessment-progress";
 import { createLessonProgress, lessonKey } from "./lesson-progress";
 import type { ProgressRepository } from "./types";
 
@@ -15,7 +16,7 @@ export function describeProgressRepositoryContract(
   describe(`${name} (ProgressRepository contract)`, () => {
     it("starts empty", async () => {
       const snapshot = await create().load();
-      expect(snapshot).toEqual({ version: 1, lessons: {}, activityDays: [] });
+      expect(snapshot).toEqual({ version: 1, lessons: {}, activityDays: [], assessments: {} });
     });
 
     it("saves and loads a lesson", async () => {
@@ -80,12 +81,30 @@ export function describeProgressRepositoryContract(
       expect((await repo.load()).lessons["c/l"]?.completedStepIds).toEqual([]);
     });
 
+    it("saves an assessment result per course and replaces it", async () => {
+      const repo = create();
+      const result = recordAttempt(undefined, "c", 8, 10, true, NOW);
+      await repo.saveAssessment(result);
+      await repo.saveAssessment(recordAttempt(result, "c", 6, 10, false, NOW));
+      await repo.saveAssessment(recordAttempt(undefined, "d", 3, 8, false, NOW));
+      const { assessments } = await repo.load();
+      expect(Object.keys(assessments).sort()).toEqual(["c", "d"]);
+      expect(assessments["c"]).toMatchObject({ bestScore: 8, attempts: 2 });
+      expect(assessments["c"]?.passedAt).toBe(NOW.toISOString());
+    });
+
     it("clears everything", async () => {
       const repo = create();
       await repo.saveLesson(createLessonProgress("c", "l", NOW));
       await repo.recordActivity("2026-10-09");
+      await repo.saveAssessment(recordAttempt(undefined, "c", 8, 10, true, NOW));
       await repo.clear();
-      expect(await repo.load()).toEqual({ version: 1, lessons: {}, activityDays: [] });
+      expect(await repo.load()).toEqual({
+        version: 1,
+        lessons: {},
+        activityDays: [],
+        assessments: {},
+      });
     });
   });
 }

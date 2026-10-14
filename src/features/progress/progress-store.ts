@@ -5,6 +5,7 @@ import {
   lessonKey,
   toDay,
 } from "@/lib/progress/lesson-progress";
+import { recordAttempt } from "@/lib/progress/assessment-progress";
 import {
   emptySnapshot,
   type LessonProgress,
@@ -28,6 +29,8 @@ export type ProgressState = {
     lessonSlug: string,
     update: (progress: LessonProgress, now: Date) => LessonProgress,
   ) => void;
+  /** Records a finished assessment attempt (best score and first pass are kept). */
+  recordAssessment: (courseSlug: string, score: number, total: number, passed: boolean) => void;
   reset: () => Promise<void>;
 };
 
@@ -64,6 +67,7 @@ export function createProgressStore(
                 addActivityDay,
                 snapshot.activityDays,
               ),
+              assessments: { ...snapshot.assessments, ...state.snapshot.assessments },
             },
           }));
         } catch {
@@ -93,6 +97,36 @@ export function createProgressStore(
         void persist(
           (async () => {
             await repository.saveLesson(next);
+            if (newDay) await repository.recordActivity(day);
+          })(),
+        );
+      },
+
+      recordAssessment: (courseSlug, score, total, passed) => {
+        const now = clock();
+        const { snapshot } = get();
+        const next = recordAttempt(
+          snapshot.assessments[courseSlug],
+          courseSlug,
+          score,
+          total,
+          passed,
+          now,
+        );
+        const day = toDay(now);
+        const newDay = !snapshot.activityDays.includes(day);
+        set({
+          snapshot: {
+            ...snapshot,
+            assessments: { ...snapshot.assessments, [courseSlug]: next },
+            activityDays: newDay
+              ? addActivityDay(snapshot.activityDays, day)
+              : snapshot.activityDays,
+          },
+        });
+        void persist(
+          (async () => {
+            await repository.saveAssessment(next);
             if (newDay) await repository.recordActivity(day);
           })(),
         );

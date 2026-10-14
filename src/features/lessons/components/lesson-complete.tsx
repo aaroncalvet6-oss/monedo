@@ -80,8 +80,8 @@ export function LessonComplete({
           </Button>
         ) : (
           <Button asChild size="lg">
-            <Link href={`/cursos/${courseSlug}`}>
-              Volver al curso
+            <Link href={`/cursos/${courseSlug}/evaluacion`}>
+              Hacer la evaluación final
               <ArrowRight />
             </Link>
           </Button>

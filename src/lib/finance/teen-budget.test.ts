@@ -8,6 +8,7 @@ describe("teenBudget", () => {
     expect(teenBudget(hugo)).toEqual({
       income: 60,
       ownExpenses: 20,
+      savingsRate: 0.2,
       savingsTarget: 12,
       savings: 12,
       freeSpending: 28,
@@ -57,6 +58,26 @@ describe("teenBudget", () => {
     expect(teenBudget({ ...hugo, ownExpenses: -5 })).toBeNull();
     expect(teenBudget({ ...hugo, gifts: Number.NaN })).toBeNull();
     expect(teenBudget({ ...hugo, jobs: MAX_BUDGET_AMOUNT + 1 })).toBeNull();
+  });
+
+  it("lets you save more or less than 20 %, from 0 % to 50 %", () => {
+    expect(teenBudget({ ...hugo, savingsRate: 0.5 })).toMatchObject({
+      savings: 30,
+      freeSpending: 10,
+      status: "ok",
+    });
+    expect(teenBudget({ ...hugo, savingsRate: 0 })).toMatchObject({ savings: 0, freeSpending: 40 });
+    expect(teenBudget({ ...hugo, savingsRate: 0.5, ownExpenses: 40 })).toMatchObject({
+      status: "savings-short",
+      savings: 20,
+      shortfall: 10,
+    });
+  });
+
+  it("rejects a savings rate outside 0 %–50 %", () => {
+    expect(teenBudget({ ...hugo, savingsRate: -0.1 })).toBeNull();
+    expect(teenBudget({ ...hugo, savingsRate: 0.51 })).toBeNull();
+    expect(teenBudget({ ...hugo, savingsRate: Number.NaN })).toBeNull();
   });
 
   it("keeps cents right with decimal amounts", () => {

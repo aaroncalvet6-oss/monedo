@@ -361,3 +361,70 @@ export type LessonEntry = z.infer<typeof lessonEntrySchema>;
 export type Course = z.infer<typeof courseSchema>;
 export type CourseInput = z.input<typeof courseSchema>;
 export type InteractiveConfig = z.infer<typeof interactiveBlockSchema>["config"];
+
+// ---------------------------------------------------------------------------
+// Final assessment
+// ---------------------------------------------------------------------------
+
+const explanation = text.max(
+  MAX_PARAGRAPH_LENGTH,
+  `Explanations are at most ${MAX_PARAGRAPH_LENGTH} characters`,
+);
+
+export const assessmentQuestionSchema = z.object({
+  id,
+  /** A situation to reason about, not a fact to recall. */
+  prompt: text,
+  /** 4 options only if all 4 are credible; otherwise 3. Shuffled on every attempt. */
+  options: z.array(z.object({ id, text })).min(3).max(4),
+  correctOptionId: id,
+  /** Shown at the end for every mistake. */
+  explanation,
+  /** The lesson to review if this one is wrong. */
+  lesson: slug,
+});
+
+/**
+ * Final assessment of a course: each attempt draws `questionsPerAttempt` questions at random
+ * from a bank 50 % larger, and passes with `passMark` right answers.
+ */
+export const assessmentSchema = z
+  .object({
+    questionsPerAttempt: z.number().int().positive(),
+    passMark: z.number().int().positive(),
+    questions: z.array(assessmentQuestionSchema),
+  })
+  .superRefine((assessment, ctx) => {
+    const { questionsPerAttempt, passMark, questions } = assessment;
+    if (questions.length !== questionsPerAttempt * 1.5) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["questions"],
+        message: `The bank needs ${questionsPerAttempt * 1.5} questions (50 % more than each attempt), not ${questions.length}`,
+      });
+    }
+    if (passMark > questionsPerAttempt) {
+      ctx.addIssue({ code: "custom", path: ["passMark"], message: "Pass mark above the total" });
+    }
+    const ids = questions.map((q) => q.id);
+    if (new Set(ids).size !== ids.length) {
+      ctx.addIssue({ code: "custom", path: ["questions"], message: "Duplicate question ids" });
+    }
+    questions.forEach((question, index) => {
+      const optionIds = question.options.map((o) => o.id);
+      if (new Set(optionIds).size !== optionIds.length) {
+        ctx.addIssue({ code: "custom", path: ["questions", index], message: "Duplicate options" });
+      }
+      if (!optionIds.includes(question.correctOptionId)) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["questions", index, "correctOptionId"],
+          message: "The correct answer is not among the options",
+        });
+      }
+    });
+  });
+
+export type AssessmentQuestion = z.infer<typeof assessmentQuestionSchema>;
+export type Assessment = z.infer<typeof assessmentSchema>;
+export type AssessmentInput = z.input<typeof assessmentSchema>;

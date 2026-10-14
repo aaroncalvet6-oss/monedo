@@ -50,6 +50,8 @@ test.describe("touch targets", () => {
     "/cursos/fundamentos-del-dinero",
     "/cursos/fundamentos-del-dinero/el-dinero-es-tiempo",
     "/cursos/fundamentos-del-dinero/tu-primer-presupuesto",
+    "/cursos/fundamentos-del-dinero/evaluacion",
+    "/cursos/fundamentos-del-dinero/certificado",
   ]) {
     test(`every control on ${path} is at least 44×44`, async ({ page }) => {
       await page.goto(route(path));

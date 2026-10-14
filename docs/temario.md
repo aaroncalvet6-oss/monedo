@@ -110,7 +110,8 @@ sigue teniendo 100 €, pero ya no le llegan para lo mismo.
 **Dato clave:** 91,51 € · lo que valdrán en 3 años 100 € guardados, con un 3 % de inflación anual.
 
 **Sección añadida con el bloque D: «El mismo efecto, a tu favor».** La inflación se acumula; con el
-ahorro puede pasar lo mismo a tu favor (interés compuesto). Aviso: ninguna rentabilidad está
+ahorro puede pasar lo mismo a tu favor (interés compuesto). Pero si lo que te da tu ahorro es menos
+que la inflación, tu dinero sigue perdiendo poder de compra. Aviso: ninguna rentabilidad está
 garantizada y las inversiones pueden bajar. Enlaza a la herramienta Interés compuesto, que enlaza de
 vuelta a esta lección.
 

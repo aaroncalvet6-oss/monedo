@@ -64,12 +64,22 @@ describe("LocalProgressRepository resilience", () => {
     ],
   ])("treats %s as empty progress", async (_, raw) => {
     storage.data.set(PROGRESS_STORAGE_KEY, raw);
-    expect(await repo.load()).toEqual({ version: 1, lessons: {}, activityDays: [] });
+    expect(await repo.load()).toEqual({
+      version: 1,
+      lessons: {},
+      activityDays: [],
+      assessments: {},
+    });
   });
 
   it("fills in fields missing from older documents", async () => {
     storage.data.set(PROGRESS_STORAGE_KEY, JSON.stringify({ version: 1 }));
-    expect(await repo.load()).toEqual({ version: 1, lessons: {}, activityDays: [] });
+    expect(await repo.load()).toEqual({
+      version: 1,
+      lessons: {},
+      activityDays: [],
+      assessments: {},
+    });
   });
 
   it("returns empty progress when storage reads are blocked", async () => {

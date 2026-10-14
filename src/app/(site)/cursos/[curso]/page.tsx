@@ -4,7 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/container";
 import { PageHeader } from "@/components/layout/page-header";
-import { getCourse, getPublishedCourses, isPublished } from "@/content";
+import { getAssessment, getCourse, getPublishedCourses, isPublished } from "@/content";
+import { CourseAssessmentCard } from "@/features/assessment/components/course-assessment-card";
 import { CourseProgressActions } from "@/features/courses/components/course-progress-actions";
 
 export const dynamicParams = false;
@@ -26,6 +27,7 @@ export default async function CoursePage({ params }: PageProps<"/cursos/[curso]"
   if (!course || !isPublished(course)) notFound();
   const minutes = course.lessons.reduce((sum, l) => sum + l.minutes, 0);
   const lessons = course.lessons;
+  const assessment = getAssessment(course.slug);
 
   return (
     <Container>
@@ -64,6 +66,13 @@ export default async function CoursePage({ params }: PageProps<"/cursos/[curso]"
               ))}
             </ol>
           </section>
+          {assessment ? (
+            <CourseAssessmentCard
+              courseSlug={course.slug}
+              questions={assessment.questionsPerAttempt}
+              passMark={assessment.passMark}
+            />
+          ) : null}
         </div>
         <aside className="flex flex-col gap-6">
           <dl className="grid grid-cols-2 gap-6 border-y border-border py-5">

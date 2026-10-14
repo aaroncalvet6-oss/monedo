@@ -1,6 +1,7 @@
 import { addActivityDay, lessonKey } from "./lesson-progress";
 import {
   emptySnapshot,
+  type AssessmentResult,
   type LessonProgress,
   type ProgressRepository,
   type ProgressSnapshot,
@@ -23,6 +24,13 @@ export class InMemoryProgressRepository implements ProgressRepository {
     this.snapshot = {
       ...this.snapshot,
       lessons: { ...this.snapshot.lessons, [key]: structuredClone(progress) },
+    };
+  }
+
+  async saveAssessment(result: AssessmentResult): Promise<void> {
+    this.snapshot = {
+      ...this.snapshot,
+      assessments: { ...this.snapshot.assessments, [result.courseSlug]: structuredClone(result) },
     };
   }
 
